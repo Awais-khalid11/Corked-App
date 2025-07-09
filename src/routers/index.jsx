@@ -8,9 +8,11 @@ import NotFound from "@pages/NotFound";
 const Routers = () => {
   return (
     <Routes>
-      <Route path="/" element={<MainLayouts />}>
+      <Route path="/" element={<MainLayout />}>
         <Route index element={<Dashboard />} />
         <Route path="settings" element={<Settings />} />
+        <Route path="wine-level" element={<WineLevel />} />
+
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
