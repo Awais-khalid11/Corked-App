@@ -7,7 +7,7 @@ const Sidebar = () => {
     { id: 1, name: "Dashboard", iconA: "icon1a.svg", iconB: "icon1b.svg", link: "/" },
     { id: 2, name: "Wine Listings", iconA: "icon2a.svg", iconB: "icon2b.svg", link: "/settings" },
     { id: 3, name: "Wine-Level Analytic", iconA: "icon3a.svg", iconB: "icon3b.svg", link: "/wine-level" },
-    { id: 4, name: "Log Location Breakdown", iconA: "icon4a.svg", iconB: "icon4b.svg", link: "/log-location" },
+    { id: 4, name: "Log Location Breakdown", iconA: "icon4a.svg", iconB: "icon4b.svg", link: "/log-location-breakdown" },
     { id: 5, name: "Engagment Summary", iconA: "icon5a.svg", iconB: "icon5b.svg", link: "/engagment-summary" },
     { id: 6, name: "Visitor Breakdown", iconA: "icon6a.svg", iconB: "icon6b.svg", link: "/visitor-breakdown" },
     { id: 7, name: "Wine Club Insights", iconA: "icon7a.svg", iconB: "icon7b.svg", link: "/wine-club" },

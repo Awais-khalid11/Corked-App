@@ -90,15 +90,9 @@ const BasicTable = ({ data, columns, title, dropdowns, search }) => {
             <tr>
               <td
                 colSpan={columns.length}
-<<<<<<< HEAD
-                className="text-center py-6 text-gray-400"
-              >
-                No data found
-=======
                 className="px-4 py-6 text-center text-sm text-gray-500"
               >
                 No data found.
->>>>>>> cb5c7a44f8a4e4b80799417e3dfde365d15be5ed
               </td>
             </tr>
           )}
