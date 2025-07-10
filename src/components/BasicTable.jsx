@@ -1,58 +1,104 @@
+import {
+  useReactTable,
+  getCoreRowModel,
+  flexRender,
+  getPaginationRowModel,
+  getFilteredRowModel,
+  getSortedRowModel,
+} from "@tanstack/react-table";
+import { FaAngleDown, FaAngleUp } from "react-icons/fa6";
+import React, { useState } from "react";
 
+const BasicTable = ({ data, columns, title, dropdowns, search }) => {
+  const [sort, setSort] = useState([]);
+  const [filter, setFilter] = useState("");
 
-import React from "react";
+  const table = useReactTable({
+    data,
+    columns,
+    getCoreRowModel: getCoreRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
+    state: {
+      sorting: sort,
+      globalFilter: filter,
+    },
+    onSortingChange: setSort,
+    onGlobalFilterChange: setFilter,
+  });
 
-const BasicTable = ({ data = [], columns = [] }) => {
   return (
-    <div className="overflow-x-auto">
-      <table className="min-w-full">
-        <thead className="bg-[#F6F6F6] text-[#252525]">
-          <tr>
-            {columns.map((col, index) => (
-              <th
-                key={col.id || col.accessorKey || index}
-                className="text-[16px] font-bold opacity-80 py-4 px-5 text-left"
-              >
-                {col.header || ""}
-              </th>
-            ))}
-          </tr>
+    <div className="w-full overflow-x-auto border rounded-xl border-gray-300">
+      {/* Title and optional dropdowns */}
+      {(title || dropdowns) && (
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center px-4 pt-4 pb-2 gap-2">
+          {title && <h2 className="text-lg font-semibold text-gray-900">{title}</h2>}
+          {dropdowns && <div className="flex gap-3">{dropdowns}</div>}
+        </div>
+      )}
+
+      {search && (
+        <input
+          className="m-3 px-2 py-1 w-64 bg-gray-50 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500"
+          type="text"
+          placeholder="Search"
+          onChange={(e) => setFilter(e.target.value)}
+          value={filter}
+        />
+      )}
+
+      <table className="w-full">
+        <thead>
+          {table.getHeaderGroups().map((headerGroup) => (
+            <tr className="bg-gray-100" key={headerGroup.id}>
+              {headerGroup.headers.map((header) => (
+                <th
+                  key={header.id}
+                  onClick={header.column.getToggleSortingHandler()}
+                  className="px-4 py-2 text-left text-sm font-medium text-gray-700 border-b border-gray-200"
+                >
+                  <div className="flex items-center gap-1">
+                    {flexRender(header.column.columnDef.header, header.getContext())}
+                    {
+                      {
+                        asc: <FaAngleUp />,
+                        desc: <FaAngleDown />,
+                      }[header.column.getIsSorted() ?? null]
+                    }
+                  </div>
+                </th>
+              ))}
+            </tr>
+          ))}
         </thead>
         <tbody>
-          {data.length > 0 ? (
-            data.map((row, rowIndex) => (
-              <tr
-                key={row.id || rowIndex}
-                className="bg-white border-b border-[rgba(37,37,37,0.1)]"
-              >
-                {columns.map((col, colIndex) => {
-                  const key = col.id || col.accessorKey || colIndex;
-                  const cellValue = col.accessorKey
-                    ? row[col.accessorKey]
-                    : null;
-
-                  return (
-                    <td
-                      key={key}
-                      className="py-7 pl-5 pr-16 text-sm leading-[1] text-[#252525]"
-                    >
-                      {col.cell
-                        ? col.cell({ getValue: () => cellValue, row })
-                        : col.accessorFn
-                        ? col.accessorFn(row)
-                        : cellValue}
-                    </td>
-                  );
-                })}
+          {table.getRowModel().rows.length > 0 ? (
+            table.getRowModel().rows.map((row) => (
+              <tr className="hover:bg-gray-50" key={row.id}>
+                {row.getVisibleCells().map((cell) => (
+                  <td
+                    key={cell.id}
+                    className="px-4 py-3 text-sm text-gray-700 border-b border-gray-200"
+                  >
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </td>
+                ))}
               </tr>
             ))
           ) : (
             <tr>
               <td
                 colSpan={columns.length}
+<<<<<<< HEAD
                 className="text-center py-6 text-gray-400"
               >
                 No data found
+=======
+                className="px-4 py-6 text-center text-sm text-gray-500"
+              >
+                No data found.
+>>>>>>> cb5c7a44f8a4e4b80799417e3dfde365d15be5ed
               </td>
             </tr>
           )}
@@ -63,4 +109,3 @@ const BasicTable = ({ data = [], columns = [] }) => {
 };
 
 export default BasicTable;
-
