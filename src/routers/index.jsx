@@ -6,6 +6,8 @@ import MainLayout from "@layouts/MainLayout";
 import BenchMarking from "../pages/BenchMarking";
 import EngagmentSummary from "../pages/EngagmentSummary";
 import { Navigate, Route, Routes } from "react-router-dom";
+import LogLocationBreakdown from "../pages/LogLocationBreakdwon";
+
 
 const Routers = () => {
   return (
@@ -16,7 +18,7 @@ const Routers = () => {
         <Route path="wine-level" element={<WineLevel />} />
         <Route path="engagment-summary" element={<EngagmentSummary />} />
         <Route path="bench-marking" element={<BenchMarking />} />
-
+        <Route path="log-location-breakdown" element={<LogLocationBreakdown />} />
 
       </Route>
       <Route path="*" element={<NotFound />} />
