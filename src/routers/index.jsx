@@ -7,6 +7,10 @@ import BenchMarking from "../pages/BenchMarking";
 import EngagmentSummary from "../pages/EngagmentSummary";
 import { Navigate, Route, Routes } from "react-router-dom";
 import LogLocationBreakdown from "../pages/LogLocationBreakdwon";
+import VisitorBreakdown from "../pages/VisitorBreakdown";
+import WineClub from "../pages/WineClub";
+import InstantReport from "../pages/InstantReport";
+
 
 
 const Routers = () => {
@@ -19,6 +23,11 @@ const Routers = () => {
         <Route path="engagment-summary" element={<EngagmentSummary />} />
         <Route path="bench-marking" element={<BenchMarking />} />
         <Route path="log-location-breakdown" element={<LogLocationBreakdown />} />
+        <Route path="visitor-breakdown" element={<VisitorBreakdown />} />
+        <Route path="wine-club" element={<WineClub />} />
+                <Route path="instant-report" element={<InstantReport />} />
+
+
 
       </Route>
       <Route path="*" element={<NotFound />} />
