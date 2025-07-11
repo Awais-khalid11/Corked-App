@@ -13,7 +13,10 @@ const Cards = ({ data }) => {
               <img src={item.cardIcon} alt="" />
             </div>
             <div className='flex items-end gap-1.5'>
-              <p className='text-[30px] font-bold leading-[38px]'>{item.cardNumbers}</p>
+              <div>  <p className='text-[30px] font-bold leading-[38px]'>{item.cardNumbers}</p>
+              <p className='leading-[1] text-[12px] font-medium'>{item.numbersAnalytics}</p>
+               </div>
+            
               <p className='text-[16px] font-bold'>{item.cardNumbersText || ''}</p>
             </div>
           </div>

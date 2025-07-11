@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FiDownload } from "react-icons/fi";
-import DropButton from "./DropButton"; 
+import DropDownButton from "./DropDownButton"; 
 import BasicTable from "./BasicTable"; 
 import ComparisonColumns from "./ComparisitionColoumn"; 
 import ComparisonData from "../data/ComparisonData";
@@ -20,14 +20,14 @@ const ComparisonTable = () => {
 
         <div className="flex gap-3 flex-wrap">
           {/* Dropdown for view */}
-          <DropButton
+          <DropDownButton
             label={view}
             options={viewOptions}
             onSelect={(selected) => setView(selected)}
           />
 
           {/* Dropdown for duration */}
-          <DropButton
+          <DropDownButton
             label={duration}
             options={durationOptions}
             onSelect={(selected) => setDuration(selected)}

@@ -37,42 +37,46 @@
     });
 
     return (
-      <div className="w-full overflow-x-auto border rounded-xl border-gray-300">
+      <div className="w-full  border rounded-xl border-gray-300">
         {/* ✅ Header Section */}
-        {(title || dropdowns || search) && (
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center px-4 pt-4 pb-2 gap-3">
-            {/* Title on the left */}
-            {title && (
-              <h2 className="text-lg font-semibold text-gray-900">{title}</h2>
-            )}
+       {(title || dropdowns || search) && (
+  <div className="grid grid-cols-1 md:grid-cols-2 items-start md:items-center px-4 pt-4 pb-2 gap-4">
+    {/* Title - if exists, show it on the left */}
+    {title && (
+      <h2 className="text-lg font-semibold text-gray-900">{title}</h2>
+    )}
 
-            {/* Search bar and dropdowns on the right */}
-            <div className="flex flex-wrap md:flex-nowrap items-center gap-2 w-full md:w-auto justify-start md:justify-end">
-              {/* Search Bar */}
-              {search && (
-                <div className="flex items-center gap-2">
-                  <input
-                    className="px-2 py-1 w-64 bg-gray-50 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500"
-                    type="text"
-                    placeholder="Search"
-                    value={searchType === "button" ? inputValue : filter}
-                    onChange={(e) => {
-                      if (searchType === "button") {
-                        setInputValue(e.target.value);
-                      } else {
-                        setFilter(e.target.value);
-                      }
-                    }}
-                  />
-                
-                </div>
-              )}
+    {/* Right section: Search and dropdowns */}
+    <div
+      className={`flex flex-wrap items-center gap-2 ${
+        title ? "justify-start md:justify-end" : "justify-between col-span-2"
+      }`}
+    >
+      {/* Search input */}
+      {search && (
+        <div className="flex items-center gap-2">
+          <input
+            className="px-2 py-1 w-64 bg-gray-50 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500"
+            type="text"
+            placeholder="Search"
+            value={searchType === "button" ? inputValue : filter}
+            onChange={(e) => {
+              if (searchType === "button") {
+                setInputValue(e.target.value);
+              } else {
+                setFilter(e.target.value);
+              }
+            }}
+          />
+        </div>
+      )}
 
-              {/* Dropdowns */}
-              {dropdowns && <div className="flex gap-2">{dropdowns}</div>}
-            </div>
-          </div>
-        )}
+      {/* Dropdowns */}
+      {dropdowns && <div className="flex gap-2">{dropdowns}</div>}
+    </div>
+  </div>
+)}
+
 
         {/* Table */}
         <table className="w-full">

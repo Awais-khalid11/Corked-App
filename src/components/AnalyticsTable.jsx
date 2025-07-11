@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from "react";
 import BasicTable from "../components/BasicTable";
-import DropButton from "../components/DropButton";
+import DropDownButton from "../components/DropDownButton";
 import AnalyticsColoumn from "./AnalyticsColoumn";
 import { FiDownload } from "react-icons/fi";
 import WineData from "../data/WineData";
@@ -28,12 +28,12 @@ const AnalyticsTable = () => {
         <h1 className="text-2xl font-semibold">{TableName}</h1>
 
         <div className="flex gap-3 flex-wrap">
-          <DropButton
+          <DropDownButton
             label={wineType}
             options={wineOptions}
             onSelect={(option) => setWineType(option)}
           />
-          <DropButton
+          <DropDownButton
             label={duration}
             options={durationOptions}
             onSelect={(option) => setDuration(option)}

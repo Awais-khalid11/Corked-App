@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import DropButton from '../components/DropButton';
+import DropDownButton from '../components/DropDownButton';
 import LogLocationTable from '../components/LogLocationTable';
 
 const viewOptions = ["offsite", "onsite"];
@@ -13,7 +13,7 @@ const LogLocationBreakdown = () => {
         <h1 className="text-2xl font-semibold">Log Location Breakdown</h1>
 
         <div className="flex gap-3 flex-wrap">
-          <DropButton
+          <DropDownButton
             label={view}
             options={viewOptions}
             onSelect={(selected) => setView(selected)}
