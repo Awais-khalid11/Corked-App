@@ -4,7 +4,7 @@ import Dashboard from "@pages/Dashboard"
 import WineClub from "../pages/WineClub";
 import WineLevel from "../pages/WineLevel";
 import MainLayout from "@layouts/MainLayout";
-import WineListing from "../pages/WineListing";
+import WineListing from "../pages/WineListings/WineListing";
 import BenchMarking from "../pages/BenchMarking";
 import InstantReport from "../pages/InstantReport";
 import EngagmentSummary from "../pages/EngagmentSummary";

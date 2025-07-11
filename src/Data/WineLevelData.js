@@ -1,4 +1,6 @@
-export default [
+
+ 
+ const WineLevelData = [
   {
     "wine": "Chardonnay 2022",
     "logs": "12 / 20",
@@ -32,3 +34,8 @@ export default [
     "image": "/assets/images/wlimg4.png"
   }
 ]
+
+ 
+ export default WineLevelData
+ 
+ 

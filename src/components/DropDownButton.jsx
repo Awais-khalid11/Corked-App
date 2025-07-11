@@ -1,7 +1,14 @@
 import React, { useState, useRef, useEffect } from "react";
 import { FaChevronDown } from "react-icons/fa";
 
-const DropDownButton = ({ label = "Yearly", options = [], onSelect, className = "" }) => {
+const DropDownButton = ({
+  label = "Options",
+  options = [],
+  onSelect,
+  className = "",
+  showIcon = true,
+  unstyled = false, // 🔥 NEW PROP
+}) => {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef();
 
@@ -22,16 +29,21 @@ const DropDownButton = ({ label = "Yearly", options = [], onSelect, className = 
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  const baseButtonClass = unstyled
+    ? "inline-flex items-center"
+    : `inline-flex items-center  ${
+        className || "gap-[8px] py-[8px] px-[12px] rounded-[12px] border border-black text-sm text-black"
+      }`;
+
   return (
     <div className="relative inline-block text-left" ref={dropdownRef}>
       <button
         onClick={toggleDropdown}
-        className={`inline-flex items-center gap-1 px-4 py-1.5 border rounded-md text-sm font-medium shadow-sm ${
-          className || "border-gray-300 bg-white text-gray-700 hover:bg-gray-50"
-        }`}
+        className={baseButtonClass}
+        style={unstyled ? { background: "none", border: "none", boxShadow: "none", padding: 0 } : {}}
       >
-        {label}
-        <FaChevronDown className="w-3 h-3" />
+        <span>{label}</span>
+        {showIcon && <FaChevronDown className="w-3 h-3" />}
       </button>
 
       {open && (

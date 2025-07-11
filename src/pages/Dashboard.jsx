@@ -99,7 +99,7 @@ const Dashboard = () => {
       </div>
 
       {/* ✅ Wine Analytics Table */}
-      <div className='my-5 bg-white rounded-xl  border border-gray-200'>
+      <div className='my-5 '>
         <BasicTable
           title="Wine Analytics Table"
           data={AnalyticsData}
@@ -131,7 +131,7 @@ const Dashboard = () => {
       </div>
 
       {/* ✅ Comparison Table */}
-      <div className='my-5 bg-white rounded-xl  border border-gray-200'>
+      <div className='my-5 '>
         <BasicTable
           title="Your Winery vs Benchmark"
           data={ComparisonData}
