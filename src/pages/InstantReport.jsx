@@ -139,7 +139,7 @@ const InstantReport = () => {
       {/* Tables stacked vertically */}
       <div className="flex flex-col gap-6">
         {/* Wine Club Stats Table */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200">
+        <div className="bg-white rounded-xl  border border-gray-200">
           <BasicTable
             title="Wine Club Stats Table"
             data={wineClubData}
@@ -155,7 +155,7 @@ const InstantReport = () => {
         </div>
 
         {/* Benchmark Summary Table */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200">
+        <div className="bg-white rounded-xl  border border-gray-200">
           <BasicTable
             title="Benchmark Summary Table"
             data={benchmarkData}
@@ -171,7 +171,7 @@ const InstantReport = () => {
         </div>
 
         {/* Top Wine Data Table */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200">
+        <div className="bg-white rounded-xl  border border-gray-200">
           <BasicTable
             title="Top Wine Data Table"
             data={topWineData}

@@ -37,7 +37,7 @@ import {
     });
 
     return (
-      <div className="w-full  border rounded-xl border-gray-300">
+      <div className="w-full  bg-white rounded-[12px] py-5 px-4">
         {/* ✅ Header Section */}
        {(title || dropdowns || search) && (
   <div className="grid grid-cols-1 md:grid-cols-2 items-start md:items-center px-4 pt-4 pb-2 gap-4">
@@ -48,7 +48,7 @@ import {
 
     {/* Right section: Search and dropdowns */}
     <div
-      className={`flex flex-wrap items-center gap-2 ${
+      className={`flex flex-wrap items-center gap-2 mb-5 ${
         title ? "justify-start md:justify-end" : "justify-between col-span-2"
       }`}
     >
@@ -82,12 +82,12 @@ import {
         <table className="w-full">
           <thead>
             {table.getHeaderGroups().map((headerGroup) => (
-              <tr className="bg-gray-100" key={headerGroup.id}>
+              <tr className="bg-[rgba(246,246,246,1)]" key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
                   <th
                     key={header.id}
                     onClick={header.column.getToggleSortingHandler()}
-                    className="px-4 py-2 text-left text-sm font-medium text-gray-700 border-b border-gray-200"
+                    className="py-4 px-5 text-left text-[16px] font-bold text-[rgba(37,37,37,1)] leading-[1] opacity-80 "
                   >
                     <div className="flex items-center gap-1">
                       {flexRender(header.column.columnDef.header, header.getContext())}
@@ -106,11 +106,11 @@ import {
           <tbody>
             {table.getRowModel().rows.length > 0 ? (
               table.getRowModel().rows.map((row) => (
-                <tr className="hover:bg-gray-50" key={row.id}>
+                <tr className="text-[rgba(37,37,37,1)]" key={row.id}>
                   {row.getVisibleCells().map((cell) => (
                     <td
                       key={cell.id}
-                      className="px-4 py-3 text-sm text-gray-700 border-b border-gray-200"
+                      className="py-7 px-5 text-sm  border-b border-[rgba(37,37,37,0.1)] leading-[1]"
                     >
                       {flexRender(cell.column.columnDef.cell, cell.getContext())}
                     </td>

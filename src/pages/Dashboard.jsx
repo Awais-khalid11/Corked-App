@@ -86,7 +86,7 @@ const Dashboard = () => {
   ], []);
 
   return (
-    <div className='bg-[#F6F6F6] p-4 md:p-6 lg:p-8'>
+    <div className='bg-[#F6F6F6] '>
       <Cards data={CardsData} />
 
       <div className='flex flex-col md:flex-row justify-between my-5 gap-5'>
@@ -99,7 +99,7 @@ const Dashboard = () => {
       </div>
 
       {/* ✅ Wine Analytics Table */}
-      <div className='my-5 bg-white rounded-xl shadow-sm border border-gray-200'>
+      <div className='my-5 bg-white rounded-xl  border border-gray-200'>
         <BasicTable
           title="Wine Analytics Table"
           data={AnalyticsData}
@@ -131,7 +131,7 @@ const Dashboard = () => {
       </div>
 
       {/* ✅ Comparison Table */}
-      <div className='my-5 bg-white rounded-xl shadow-sm border border-gray-200'>
+      <div className='my-5 bg-white rounded-xl  border border-gray-200'>
         <BasicTable
           title="Your Winery vs Benchmark"
           data={ComparisonData}

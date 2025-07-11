@@ -41,8 +41,8 @@ const BenchMarking = () => {
   );
 
   return (
-    <div className="p-5 md:p-6 lg:p-8">
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200">
+    <div >
+      <div className="bg-white rounded-xl    border border-gray-200">
         <BasicTable
           title="Benchmarking (Premium/Enterprise Feature)"
           data={tableData}
