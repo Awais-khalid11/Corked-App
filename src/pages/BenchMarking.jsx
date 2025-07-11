@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import BasicTable from "../components/BasicTable";
-import data from "../data/BenchData.json";
+import data from "../Data/BenchData";
 import DropDownButton from "../components/DropDownButton";
 
 const BenchMarking = () => {

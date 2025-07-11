@@ -1,4 +1,5 @@
-[
+
+const BenchData = [
   {
     "metric": "Avg Rating (All Wines)",
     "your": "★★★★☆ 4.3",
@@ -34,5 +35,12 @@
     "your": "37%",
     "similar": "40",
     "difference": "+5"
-  }
+  },
 ]
+
+
+
+
+ 
+
+export default BenchData

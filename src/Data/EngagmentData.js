@@ -1,5 +1,4 @@
-
-    [
+const EngagmentData = [
     {
         "metric": "🧡 Logs with Reactionss",
         "example": "125",
@@ -21,3 +20,11 @@
         "action": "5.0"
     }
     ]
+
+
+export default EngagmentData
+
+    
+    
+    
+    
