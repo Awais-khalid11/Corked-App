@@ -1,28 +1,23 @@
 const ComparisonData = [
   {
-    id: 1,
-    metric: "Avg Rating",
-    yourWinery: 4.1,
-    benchmarkAvg: 4.1,
-    aboveBelow: 4.8,
-    isPositive: true,
+    metric: "Avg Rating ",
+    your: " 4.3",
+    similar: "4.2",
+    difference: "+0.1",
   },
   {
-    id: 2,
     metric: "On-Premise Logs",
-    yourWinery: 64,
-    benchmarkAvg: 72,
-    aboveBelow: -11,
-    isPositive: false,
+    your: "2.1",
+    similar: "2.3",
+    difference: "-0.2",
   },
   {
-    id: 3,
-    metric: "Reactions per Log",
-    yourWinery: 1.7,
-    benchmarkAvg: 2.3,
-    aboveBelow: -26,
-    isPositive: false,
+    metric: "Reactins Per Log",
+    your: "38%",
+    similar: "40%",
+    difference: "-2%",
   },
+  
 ];
 
 export default ComparisonData;

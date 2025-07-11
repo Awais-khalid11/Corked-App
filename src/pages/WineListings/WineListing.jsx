@@ -1,10 +1,10 @@
 import { useMemo, useState } from "react";
-import BasicTable from "../components/BasicTable";
-import data from "../Data/BenchData";
-import DropDownButton from "../components/DropDownButton";
-import Button from "../components/Button";
-import Add from "../../public/assets/icons/add-circle.svg";
-import ListingData from "../Data/ListingData";
+import BasicTable from "../../components/BasicTable";
+import data from "../../Data/BenchData";
+import DropDownButton from "../../components/DropDownButton";
+import Button from "../../components/Button";
+import Add from "../../../public/assets/icons/add-circle.svg";
+import ListingData from "../../Data/ListingData";
 import { BsThreeDotsVertical } from "react-icons/bs";
 
 
@@ -12,7 +12,6 @@ const BenchMarking = () => {
   const [wine, setWine] = useState("Red Wine");
   const [availability, setAvailability] = useState("Availability");
   const [feature, setfeature] = useState("Featured");
-
   const tableData = useMemo(() => data, []);
 
   const columns = useMemo(
@@ -96,7 +95,7 @@ const BenchMarking = () => {
         </div>
       </div>
 
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200">
+      <div className="">
         <BasicTable
           title=""
           data={ListingData}

@@ -6,9 +6,9 @@ const MainLayout = () => {
   return (
     <div className="flex">
       <Sidebar />
-      <div className="flex-1 flex flex-col h-screen overflow-hidden">
+      <div className="flex-1 flex flex-col h-screen overflow-hidden bg-[#F6F6F6]">
         <Navbar />
-        <main className="p-4 overflow-y-auto flex-1 bg-gray-50">
+        <main className="p-4 overflow-y-auto flex-1">
           <Outlet />
         </main>
       </div>
