@@ -1,4 +1,4 @@
-[
+export default [
   {
     "wine": "Chardonnay 2022",
     "logs": "12 / 20",

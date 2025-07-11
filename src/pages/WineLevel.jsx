@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from "react";
 import BasicTable from "../components/BasicTable";
-import data from "../data/WineData.json";
+import data from "../data/WineLevelData";
 import DropDownButton from "../components/DropDownButton";
 
 const WineLevel = () => {

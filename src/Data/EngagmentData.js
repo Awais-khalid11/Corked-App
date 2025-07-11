@@ -1,5 +1,5 @@
 
-    [
+   export default [ 
     {
         "metric": "🧡 Logs with Reactionss",
         "example": "125",

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Chart from 'react-apexcharts';
-import DropButton from './DropButton';
+import DropDownButton from './DropDownButton';
 
 const BarChart = () => {
   const [selectedTimeRange, setSelectedTimeRange] = useState('Yearly');
@@ -105,7 +105,7 @@ const BarChart = () => {
     <div className='bg-white py-5 px-4 rounded-[12px] w-full'>
       <div className='flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3'>
         <h2 className='text-lg font-semibold'>Top Logged Wine</h2>
-        <DropButton
+        <DropDownButton
           options={['Yearly', 'Monthly', 'Weekly']}
           label={selectedTimeRange}
           onSelect={(value) => setSelectedTimeRange(value)}

@@ -1,8 +1,7 @@
-// src/components/DropdownButton.jsx
 import React, { useState, useRef, useEffect } from "react";
 import { FaChevronDown } from "react-icons/fa";
 
-const DropDownButton = ({ label = "View", options = [], onSelect }) => {
+const DropDownButton = ({ label = "Yearly", options = [], onSelect, className = "" }) => {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef();
 
@@ -13,7 +12,6 @@ const DropDownButton = ({ label = "View", options = [], onSelect }) => {
     setOpen(false);
   };
 
-  // Close dropdown on outside click
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -28,7 +26,9 @@ const DropDownButton = ({ label = "View", options = [], onSelect }) => {
     <div className="relative inline-block text-left" ref={dropdownRef}>
       <button
         onClick={toggleDropdown}
-        className="inline-flex items-center gap-1 px-4 py-1.5 border border-gray-300 rounded-md bg-white text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50"
+        className={`inline-flex items-center gap-1 px-4 py-1.5 border rounded-md text-sm font-medium shadow-sm ${
+          className || "border-gray-300 bg-white text-gray-700 hover:bg-gray-50"
+        }`}
       >
         {label}
         <FaChevronDown className="w-3 h-3" />

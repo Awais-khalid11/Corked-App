@@ -1,0 +1,38 @@
+export default [
+  {
+    metric: "Avg Rating (All Wines)",
+    your: "★★★★☆ 4.3",
+    similar: "118",
+    difference: "+7"
+  },
+  {
+    metric: "Logs Per Visitor",
+    your: "2.1",
+    similar: "100",
+    difference: "-2"
+  },
+  {
+    metric: "Repeat Visit Rate",
+    your: "38%",
+    similar: "72",
+    difference: "-2"
+  },
+  {
+    metric: "Wine Club Subscribers",
+    your: "141",
+    similar: "40",
+    difference: "+5"
+  },
+  {
+    metric: "Onsite Logs (%)",
+    your: "63%",
+    similar: "40",
+    difference: "+5"
+  },
+  {
+    metric: "Offsite Logs (%)",
+    your: "37%",
+    similar: "40",
+    difference: "+5"
+  }
+];
