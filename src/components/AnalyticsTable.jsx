@@ -1,9 +1,9 @@
 import React, { useState, useMemo } from "react";
 import BasicTable from "../components/BasicTable";
 import DropButton from "../components/DropButton";
-import WineData from "./WineData";
 import AnalyticsColoumn from "./AnalyticsColoumn";
 import { FiDownload } from "react-icons/fi";
+import WineData from "../data/WineData";
 
 const AnalyticsTable = () => {
   const [wineType, setWineType] = useState("Red Wine");

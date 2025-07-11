@@ -2,9 +2,9 @@ import React from 'react';
 import DonutChart from '../components/DonutChart';
 import BarChart from "../components/BarChart";
 import Cards from '../components/Cards'; 
-import CardsData from '../components/CardsData';
 import AnalyticsTable from '../components/AnalyticsTable';
 import ComparisonTable from '../components/ComparisitionTable';
+import CardsData from '../data/CardsData';
 
 const Dashboard = () => {
   return (

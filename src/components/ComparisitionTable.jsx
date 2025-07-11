@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { FiDownload } from "react-icons/fi";
 import DropButton from "./DropButton"; 
 import BasicTable from "./BasicTable"; 
-import ComparisonData from "./ComparisonData"; 
 import ComparisonColumns from "./ComparisitionColoumn"; 
+import ComparisonData from "../data/ComparisonData";
 
 const ComparisonTable = () => {
   const [view, setView] = useState("Vertical");

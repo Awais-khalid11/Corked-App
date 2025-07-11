@@ -1,37 +1,25 @@
-import React from "react";
-import Star from "../assets/Icons/star.svg"
-import Trendup from "../assets/Icons/trendup.svg"
-import Milk from "../assets/Icons/milk.svg"
-import Home from "../assets/Icons/house.svg"
-
-
-
 const CardsData = [
   {
-    cardIcon: Star ,
+    cardIcon: "/assets/icons/star.svg",
     cardNumbers: "148",
     cardAnalytics: "Total Wines Logged",
   },
   {
-    cardIcon:Trendup,
-    cardNumbers: "4.3 ",
-    cardNumbersText:"Grapes",
+    cardIcon: "/assets/icons/trendup.svg",
+    cardNumbers: "4.3",
+    cardNumbersText: "Grapes",
     cardAnalytics: "Avg Rating",
   },
   {
-    cardIcon: Milk
-,
+    cardIcon: "/assets/icons/milk.svg",
     cardNumbers: "64",
     cardAnalytics: "On-site Logs",
   },
   {
-    cardIcon: Home
-,
+    cardIcon: "/assets/icons/house.svg",
     cardNumbers: "84",
     cardAnalytics: "Off-site Logs",
   },
 ];
-
-
 
 export default CardsData;

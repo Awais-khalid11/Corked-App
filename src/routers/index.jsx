@@ -1,17 +1,16 @@
 import Settings from "@pages/Settings";
 import NotFound from "@pages/NotFound";
 import Dashboard from "@pages/Dashboard"
+import WineClub from "../pages/WineClub";
 import WineLevel from "../pages/WineLevel";
 import MainLayout from "@layouts/MainLayout";
+import WineListing from "../pages/WineListing";
 import BenchMarking from "../pages/BenchMarking";
+import InstantReport from "../pages/InstantReport";
 import EngagmentSummary from "../pages/EngagmentSummary";
+import VisitorBreakdown from "../pages/VisitorBreakdown";
 import { Navigate, Route, Routes } from "react-router-dom";
 import LogLocationBreakdown from "../pages/LogLocationBreakdwon";
-import VisitorBreakdown from "../pages/VisitorBreakdown";
-import WineClub from "../pages/WineClub";
-import InstantReport from "../pages/InstantReport";
-
-
 
 const Routers = () => {
   return (
@@ -25,7 +24,9 @@ const Routers = () => {
         <Route path="log-location-breakdown" element={<LogLocationBreakdown />} />
         <Route path="visitor-breakdown" element={<VisitorBreakdown />} />
         <Route path="wine-club" element={<WineClub />} />
-                <Route path="instant-report" element={<InstantReport />} />
+        <Route path="instant-report" element={<InstantReport />} />
+        <Route path="wine-listing" element={<WineListing />} />
+
 
 
 
