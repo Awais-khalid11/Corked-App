@@ -126,7 +126,7 @@ const InstantReport = () => {
           label="Export Table"
           options={["Export as CSV", "Export as PDF", "Export as Excel"]}
           onSelect={(option) => console.log("Export:", option)}
-          className="bg-black text-white border-black hover:bg-gray-900"
+          className="bg-black text-white p-4 rounded-xl gap-3 "
         />
       </div>
 
