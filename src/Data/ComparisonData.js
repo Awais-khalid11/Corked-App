@@ -21,4 +21,3 @@ const ComparisonData = [
 ];
 
 export default ComparisonData;
-

@@ -82,6 +82,7 @@ const WineListing = () => {
 
   return (
     <div className="">
+
 <div className="flex flex-col md:flex-row bg-white justify-between rounded-[12px] py-[14px] px-4 mb-5 gap-3 md:gap-0 items-start md:items-center">
   <div>
     <h2 className="font-bold text-[20px] leading-[1.2] text-[rgba(37,37,37,1)]">
@@ -94,6 +95,7 @@ const WineListing = () => {
     </Link>
   </div>
 </div>
+
 
 <div className="w-full overflow-x-auto">
   <BasicTable

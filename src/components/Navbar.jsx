@@ -1,8 +1,9 @@
+// Navbar.jsx
 import { ReactSVG } from "react-svg";
 
-const Navbar = () => {
+const Navbar = ({ onSettingsClick }) => {
   return (
-    <div className="bg-white shadow p-5.5 flex justify-between items-center border-b border-gray-200">
+    <div className="bg-white shadow p-4.5 flex justify-between items-center border-b border-gray-200">
       <h1 className="text-2xl font-bold">👋 Welcome Back</h1>
       
       <div className="flex items-center gap-4">
@@ -16,6 +17,7 @@ const Navbar = () => {
         <ReactSVG
           src="/assets/icons/setting.svg"
           className="w-6 h-6 cursor-pointer hover:opacity-80 text-gray-600"
+          onClick={onSettingsClick}
         />
         
         {/* User Profile Section */}

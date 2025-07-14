@@ -57,8 +57,10 @@ const WineLevel = () => {
   );
 
   return (
+
     <div className="">
       <div className="">
+
         <BasicTable
           title="Breakdown by wine"
           data={tableData}

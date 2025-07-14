@@ -171,19 +171,17 @@ const Dashboard = () => {
                 onSelect={setComparisonDuration}
               />
 
-              <DropDownButton
-                label={
-                  <div className="flex items-center gap-2   ">
-               <AiOutlineExport />
+               <DropDownButton
+                label="Export Table"
 
-                    <span>Export Table</span>
-                  </div>
-                }
                 options={["Export as CSV", "Export as PDF", "Export as Excel"]}
                 onSelect={(option) => {
-                  console.log("Exporting:", option);
+                  // Add your export logic here
+                  console.log("Exporting as:", option);
                 }}
+
                 className="bg-black text-white rounded-[12px] py-[9px] px-3 gap-2 "
+
               />
             </>
           }

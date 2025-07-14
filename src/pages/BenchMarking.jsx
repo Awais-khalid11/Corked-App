@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import BasicTable from "../components/BasicTable";
-import data from "../Data/BenchData";
+import data from "../data/BenchData";
 import DropDownButton from "../components/DropDownButton";
 
 const BenchMarking = () => {
@@ -41,8 +41,11 @@ const BenchMarking = () => {
   );
 
   return (
+
     <div className="">
       <div className="">
+
+
         <BasicTable
           title="Benchmarking (Premium/Enterprise Feature)"
           data={tableData}

@@ -1,9 +1,9 @@
 import { useMemo, useState } from "react";
 import BasicTable from "../components/BasicTable";
-import data from "../data/EngagmentData";
+import data from "../data/BenchData";
 import DropDownButton from "../components/DropDownButton";
 
-const EngagmentSummary = () => {
+const BenchMarking = () => {
   const [view, setView] = useState("Vertical View");
   const [dateFilter, setDateFilter] = useState("Last 30 Days");
 
@@ -21,13 +21,19 @@ const EngagmentSummary = () => {
         ),
       },
       {
-        header: "Example",
-        accessorKey: "example",
+        header: "Your Winery",
+        accessorKey: "your",
         cell: ({ getValue }) => <span className="text-gray-700">{getValue()}</span>,
       },
+       {
+        header: "Similar Wineries",
+        accessorKey: "similar",
+                cell: ({ getValue }) => <span className="text-gray-700">{getValue()}</span>,
+
+      },
       {
-        header: "Action",
-        accessorKey: "action",
+        header: "Difference",
+        accessorKey: "difference",
         cell: ({ getValue }) => <span className="text-gray-700">{getValue()}</span>,
       },
     ],
@@ -35,12 +41,10 @@ const EngagmentSummary = () => {
   );
 
   return (
-
-    <div className="">
-      <div className="">
-
+    <div >
+      <div className="bg-white rounded-xl    border border-gray-200">
         <BasicTable
-          title="Engagment Summary"
+          title="Benchmarking (Premium/Enterprise Feature)"
           data={tableData}
           columns={columns}
           dropdowns={
@@ -55,6 +59,11 @@ const EngagmentSummary = () => {
                 options={["Date", "Past 30 Days", "This Month", "This Year"]}
                 onSelect={setDateFilter}
               />
+               <DropDownButton
+                label={dateFilter}
+                options={["Region", "Past 30 Days", "This Month", "This Year"]}
+                onSelect={setDateFilter}
+              />
             </>
           }
           search={true}
@@ -64,4 +73,4 @@ const EngagmentSummary = () => {
   );
 };
 
-export default EngagmentSummary;
+export default BenchMarking;

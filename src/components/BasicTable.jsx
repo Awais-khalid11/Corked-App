@@ -1,4 +1,4 @@
-  import {
+import {
     useReactTable,
     getCoreRowModel,
     flexRender,
@@ -145,4 +145,4 @@
     );
   };
 
-  export default BasicTable;
+  export default BasicTable;

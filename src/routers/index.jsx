@@ -1,4 +1,3 @@
-import Settings from "@pages/Settings";
 import NotFound from "@pages/NotFound";
 import Dashboard from "@pages/Dashboard";
 import WineClub from "../pages/WineClub";
@@ -10,10 +9,22 @@ import BenchMarking from "../pages/BenchMarking";
 import InstantReport from "../pages/InstantReport";
 import EngagmentSummary from "../pages/EngagmentSummary";
 import VisitorBreakdown from "../pages/VisitorBreakdown";
+
 import { Route, Routes } from "react-router-dom";
+
 import LogLocationBreakdown from "../pages/LogLocationBreakdwon";
 import ViewDetail from "../pages/WineListings/Components/ViewDetail";
 import LoginPage from "../pages/LoginPage";
+
+import { Navigate, Route, Routes } from "react-router-dom";
+
+// Settings pages
+import SettingsLayout from "@layouts/SettingsLayout";
+import UserProfile from "../pages/Settings/UserProfile";  
+import ManagePassword from "../pages/Settings/ManagePassword";
+import PricingPlan from "../pages/Settings/PricingPlan";
+import Notification from "../pages/Settings/Notification";
+import WineClubb from "../pages/Settings/WineClubb"
 
 const Routers = () => {
   return (
@@ -21,7 +32,6 @@ const Routers = () => {
      
       <Route path="/" element={<MainLayout />}>
         <Route index element={<Dashboard />} />
-        <Route path="settings" element={<Settings />} />
         <Route path="wine-level" element={<WineLevel />} />
         <Route path="engagment-summary" element={<EngagmentSummary />} />
         <Route path="bench-marking" element={<BenchMarking />} />
@@ -34,10 +44,25 @@ const Routers = () => {
         <Route path="view-detail/:id" element={<ViewDetail />} />
       </Route>
 
+
       
       <Route path="/login-page" element={<LoginPage />} />
 
       
+
+        {/* Settings Nested Routes */}
+        <Route path="settings" element={<SettingsLayout />}>
+          <Route index element={<UserProfile />} />
+          <Route path="profile" element={<UserProfile />} />
+          <Route path="password" element={<ManagePassword />} />
+          <Route path="pricing" element={<PricingPlan />} />
+          <Route path="notifications" element={<Notification />} />
+          <Route path="wine" element={<WineClubb />} />
+
+        </Route>
+      </Route>
+
+
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
