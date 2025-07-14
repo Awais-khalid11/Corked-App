@@ -20,7 +20,7 @@ const logoutItem = {
   name: "Logout",
   iconA: "/assets/icons/logoutb.svg",
   iconB: "/assets/icons/logoutb.svg",
-  link: "/logout",
+  link: "/login-page",
 };
 
 const Sidebar = () => {
@@ -59,26 +59,25 @@ const Sidebar = () => {
       </nav>
 
       {/* Logout Section */}
-      <div className="pt-4 mt-4 border-t border-gray-200 -mx-5 px-5">
-        <NavLink
-          to={logoutItem.link}
-          className={({ isActive }) =>
-            `flex items-center p-3 rounded-lg transition-colors ${
-              isActive ? "font-medium bg-primary text-white" : "hover:bg-gray-100 text-black"
-            }`
-          }
-        >
-          {({ isActive }) => (
-            <>
-              <ReactSVG
-                src={isActive ? logoutItem.iconA : logoutItem.iconB}
-                className="mr-3 w-5 h-5"
-              />
-              <span>{logoutItem.name}</span>
-            </>
-          )}
-        </NavLink>
-      </div>
+<div className="pt-4 mt-4 border-t border-gray-200 -mx-5 px-5">
+  <button
+    onClick={() => {
+      // 1. Clear auth token/localStorage/session
+      localStorage.removeItem("token"); // or whatever your key is
+
+      // 2. Redirect to login page
+      window.location.href = "/login-page";
+    }}
+    className="w-full flex items-center p-3 rounded-lg transition-colors hover:bg-gray-100 text-black"
+  >
+    <ReactSVG
+      src={logoutItem.iconB}
+      className="mr-3 w-5 h-5"
+    />
+    <span>{logoutItem.name}</span>
+  </button>
+</div>
+
     </div>
   );
 };

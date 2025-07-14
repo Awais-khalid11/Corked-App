@@ -35,8 +35,8 @@ const EngagmentSummary = () => {
   );
 
   return (
-    <div className="p-5 md:p-6 lg:p-8">
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200">
+    <div className="">
+      <div className="">
         <BasicTable
           title="Engagment Summary"
           data={tableData}

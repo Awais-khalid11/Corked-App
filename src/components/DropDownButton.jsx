@@ -32,7 +32,7 @@ const DropDownButton = ({
   const baseButtonClass = unstyled
     ? "inline-flex items-center"
     : `inline-flex items-center  ${
-        className || "gap-[8px] py-[8px] px-[12px] rounded-[12px] border border-black text-sm text-black"
+        className || "gap-[8px] py-[10px] px-[12px] rounded-[12px] border border-black text-sm text-black"
       }`;
 
   return (
