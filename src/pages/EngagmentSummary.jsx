@@ -35,8 +35,10 @@ const EngagmentSummary = () => {
   );
 
   return (
-    <div >
-      <div className="bg-white rounded-xl  border border-gray-200">
+
+    <div className="">
+      <div className="">
+
         <BasicTable
           title="Engagment Summary"
           data={tableData}

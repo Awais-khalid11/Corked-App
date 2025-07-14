@@ -21,7 +21,7 @@ const logoutItem = {
   name: "Logout",
   iconA: "/assets/icons/logoutb.svg",
   iconB: "/assets/icons/logoutb.svg",
-  link: "/logout",
+  link: "/login-page",
 };
 
 const Sidebar = ({ isCompressed }) => {
@@ -67,6 +67,7 @@ const Sidebar = ({ isCompressed }) => {
           </NavLink>
         ))}
       </nav>
+
 
       {/* Logout */}
       <div className={`pt-4 mt-4 border-t border-gray-200 ${isCompressed ? '' : '-mx-5 px-5'}`}>

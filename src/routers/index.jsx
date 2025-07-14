@@ -3,12 +3,18 @@ import Dashboard from "@pages/Dashboard";
 import WineClub from "../pages/WineClub";
 import WineLevel from "../pages/WineLevel";
 import MainLayout from "@layouts/MainLayout";
+import DetailPages from "../pages/WineListings/Components/DetailPages";
 import WineListing from "../pages/WineListings/WineListing";
 import BenchMarking from "../pages/BenchMarking";
 import InstantReport from "../pages/InstantReport";
 import EngagmentSummary from "../pages/EngagmentSummary";
 import VisitorBreakdown from "../pages/VisitorBreakdown";
+
+import { Route, Routes } from "react-router-dom";
+
 import LogLocationBreakdown from "../pages/LogLocationBreakdwon";
+import ViewDetail from "../pages/WineListings/Components/ViewDetail";
+import LoginPage from "../pages/LoginPage";
 
 import { Navigate, Route, Routes } from "react-router-dom";
 
@@ -23,6 +29,7 @@ import WineClubb from "../pages/Settings/WineClubb"
 const Routers = () => {
   return (
     <Routes>
+     
       <Route path="/" element={<MainLayout />}>
         <Route index element={<Dashboard />} />
         <Route path="wine-level" element={<WineLevel />} />
@@ -33,6 +40,15 @@ const Routers = () => {
         <Route path="wine-club" element={<WineClub />} />
         <Route path="instant-report" element={<InstantReport />} />
         <Route path="wine-listing" element={<WineListing />} />
+        <Route path="wine-detail-page" element={<DetailPages />} />
+        <Route path="view-detail/:id" element={<ViewDetail />} />
+      </Route>
+
+
+      
+      <Route path="/login-page" element={<LoginPage />} />
+
+      
 
         {/* Settings Nested Routes */}
         <Route path="settings" element={<SettingsLayout />}>
@@ -45,6 +61,7 @@ const Routers = () => {
 
         </Route>
       </Route>
+
 
       <Route path="*" element={<NotFound />} />
     </Routes>

@@ -8,6 +8,8 @@ import {
   } from "@tanstack/react-table";
   import { FaAngleDown, FaAngleUp } from "react-icons/fa6";
   import React, { useState } from "react";
+  import { useNavigate } from "react-router-dom";
+
 
   const BasicTable = ({
     data,
@@ -15,7 +17,7 @@ import {
     title,
     dropdowns,
     search = false,
-    searchType = "realtime", // 'realtime' or 'button'
+    searchType = "realtime",
   }) => {
     const [sort, setSort] = useState([]);
     const [filter, setFilter] = useState("");
@@ -35,24 +37,26 @@ import {
       onSortingChange: setSort,
       onGlobalFilterChange: setFilter,
     });
+    const navigate = useNavigate();
+
 
     return (
       <div className="w-full  bg-white rounded-[12px] py-5 px-4">
-        {/* ✅ Header Section */}
+
        {(title || dropdowns || search) && (
   <div className="grid grid-cols-1 md:grid-cols-2 items-start md:items-center px-4 pt-4 pb-2 gap-4">
-    {/* Title - if exists, show it on the left */}
+  
     {title && (
       <h2 className="text-lg font-semibold text-gray-900">{title}</h2>
     )}
 
-    {/* Right section: Search and dropdowns */}
+  
     <div
       className={`flex flex-wrap items-center gap-2 mb-5 ${
         title ? "justify-start md:justify-end" : "justify-between col-span-2"
       }`}
     >
-      {/* Search input */}
+  
       {search && (
         <div className="flex items-center gap-2">
           <input
@@ -71,14 +75,14 @@ import {
         </div>
       )}
 
-      {/* Dropdowns */}
+    
       {dropdowns && <div className="flex gap-2">{dropdowns}</div>}
     </div>
   </div>
 )}
 
 
-        {/* Table */}
+        
         <table className="w-full">
           <thead>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -103,31 +107,39 @@ import {
               </tr>
             ))}
           </thead>
-          <tbody>
-            {table.getRowModel().rows.length > 0 ? (
-              table.getRowModel().rows.map((row) => (
-                <tr className="text-[rgba(37,37,37,1)]" key={row.id}>
-                  {row.getVisibleCells().map((cell) => (
-                    <td
-                      key={cell.id}
-                      className="py-7 px-5 text-sm  border-b border-[rgba(37,37,37,0.1)] leading-[1]"
-                    >
-                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                    </td>
-                  ))}
-                </tr>
-              ))
-            ) : (
-              <tr>
-                <td
-                  colSpan={columns.length}
-                  className="px-4 py-6 text-center text-sm text-gray-500"
-                >
-                  No data found.
-                </td>
-              </tr>
-            )}
-          </tbody>
+         <tbody>
+  {table.getRowModel().rows.length > 0 ? (
+    table.getRowModel().rows.map((row) => (
+      <tr
+        key={row.id}
+        onClick={() => {
+          const wineId = row.original?.id;
+          if (wineId) navigate(`/view-detail/${wineId}`);
+        }}
+        className="text-[rgba(37,37,37,1)] cursor-pointer hover:bg-gray-50 transition"
+      >
+        {row.getVisibleCells().map((cell) => (
+          <td
+            key={cell.id}
+            className="py-7 px-5 text-sm border-b border-[rgba(37,37,37,0.1)] leading-[1]"
+          >
+            {flexRender(cell.column.columnDef.cell, cell.getContext())}
+          </td>
+        ))}
+      </tr>
+    ))
+  ) : (
+    <tr>
+      <td
+        colSpan={columns.length}
+        className="px-4 py-6 text-center text-sm text-gray-500"
+      >
+        No data found.
+      </td>
+    </tr>
+  )}
+</tbody>
+
         </table>
       </div>
     );
