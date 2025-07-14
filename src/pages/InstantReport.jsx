@@ -120,15 +120,19 @@ const InstantReport = () => {
   return (
     <div className="p-4 md:p-6 lg:p-8 bg-[#F6F6F6] min-h-screen">
       {/* Header */}
-      <div className="flex justify-between p-4 rounded-xl bg-white items-center mb-6">
-        <h1 className="text-xl font-semibold">Instant Report Generator</h1>
-        <DropDownButton
-          label="Export Table"
-          options={["Export as CSV", "Export as PDF", "Export as Excel"]}
-          onSelect={(option) => console.log("Export:", option)}
-          className="bg-black text-white p-4 rounded-xl gap-3 "
-        />
-      </div>
+      <div className="flex justify-between items-center p-5 rounded-[12px] bg-white mb-6">
+  <h1 className="text-lg font-semibold text-black">
+    Instant Report Generator
+  </h1>
+
+  <DropDownButton
+    label="Export Table"
+    options={["Export as CSV", "Export as PDF", "Export as Excel"]}
+    onSelect={(option) => console.log("Export:", option)}
+    className="flex items-center justify-center px-[13px] py-[8px] h-[42px] gap-[5px] rounded-[12px] bg-[#252525] text-white text-sm font-medium"
+  />
+</div>
+
 
       {/* Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">

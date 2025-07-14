@@ -148,13 +148,14 @@ const Dashboard = () => {
                 options={["Yearly", "Monthly", "Weekly"]}
                 onSelect={setComparisonDuration}
               />
-              <DropDownButton
+               <DropDownButton
                 label="Export Table"
                 options={["Export as CSV", "Export as PDF", "Export as Excel"]}
                 onSelect={(option) => {
-                  console.log("Exporting:", option);
+                  // Add your export logic here
+                  console.log("Exporting as:", option);
                 }}
-                className="bg-black text-white border-black hover:bg-gray-900"
+                className="bg-black text-white px-4 py-1.5 rounded-md border border-black"
               />
             </>
           }

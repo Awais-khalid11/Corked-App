@@ -86,7 +86,7 @@ const BenchMarking = () => {
     <div className="">
       <div className="flex  bg-white justify-between rounded-[12px] py-5 px-4 mb-5 items-center">
         <div>
-          <h2 className="font-bold text-[20px] leading-[1.2] text-[rgba(37,37,37,1)]">
+          <h2 className="text-lg font-semibold text-black flex items-center gap-2">
             Wines Listing
           </h2>
         </div>
