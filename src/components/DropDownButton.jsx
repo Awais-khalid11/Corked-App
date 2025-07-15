@@ -7,7 +7,7 @@ const DropDownButton = ({
   onSelect,
   className = "",
   showIcon = true,
-  unstyled = false, // 🔥 NEW PROP
+  unstyled = false,
 }) => {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef();
@@ -31,7 +31,7 @@ const DropDownButton = ({
 
   const baseButtonClass = unstyled
     ? "inline-flex items-center"
-    : `inline-flex items-center  ${
+    : `inline-flex items-center ${
         className || "gap-[8px] py-[10px] px-[12px] rounded-[12px] border border-black text-sm text-black"
       }`;
 
@@ -40,24 +40,43 @@ const DropDownButton = ({
       <button
         onClick={toggleDropdown}
         className={baseButtonClass}
-        style={unstyled ? { background: "none", border: "none", boxShadow: "none", padding: 0 } : {}}
+        style={
+          unstyled
+            ? { background: "none", border: "none", boxShadow: "none", padding: 0 }
+            : {}
+        }
       >
         <span>{label}</span>
-        {showIcon && <FaChevronDown className="w-3 h-3" />}
+        {showIcon && <FaChevronDown className="w-3 h-3 ml-1" />}
       </button>
 
       {open && (
-        <div className="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-md shadow-lg z-10">
+        <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-10">
           <ul className="py-1 text-sm text-gray-700">
-            {options.map((option) => (
-              <li
-                key={option}
-                className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                onClick={() => handleOptionClick(option)}
-              >
-                {option}
-              </li>
-            ))}
+            {options.map((option) => {
+              const isObj = typeof option === "object" && option !== null;
+              const label = isObj ? option.label : option;
+              const icon = isObj ? option.icon : null;
+              const value = isObj ? option.value : option;
+
+              return (
+                <li
+                  key={value}
+                  className="px-4 py-2 hover:bg-[#F9E9DD] cursor-pointer flex items-center gap-2"
+                  onClick={() => handleOptionClick({ label, value })}
+                >
+                  {icon && (
+                    <img
+                      src={icon}
+                      alt="icon"
+                      className="w-4 h-4"
+                      loading="lazy"
+                    />
+                  )}
+                  {label}
+                </li>
+              );
+            })}
           </ul>
         </div>
       )}

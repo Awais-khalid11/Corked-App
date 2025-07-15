@@ -29,18 +29,16 @@ const Sidebar = ({ isCompressed }) => {
     <div className={`${isCompressed ? 'w-20' : 'w-72'} text-black h-screen ${isCompressed ? 'p-2' : 'p-5'} flex flex-col  border-gray-200 bg-white transition-all duration-300`}>
 
       {/* Logo Section */}
-      <div className={`mb-4 flex items-center border-b border-gray-200 pb-4 ${isCompressed ? '' : '-mx-5 px-5'}`}>
-        <Link to="/" className="cursor-pointer flex items-center gap-2">
-          {isCompressed ? (
-            <ReactSVG src={Logo1} className="w-8 h-8 " />
-          ) : (
-            <>
-              <ReactSVG src={Logo1} className="w-8 h-10 " />
-              <ReactSVG src={Logo2} className="h-6 " />
-            </>
-          )}
-        </Link>
-      </div>
+    <div className={`mb-4 border-b border-gray-200 pb-4 ${isCompressed ? '' : '-mx-5 px-5'}`}>
+  <Link
+    to="/"
+    className={`cursor-pointer flex ${isCompressed ? 'justify-center' : 'justify-center items-center space-x-2'}`}
+  >
+    <ReactSVG src={Logo1} className="w-8 h-10" />
+    {!isCompressed && <ReactSVG src={Logo2} className="h-6" />}
+  </Link>
+</div>
+
 
       {/* Navigation Items */}
       <nav className={`space-y-2 flex-1 mt-3 pb-4 ${isCompressed ? 'px-1' : ''}`}>

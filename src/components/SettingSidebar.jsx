@@ -59,7 +59,7 @@ const SettingsSidebar = ({ isOpen, onClose, activeItem, setActiveItem }) => {
             <button
               key={item.id}
               onClick={() => setActiveItem(item.key)}
-              className={`w-full flex items-center space-x-3 px-3 py-3 text-left rounded-lg transition-colors ${
+              className={`w-full flex items-center space-x-3 px-3 py-3 text-left rounded-lg transition-colors mb-2 ${
                 isActive
                   ? isUserProfile
                     ? 'bg-[#F9E9DD] text-black font-medium'
