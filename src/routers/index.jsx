@@ -11,7 +11,10 @@ import EngagmentSummary from "../pages/EngagmentSummary";
 import VisitorBreakdown from "../pages/VisitorBreakdown";
 import LogLocationBreakdown from "../pages/LogLocationBreakdwon";
 import ViewDetail from "../pages/WineListings/Components/ViewDetail";
-import LoginPage from "../pages/LoginPage";
+import LoginPage from "../pages/Login Folder/LoginPage";
+import EmailPage from "../pages/Login Folder/EmailPage"
+import ResetPassword from "../pages/Login Folder/ResetPassword";
+import Signup from "../pages/Login Folder/Singup";
 
 import { Navigate, Route, Routes } from "react-router-dom";
 
@@ -51,6 +54,10 @@ const Routers = () => {
   </Route>
 
   <Route path="/login-page" element={<LoginPage />} />
+  <Route path="/email-page" element={<EmailPage />} />
+  <Route path="/reset-password" element={<ResetPassword />} />
+  <Route path="/signup-page" element={<Signup />} />
+
   <Route path="*" element={<NotFound />} />
 </Routes>
 
