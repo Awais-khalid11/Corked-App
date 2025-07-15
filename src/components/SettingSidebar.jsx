@@ -64,7 +64,7 @@ const SettingsSidebar = ({ isOpen, onClose, activeItem, setActiveItem }) => {
                   ? isUserProfile
                     ? 'bg-[#F9E9DD] text-black font-medium'
                     : 'bg-primary text-white font-medium'
-                  : 'text-gray-700 hover:bg-gray-100'
+                  : 'text-gray-700 hover:bg-[#F9E9DD]'
               }`}
             >
               <ReactSVG
