@@ -37,7 +37,7 @@ const PricingPlan = () => {
   );
 
   return (
-    <div className="space-y-5 px-5">
+    <div className="space-y-5 ">
       {/* Header */}
       <div className="flex flex-col items-start gap-1 p-5 rounded-[12px] bg-white max-w-6xl mx-auto">
         <h1 className="text-xl font-semibold text-black flex items-center gap-2">
