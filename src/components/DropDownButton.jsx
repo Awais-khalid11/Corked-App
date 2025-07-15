@@ -66,7 +66,6 @@ const DropDownButton = ({
           <li
             key={value}
             className="px-4 py-2 hover:bg-[#F9E9DD] cursor-pointer flex items-center gap-2"
-            onClick={() => handleOptionClick({ label, value })}
           >
             {icon && (
               <img

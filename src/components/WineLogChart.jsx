@@ -13,35 +13,35 @@ const WineLogChart = () => {
   ];
 
   // Custom label component for the selected item
-  const CustomLabel = (props) => {
-    const { x, y, width, height, value, index } = props;
-    // Show label only for the second bar (Rosé All Day)
-    if (index === 1) {
-      return (
-        <g>
-          <rect 
-            x={x + width/2 - 30} 
-            y={y - 35} 
-            width={60} 
-            height={20} 
-            fill="#4A90E2" 
-            rx={3}
-          />
-          <text 
-            x={x + width/2} 
-            y={y - 22} 
-            textAnchor="middle" 
-            fill="white" 
-            fontSize="10"
-            fontWeight="bold"
-          >
-            Group 1171276067
-          </text>
-        </g>
-      );
-    }
-    return null;
-  };
+  // const CustomLabel = (props) => {
+  //   const { x, y, width, height, value, index } = props;
+  //   // Show label only for the second bar (Rosé All Day)
+  //   if (index === 1) {
+  //     return (
+  //       <g>
+  //         <rect 
+  //           x={x + width/2 - 30} 
+  //           y={y - 35} 
+  //           width={60} 
+  //           height={20} 
+  //           fill="#4A90E2" 
+  //           rx={3}
+  //         />
+  //         <text 
+  //           x={x + width/2} 
+  //           y={y - 22} 
+  //           textAnchor="middle" 
+  //           fill="white" 
+  //           fontSize="10"
+  //           fontWeight="bold"
+  //         >
+  //           Group 1171276067
+  //         </text>
+  //       </g>
+  //     );
+  //   }
+  //   return null;
+  // };
 
 
   return (
@@ -89,7 +89,7 @@ const WineLogChart = () => {
               radius={[0, 0, 4, 4]}
               fill="#D4949E"
             >
-              <LabelList content={<CustomLabel />} />
+              {/* <LabelList content={<CustomLabel />} /> */}
             </Bar>
             
             {/* Off-Premise bars */}
