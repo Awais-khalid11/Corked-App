@@ -8,7 +8,7 @@ const Selector = ({ selectorLabel, selectorId, options = [], selectorPlaceholder
         id={selectorId}
         name={selectorId}
         required
-        className="bg-[#F5F5F5] py-2.5 px-4 rounded-[8px] opacity-50 w-full mt-4 border border-[rgba(0,0,0,0.5)]"
+        className="bg-[#F5F5F5] py-2.5 px-4 rounded-[8px] mt-2.5 opacity-50 w-full  border border-[rgba(0,0,0,0.5)] mb-5"
         defaultValue=""
       >
         

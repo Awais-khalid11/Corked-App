@@ -118,7 +118,7 @@ const Dashboard = () => {
       {/*  Wine Analytics Table */}
       <div className="my-5 ">
         <BasicTable
-          title="Wine Analytics Table"
+          title="Wines Reactions & Comments Analytics"
           data={AnalyticsData}
           columns={analyticsColumns}
           dropdowns={
@@ -155,7 +155,7 @@ const Dashboard = () => {
       {/*  Comparison Table */}
       <div className="my-5 ">
         <BasicTable
-          title="Your Winery vs Benchmark"
+          title="Benchmark Analytics"
           data={ComparisonData}
           columns={comparisonColumns}
           dropdowns={

@@ -69,6 +69,9 @@ const BenchMarking = () => {
               />
             </>
           }
+
+          search={false}
+
         />
       </div>
     </div>

@@ -118,7 +118,10 @@ const InstantReport = () => {
   ], []);
 
   return (
-    <div className="  bg-[#F6F6F6] min-h-screen">
+
+    <div className=" bg-[#F6F6F6] min-h-screen">
+
+
       {/* Header */}
       <div className="flex justify-between items-center p-5 rounded-[12px] bg-white mb-6">
   <h1 className="text-lg font-semibold text-black">
