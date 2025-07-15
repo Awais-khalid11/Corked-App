@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Main from "../../../public/assets/images/mainimg.png";
 import Logo from "../../../public/assets/icons/loginlogo.svg";
 import Input from "../../components/Input";
@@ -9,6 +10,8 @@ const ResetPassword = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,7 +24,7 @@ const ResetPassword = () => {
         <img
           src={Main}
           alt="Main img"
-          className="w-full h-full rounded-[18px] "
+          className="w-full h-full rounded-[18px]"
         />
       </div>
 
@@ -81,7 +84,8 @@ const ResetPassword = () => {
                 <div className="text-center">
                   <button
                     type="button"
-                    className="text-[#51111D] hover:text-[#330c11] transition"
+                    onClick={() => navigate("/login-page")}
+                    className="text-[#51111D] hover:text-[#330c11] transition cursor pointer"
                   >
                     Back to Login
                   </button>

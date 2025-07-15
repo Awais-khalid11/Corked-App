@@ -15,6 +15,16 @@ const Navbar = ({ onSettingsClick }) => {
       value: "Profile",
       icon: "/assets/icons/icon1b.svg", // from public folder
     },
+    {
+      label: "Messages",
+      value: "Message",
+      icon: "/assets/icons/icon5b.svg", // from public folder
+    },
+    {
+      label: "Recent",
+      value: "Recent",
+      icon: "/assets/icons/notification.svg", // from public folder
+    },
   ];
 
   return (
@@ -34,7 +44,9 @@ const Navbar = ({ onSettingsClick }) => {
           onSelect={handleDropdownSelect}
           unstyled
           showIcon={false}
+          dropdownClassName="w-100 h-100 t py-3 text-base" // 👈 Makes this dropdown big
         />
+
 
         {/* Settings */}
         <ReactSVG
@@ -59,5 +71,6 @@ const Navbar = ({ onSettingsClick }) => {
     </div>
   );
 };
+
 
 export default Navbar;
