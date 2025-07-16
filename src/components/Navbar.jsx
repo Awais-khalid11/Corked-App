@@ -1,11 +1,13 @@
 import { ReactSVG } from "react-svg";
 import DropDownButton from "../components/DropDownButton";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = ({ onSettingsClick, onToggleSidebar }) => {
+  const navigate = useNavigate();
+
   const handleDropdownSelect = (option) => {
     if (option.value === "Profile") {
-      console.log("Profile selected");
-      // Navigate if needed
+      navigate("/settings/user-profile");
     }
   };
 
@@ -27,29 +29,17 @@ const Navbar = ({ onSettingsClick, onToggleSidebar }) => {
     },
   ];
 
+  const handleProfileClick = () => {
+    navigate("/settings/profile");
+  };
+
   return (
     <div className="bg-white shadow p-4.5 flex justify-between items-center border-b border-gray-200">
-      {/* Hamburger for mobile */}
-      <div className="flex items-center gap-3">
-        <button
-          className="md:hidden text-gray-600 hover:text-black"
-          onClick={onToggleSidebar}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-6 h-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
+      {/* Left: Logo or Welcome */}
+      <h1 className="text-2xl font-bold hidden md:block">👋 Welcome Back</h1>
 
-        <h1 className="text-2xl font-bold hidden md:block">👋 Welcome Back</h1>
-      </div>
-
-      <div className="flex items-center gap-4">
+      {/* Right: Hamburger, Notifications, Settings, Profile */}
+      <div className="flex items-center gap-4 ml-auto">
         {/* Notification Dropdown */}
         <DropDownButton
           label={
@@ -62,7 +52,13 @@ const Navbar = ({ onSettingsClick, onToggleSidebar }) => {
           onSelect={handleDropdownSelect}
           unstyled
           showIcon={false}
-          dropdownClassName="w-100 h-100 t py-3 text-base"
+          dropdownClassName="
+            w-max max-w-[90vw]
+            max-h-[400px]
+            overflow-y-auto
+            scrollbar-thin scrollbar-thumb-gray-300
+            bg-white rounded-md shadow-md text-base p-0
+          "
         />
 
         {/* Settings */}
@@ -73,21 +69,44 @@ const Navbar = ({ onSettingsClick, onToggleSidebar }) => {
         />
 
         {/* Profile */}
-        <div className="flex items-center gap-3 ml-2">
+        <div
+          className="flex items-center gap-3 ml-2 cursor-pointer"
+          onClick={handleProfileClick}
+        >
           <img
             src="https://i.pravatar.cc/40"
             alt="User"
             className="w-10 h-10 rounded-full object-cover"
           />
-          <div className="flex flex-col">
+          <div className="flex-col hidden sm:flex">
             <span className="text-sm font-semibold text-gray-900">Blueberry Hill</span>
             <span className="text-xs text-gray-500">Winery</span>
           </div>
         </div>
+
+        {/* Hamburger (Only on mobile, aligned right) */}
+        <button
+          className="md:hidden text-gray-600 hover:text-black"
+          onClick={onToggleSidebar}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-6 h-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
       </div>
     </div>
   );
 };
-
 
 export default Navbar;
