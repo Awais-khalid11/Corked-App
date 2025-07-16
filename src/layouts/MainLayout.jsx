@@ -1,8 +1,8 @@
-import React, { useState , useEffect } from "react";
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import Sidebar from "../components/Sidebar";
 import Navbar from "../components/Navbar";
+import Sidebar from "../components/Sidebar";
+import React, { useState, useEffect } from "react";
 import SettingsSidebar from "../components/SettingSidebar";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 
 const MainLayouts = () => {
   const location = useLocation();
@@ -10,6 +10,7 @@ const MainLayouts = () => {
 
   const [isSettingsOpen, setIsSettingsOpen] = useState(location.pathname.startsWith("/settings"));
   const [activeSettingItem, setActiveSettingItem] = useState("profile");
+  const [showSidebar, setShowSidebar] = useState(true);
 
   const handleSettingsClick = () => {
     setIsSettingsOpen(true);
@@ -19,19 +20,36 @@ const MainLayouts = () => {
 
   const handleSettingsClose = () => {
     setIsSettingsOpen(false);
-    // Optionally navigate back to dashboard or previous page
     navigate("/");
   };
-useEffect(() => {
+
+  const toggleSidebar = () => {
+    setShowSidebar((prev) => !prev);
+  };
+
+  useEffect(() => {
     if (!location.pathname.startsWith("/settings")) {
       setIsSettingsOpen(false);
     }
   }, [location.pathname]);
 
   return (
-    <div className="flex h-screen">
-      {/* Main Sidebar - compressed when settings is open */}
-      <Sidebar isCompressed={isSettingsOpen} />
+    <div className="flex h-screen overflow-hidden">
+      {/* Sidebar (Responsive) */}
+      <div
+        className={`
+          fixed z-40 md:static h-full transition-transform duration-300
+          ${showSidebar ? "translate-x-0" : "-translate-x-full"}
+          md:translate-x-0
+        `}
+      >
+        <Sidebar
+          isCompressed={isSettingsOpen}
+          isMobileOpen={showSidebar}
+          onCloseMobile={() => setShowSidebar(false)}
+        />
+
+      </div>
 
       {/* Settings Sidebar */}
       <SettingsSidebar
@@ -46,7 +64,10 @@ useEffect(() => {
 
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col h-screen overflow-hidden">
-        <Navbar onSettingsClick={handleSettingsClick} />
+        <Navbar
+          onSettingsClick={handleSettingsClick}
+          onToggleSidebar={toggleSidebar}
+        />
         <main className="p-4 overflow-y-auto flex-1 bg-[#F6F6F6]">
           <Outlet />
         </main>
@@ -54,5 +75,6 @@ useEffect(() => {
     </div>
   );
 };
+
 
 export default MainLayouts;

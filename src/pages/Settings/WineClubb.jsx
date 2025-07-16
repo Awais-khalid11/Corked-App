@@ -1,26 +1,24 @@
 import React, { useState } from 'react';
 import { ArrowLeft } from 'lucide-react';
-import UploadImage from '../../components/UploadImages'
+import UploadImage from '../../components/UploadImages';
 
 const WineClubForm = () => {
   const [clubImage, setClubImage] = useState(null);
   const [tierImage, setTierImage] = useState(null);
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-5 ">
       {/* Header */}
-      <div className="flex flex-col items-start gap-[25px] flex-1 p-5 rounded-[12px] bg-white">
-        <h1 className="text-xl font-semibold text-black flex items-center gap-2">
-          <ArrowLeft className="w-5 h-5 text-gray-600 cursor-pointer hover:text-gray-800" />
-          Wine Club Details
-        </h1>
+      <div className="flex items-center gap-3 p-4 md:p-5 rounded-[12px] bg-white">
+        <ArrowLeft className="w-5 h-5 text-gray-600 cursor-pointer hover:text-gray-800" />
+        <h1 className="text-xl font-semibold text-black">Wine Club Details</h1>
       </div>
 
-      {/* Full Form: Club + Tier Fields */}
-      <div className="bg-white rounded-[12px] p-6 border border-gray-200 space-y-10">
-        <form className="grid grid-cols-1 md:grid-cols-2 gap-5">
+      {/* Form Container */}
+      <div className="bg-white rounded-[12px] p-4 md:p-6 border border-gray-200 space-y-10">
+        <form className="grid grid-cols-1 gap-5">
           {/* Club Name */}
-          <div className="md:col-span-2">
+          <div>
             <label className="block text-sm font-medium text-black mb-2">
               Club Name<span className="text-red-500">*</span>
             </label>
@@ -32,7 +30,7 @@ const WineClubForm = () => {
           </div>
 
           {/* Club Overview */}
-          <div className="md:col-span-2">
+          <div>
             <label className="block text-sm font-medium text-black mb-2">
               Wine club overview<span className="text-red-500">*</span>
             </label>
@@ -43,20 +41,17 @@ const WineClubForm = () => {
             />
           </div>
 
-          {/* Club Image using UploadImage */}
-          <div className="md:col-span-2">
-            <UploadImage
-              image={clubImage}
-              onImageSelect={(file) => setClubImage(file)}
-            />
+          {/* Club Image */}
+          <div>
+            <UploadImage image={clubImage} onImageSelect={setClubImage} />
           </div>
 
           {/* Tier Fields */}
-          <div className="col-span-2 pt-6">
-            <h2 className="text-sm font-medium text-gray-500 mb-4">Tier Fields (repeatable)</h2>
+          <div className="space-y-5 border-t pt-6">
+            <h2 className="text-base font-semibold text-gray-700">Tier Fields (repeatable)</h2>
 
             {/* Tier Name */}
-            <div className="mb-4">
+            <div>
               <label className="block text-sm font-medium text-black mb-2">
                 Tier Name<span className="text-red-500">*</span>
               </label>
@@ -68,7 +63,7 @@ const WineClubForm = () => {
             </div>
 
             {/* Shipment Toggle */}
-            <div className="mb-4 border-t border-dotted border-gray-300 pt-4 pb-4">
+            <div className="border-t border-dotted border-gray-300 pt-4">
               <label className="block text-sm font-medium text-black mb-2">
                 Shipment Details<span className="text-red-500">*</span>
               </label>
@@ -83,8 +78,8 @@ const WineClubForm = () => {
               </div>
             </div>
 
-            {/* Complimentary Tastings */}
-            <div className="mb-4 border-t border-dotted border-gray-300 pt-4 pb-4">
+            {/* Complimentary Tastings Toggle */}
+            <div className="border-t border-dotted border-gray-300 pt-4">
               <label className="block text-sm font-medium text-black mb-2">
                 Complimentary Tastings or Flights?
               </label>
@@ -100,7 +95,7 @@ const WineClubForm = () => {
             </div>
 
             {/* Tasting Room Discount */}
-            <div className="mb-4">
+            <div>
               <label className="block text-sm font-medium text-black mb-2">
                 Tasting Room Discount
               </label>
@@ -112,7 +107,7 @@ const WineClubForm = () => {
             </div>
 
             {/* Tier Overview */}
-            <div className="mb-4">
+            <div>
               <label className="block text-sm font-medium text-black mb-2">
                 Tier Overview<span className="text-red-500">*</span>
               </label>
@@ -123,12 +118,9 @@ const WineClubForm = () => {
               />
             </div>
 
-            {/* Tier Image using UploadImage */}
+            {/* Tier Image */}
             <div>
-              <UploadImage
-                image={tierImage}
-                onImageSelect={(file) => setTierImage(file)}
-              />
+              <UploadImage image={tierImage} onImageSelect={setTierImage} />
             </div>
           </div>
 
@@ -136,7 +128,7 @@ const WineClubForm = () => {
           <div className="pt-4">
             <button
               type="submit"
-              className="flex w-[161px] h-[42px] px-[13px] py-[8px] justify-center items-center gap-[5px] rounded-[12px] bg-[#252525] text-white text-sm font-medium"
+              className="w-full md:w-[161px] h-[42px] px-[13px] py-[8px] flex justify-center items-center gap-[5px] rounded-[12px] bg-[#252525] text-white text-sm font-medium"
             >
               Create Club Tier
             </button>

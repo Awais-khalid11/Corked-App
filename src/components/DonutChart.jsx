@@ -7,7 +7,7 @@ const DonutChart = () => {
   const durationOptions = ["Daily", "Monthly", "Yearly"];
 
   const labels = ["Off-site", "On-site"];
-  const series = [65, 35]; 
+  const series = [84, 64]; 
   const colors = ["#B2642A", "#51111D"];
 
   const options = {
