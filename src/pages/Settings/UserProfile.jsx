@@ -13,7 +13,7 @@ const UserProfile = () => {
           <ArrowLeft className="w-5 h-5 text-gray-600 cursor-pointer hover:text-gray-800" />
           Edit Profile Details
         </h1>
-      </div>
+      </div>  
 
       {/* Form Box */}
       <div className="bg-white rounded-[12px] p-6 border border-gray-200">

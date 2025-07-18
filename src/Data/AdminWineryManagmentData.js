@@ -7,7 +7,7 @@ const AdminWineryManagementData = [
     reactions: 78,
     sipbacks: 15,
     membership: "VIP",
-    avatar: "/assets/avatars/user1.png",
+    image: "/assets/images/restaurant.png",
   },
   {
     name: "Mark T.",
@@ -17,7 +17,7 @@ const AdminWineryManagementData = [
     reactions: 23,
     sipbacks: 4,
     membership: "Free",
-    avatar: "/assets/avatars/user2.png",
+    image: "/assets/images/restaurant.png",
   },
   {
     name: "Emily Carter",
@@ -27,7 +27,7 @@ const AdminWineryManagementData = [
     reactions: 78,
     sipbacks: 9,
     membership: "Premium",
-    avatar: "/assets/avatars/user3.png",
+    image: "/assets/images/restaurant.png",
   },
 ];
 

@@ -26,11 +26,12 @@ import PricingPlan from "../pages/Settings/PricingPlan";
 import Notification from "../pages/Settings/Notification";
 import WineClubb from "../pages/Settings/WineClubb";
 
-import UserManagement from "../pages/admin/UserManagement";
+import UserManagement from "../pages/admin/usermanagment/UserManagement";
 import WineryManagement from "../pages/admin/WineryManagement";
-import BillingSubscriptions from "../pages/admin/BillingSubscriptions";
+import BillingSubscriptions from "../pages/admin/billing/BillingSubscriptions";
 import BenchmarkInsights from "../pages/admin/BenchmarkInsights";
 import ReportsExports from "../pages/admin/ReportsExports";
+import UserDetail from "../pages/admin/usermanagment/component/UserDetail";
 
 
 const Routers = () => {
@@ -69,6 +70,8 @@ const Routers = () => {
   <Route path="billing-subscriptions" element={<BillingSubscriptions />} />
   <Route path="benchmark-insights" element={<BenchmarkInsights />} />
   <Route path="reports-exports" element={<ReportsExports />} />
+  <Route path="user-detail/:id" element={<UserDetail/>}/>
+  
 
   {/* Settings Pages */}
   <Route path="settings" element={<SettingsLayout />}>

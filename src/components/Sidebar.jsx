@@ -7,11 +7,11 @@ import { useAuth } from "../context/AuthContext"; // Adjust if needed
 
 const adminNavItems = [
   { id: 1, name: "Dashboard", iconA: "/assets/icons/icon1a.svg", iconB: "/assets/icons/icon1b.svg", link: "/dashboard" },
-  { id: 2, name: "User Management", iconA: "/assets/icons/icon2a.svg", iconB: "/assets/icons/icon2b.svg", link: "/dashboard/user-management" },
-  { id: 3, name: "Winery Management", iconA: "/assets/icons/icon3a.svg", iconB: "/assets/icons/icon3b.svg", link: "/dashboard/winery-management" },
-  { id: 4, name: "Billing & Subscriptions", iconA: "/assets/icons/icon4a.svg", iconB: "/assets/icons/icon4b.svg", link: "/dashboard/billing-subscriptions" },
-  { id: 5, name: "Benchmark Insights", iconA: "/assets/icons/icon8a.svg", iconB: "/assets/icons/icon8b.svg", link: "/dashboard/benchmark-insights" },
-  { id: 6, name: "Reports & Exports", iconA: "/assets/icons/icon9a.svg", iconB: "/assets/icons/icon9b.svg", link: "/dashboard/reports-exports" },
+  { id: 2, name: "User Management", iconA: "/assets/icons/uma.svg", iconB: "/assets/icons/umb.svg", link: "/dashboard/user-management" },
+  { id: 3, name: "Winery Management", iconA: "/assets/icons/icon2a.svg", iconB: "/assets/icons/icon2b.svg", link: "/dashboard/winery-management" },
+  { id: 4, name: "Billing & Subscriptions", iconA: "/assets/icons/billinga.svg", iconB: "/assets/icons/billingb.svg", link: "/dashboard/billing-subscriptions" },
+  { id: 5, name: "Benchmark Insights", iconA: "/assets/icons/bsb.svg", iconB: "/assets/icons/bsb.svg", link: "/dashboard/benchmark-insights" },
+  { id: 6, name: "Reports & Exports", iconA: "/assets/icons/reb.svg", iconB: "/assets/icons/reb.svg", link: "/dashboard/reports-exports" },
 ];
 
 const wineryNavItems = [

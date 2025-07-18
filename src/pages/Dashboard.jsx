@@ -70,12 +70,12 @@ const Dashboard = () => {
 
   const userManagementColumns = useMemo(
     () => [
-      {
+       {
         header: "User Names",
         accessorKey: "name",
         cell: ({ row }) => (
           <div className="flex items-center gap-3">
-            <img src={row.original.avatar} className="w-8 h-8 rounded-full" alt={row.original.name} />
+            <img src={row.original.image} className="w-8 h-8 rounded-full" alt={row.original.name} />
             <div>
               <div className="font-semibold">{row.original.name}</div>
               <div className="text-gray-500 text-sm">{row.original.email}</div>
@@ -94,11 +94,11 @@ const Dashboard = () => {
   const wineryManagementColumns = useMemo(
     () => [
       {
-        header: "User Names",
+        header: "Winery Names",
         accessorKey: "name",
         cell: ({ row }) => (
           <div className="flex items-center gap-3">
-            <img src={row.original.avatar} className="w-8 h-8 rounded-full" alt={row.original.name} />
+            <img src={row.original.image} className="w-8 h-8 rounded-full" alt={row.original.name} />
             <div>
               <div className="font-semibold">{row.original.name}</div>
               <div className="text-gray-500 text-sm">{row.original.email}</div>
@@ -106,11 +106,15 @@ const Dashboard = () => {
           </div>
         ),
       },
-      { header: "Logs Submitted", accessorKey: "logs" },
-      { header: "Avg Rating Given", accessorKey: "rating" },
-      { header: "Reactions Given", accessorKey: "reactions" },
+      { header: "Tier", accessorKey: "logs" },
+      { header: "Total Logs", accessorKey: "rating" },
+      { header: "Wine Listing", accessorKey: "reactions" },
       { header: "Sipback Sents", accessorKey: "sipbacks" },
-      { header: "Membership Type", accessorKey: "membership" },
+      { header: "Club Subscribers", accessorKey: "membership" },
+            { header: "Featured Add-ons", accessorKey: "membership" },
+                  { header: "Status", accessorKey: "membership" },
+
+
     ],
     []
   );
@@ -174,9 +178,8 @@ const Dashboard = () => {
               columns={wineryManagementColumns}
               dropdowns={
                 <>
-                  <DropDownButton label="Active User" options={["All", "Active", "Inactive"]} onSelect={() => { }} />
-                  <DropDownButton label="Membership status" options={["All", "VIP", "Free", "Premium"]} onSelect={() => { }} />
-                  <DropDownButton label="Last 30 Days" options={["7 Days", "30 Days", "90 Days"]} onSelect={() => { }} />
+                  <DropDownButton label="Winery Tier" options={["All", "Active", "Inactive"]} onSelect={() => { }} />
+                  <DropDownButton label="Winery status" options={["All", "VIP", "Free", "Premium"]} onSelect={() => { }} />
                 </>
               }
             />

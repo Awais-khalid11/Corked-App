@@ -18,12 +18,12 @@ const BasicTable = ({
   dropdowns,
   search = false,
   searchType = "realtime",
-  pagination = false, // ✅ New prop
+  pagination = false,
+  onRowClick,  // ✅ New prop
 }) => {
   const [sort, setSort] = useState([]);
   const [filter, setFilter] = useState("");
   const [inputValue, setInputValue] = useState("");
-
   const table = useReactTable({
     data,
     columns,
@@ -38,9 +38,7 @@ const BasicTable = ({
     onSortingChange: setSort,
     onGlobalFilterChange: setFilter,
   });
-
   const navigate = useNavigate();
-
   return (
     <div className="w-full bg-white rounded-[12px] py-5 px-4">
       {(title || dropdowns || search) && (
@@ -51,11 +49,10 @@ const BasicTable = ({
             </h2>
           )}
           <div
-            className={`flex flex-wrap items-center gap-3.5 ${
-              title
+            className={`flex flex-wrap items-center gap-3.5 ${title
                 ? "justify-start md:justify-end"
                 : "justify-between col-span-2"
-            }`}
+              }`}
           >
             {search && (
               <div className="flex items-center bg-gray-50 border border-gray-300 rounded-lg px-3 py-1 w-72 h-10">
@@ -79,7 +76,6 @@ const BasicTable = ({
           </div>
         </div>
       )}
-
       <div className="w-full overflow-x-auto">
         <table className="min-w-full">
           <thead>
@@ -112,9 +108,12 @@ const BasicTable = ({
                 <tr
                   key={row.id}
                   onClick={() => {
-                    const wineId = row.original?.id;
-                    if (wineId)
-                      navigate(`/dashboard/view-detail/${wineId}`);
+                    if (typeof onRowClick === "function") {
+                      onRowClick(row.original);
+                    } else {
+                      const wineId = row.original?.id;
+                      if (wineId) navigate(`/dashboard/view-detail/${wineId}`);
+                    }
                   }}
                   className="text-[rgba(37,37,37,1)] cursor-pointer hover:bg-gray-50 transition"
                 >
@@ -140,14 +139,12 @@ const BasicTable = ({
             )}
           </tbody>
         </table>
-
         {pagination && (
           <div className="w-full flex flex-col md:flex-row justify-between items-center gap-4 mt-4">
             <div className="text-sm text-[#252525]">
               Showing {table.getState().pagination.pageIndex + 1} of{" "}
               {table.getPageCount()} User’s list
             </div>
-
             <div className="flex gap-3">
               <button
                 onClick={() => table.previousPage()}
@@ -156,7 +153,6 @@ const BasicTable = ({
               >
                 ← <span>Previous</span>
               </button>
-
               <button
                 onClick={() => table.nextPage()}
                 disabled={!table.getCanNextPage()}
@@ -171,5 +167,6 @@ const BasicTable = ({
     </div>
   );
 };
+
 
 export default BasicTable;
