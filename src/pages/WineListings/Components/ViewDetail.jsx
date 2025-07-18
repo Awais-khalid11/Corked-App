@@ -55,7 +55,7 @@ const ViewDetail = () => {
           <div className="flex justify-between items-start mb-4">
             <h2 className="text-xl font-bold text-[#252525]">{wine.wine}</h2>
             <Link
-              to={`/wine-detail-page`}
+              to={`/dashboard/wine-detail-page`}
               className="border border-black px-4 py-2 rounded-lg text-sm flex items-center gap-2 hover:bg-gray-50"
             >
               <FiEdit size={16} />
@@ -108,7 +108,7 @@ const ViewDetail = () => {
           columns={columns}
           search={false}
         />
-      </div>
+      </div>  
     </div>
   );
 };

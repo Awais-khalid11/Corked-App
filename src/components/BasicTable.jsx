@@ -18,15 +18,17 @@ const BasicTable = ({
   dropdowns,
   search = false,
   searchType = "realtime",
+  pagination = false, // ✅ New prop
 }) => {
   const [sort, setSort] = useState([]);
   const [filter, setFilter] = useState("");
   const [inputValue, setInputValue] = useState("");
+
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
+    ...(pagination && { getPaginationRowModel: getPaginationRowModel() }), // ✅ Optional
     getSortedRowModel: getSortedRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
     state: {
@@ -36,9 +38,11 @@ const BasicTable = ({
     onSortingChange: setSort,
     onGlobalFilterChange: setFilter,
   });
+
   const navigate = useNavigate();
+
   return (
-    <div className="w-full  bg-white rounded-[12px] py-5 px-4">
+    <div className="w-full bg-white rounded-[12px] py-5 px-4">
       {(title || dropdowns || search) && (
         <div className="grid grid-cols-1 md:grid-cols-2 items-start md:items-center gap-4 mb-5">
           {title && (
@@ -47,10 +51,11 @@ const BasicTable = ({
             </h2>
           )}
           <div
-            className={`flex flex-wrap items-center  gap-3.5  ${title
+            className={`flex flex-wrap items-center gap-3.5 ${
+              title
                 ? "justify-start md:justify-end"
                 : "justify-between col-span-2"
-              }`}
+            }`}
           >
             {search && (
               <div className="flex items-center bg-gray-50 border border-gray-300 rounded-lg px-3 py-1 w-72 h-10">
@@ -74,6 +79,7 @@ const BasicTable = ({
           </div>
         </div>
       )}
+
       <div className="w-full overflow-x-auto">
         <table className="min-w-full">
           <thead>
@@ -83,19 +89,17 @@ const BasicTable = ({
                   <th
                     key={header.id}
                     onClick={header.column.getToggleSortingHandler()}
-                    className="py-4 px-5 text-left text-[16px] font-bold text-[rgba(37,37,37,1)] leading-[1] opacity-80 "
+                    className="py-4 px-5 text-left text-[16px] font-bold text-[rgba(37,37,37,1)] leading-[1] opacity-80"
                   >
                     <div className="flex items-center gap-1">
                       {flexRender(
                         header.column.columnDef.header,
                         header.getContext()
                       )}
-                      {
-                        {
-                          asc: <FaAngleUp />,
-                          desc: <FaAngleDown />,
-                        }[header.column.getIsSorted() ?? null]
-                      }
+                      {{
+                        asc: <FaAngleUp />,
+                        desc: <FaAngleDown />,
+                      }[header.column.getIsSorted() ?? null]}
                     </div>
                   </th>
                 ))}
@@ -109,7 +113,8 @@ const BasicTable = ({
                   key={row.id}
                   onClick={() => {
                     const wineId = row.original?.id;
-                    if (wineId) navigate(`/view-detail/${wineId}`);
+                    if (wineId)
+                      navigate(`/dashboard/view-detail/${wineId}`);
                   }}
                   className="text-[rgba(37,37,37,1)] cursor-pointer hover:bg-gray-50 transition"
                 >
@@ -135,10 +140,36 @@ const BasicTable = ({
             )}
           </tbody>
         </table>
+
+        {pagination && (
+          <div className="w-full flex flex-col md:flex-row justify-between items-center gap-4 mt-4">
+            <div className="text-sm text-[#252525]">
+              Showing {table.getState().pagination.pageIndex + 1} of{" "}
+              {table.getPageCount()} User’s list
+            </div>
+
+            <div className="flex gap-3">
+              <button
+                onClick={() => table.previousPage()}
+                disabled={!table.getCanPreviousPage()}
+                className="bg-[#FAFAFA] text-[#9A9A9A] border border-[#9A9A9A] py-2.5 px-4 rounded-[12px] flex gap-2 active:text-[#252525] active:border-[#252525]"
+              >
+                ← <span>Previous</span>
+              </button>
+
+              <button
+                onClick={() => table.nextPage()}
+                disabled={!table.getCanNextPage()}
+                className="bg-[#FAFAFA] text-[#9A9A9A] border border-[#9A9A9A] py-2.5 px-4 rounded-[12px] flex gap-2 active:text-[#252525] active:border-[#252525]"
+              >
+                <span>Next</span> →
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
 };
-
 
 export default BasicTable;

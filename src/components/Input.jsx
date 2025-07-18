@@ -5,6 +5,8 @@ const Input = ({
   inputType,
   icon,
   showAsterisk = true, 
+  value,
+  onChange,
 }) => {
   return (
     <div className="text-[#252525] font-medium text-[16px] w-full">
@@ -21,6 +23,8 @@ const Input = ({
           id={inputId}
           placeholder={inputPlaceholder}
           required={showAsterisk}
+          value={value}
+          onChange={onChange}
         />
 
         {icon && (

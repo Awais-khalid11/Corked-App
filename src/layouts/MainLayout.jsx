@@ -15,7 +15,7 @@ const MainLayouts = () => {
   const handleSettingsClick = () => {
     setIsSettingsOpen(true);
     setActiveSettingItem("profile");
-    navigate("/settings/profile");
+    navigate("/dashboard/settings/profile");
   };
 
   const handleSettingsClose = () => {
@@ -28,11 +28,11 @@ const MainLayouts = () => {
   };
 
   useEffect(() => {
-    if (!location.pathname.startsWith("/settings")) {
+    if (!location.pathname.startsWith("/dashboard/settings")) {
       setIsSettingsOpen(false);
     }
   }, [location.pathname]);
-
+console.warn(isSettingsOpen)
   return (
     <div className="flex h-screen overflow-hidden">
       {/* Sidebar (Responsive) */}
@@ -58,7 +58,7 @@ const MainLayouts = () => {
         activeItem={activeSettingItem}
         setActiveItem={(key) => {
           setActiveSettingItem(key);
-          navigate(`/settings/${key}`);
+          navigate(`/dashboard/settings/${key}`);
         }}
       />
 

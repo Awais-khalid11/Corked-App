@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Main from "../../../public/assets/images/mainimg.png";
 import Logo from "../../../public/assets/icons/loginlogo.svg";
 import Input from "../../components/Input";
@@ -5,15 +6,25 @@ import Goggle from "../../../public/assets/icons/google.svg";
 import Apple from "../../../public/assets/icons/apple-logo 1.svg";
 import { FiMail, FiLock } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 
 const LoginPage = () => {
+  const { login } = useAuth(); // from context
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(email,password)
+    login(email, password); 
+  };
   return (
-    <div className="flex flex-col lg:flex-row gap-4 p-2.5 bg-[#F6F6F6]   justify-center">
+    <div className="flex flex-col lg:flex-row gap-4 p-2.5 bg-[#F6F6F6] justify-center">
       <div className="w-full lg:w-1/2">
         <img
           src={Main}
           alt="Main img"
-          className="w-full h-full rounded-[18px] "
+          className="w-full h-full rounded-[18px]"
         />
       </div>
 
@@ -29,14 +40,15 @@ const LoginPage = () => {
             Continue where you left off to access your account.
           </p>
 
-          <form onSubmit={(e) => e.preventDefault()}>
-
+          <form onSubmit={handleSubmit}>
             <Input
               inputLabel="Email Address"
               inputPlaceholder="Goldenvine@gmail.com"
               inputId="email"
               inputType="email"
               icon={<FiMail />}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
 
             <Input
@@ -45,6 +57,8 @@ const LoginPage = () => {
               inputId="password"
               inputType="password"
               icon={<FiLock />}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
 
             <div className="flex justify-between mt-4 mb-5 text-sm">
@@ -52,25 +66,22 @@ const LoginPage = () => {
                 <input type="checkbox" id="rememberme" />
                 Remember me
               </label>
-               <Link to = "/email-page">
-              <button className="text-black cursor-pointer">Forgot Password?</button>
+              <Link to="/email-page">
+                <button className="text-black cursor-pointer">Forgot Password?</button>
               </Link>
             </div>
-            
-             <Link to = "/">
+
             <button
               type="submit"
               className="bg-black rounded-[10px] py-[9px] text-white cursor-pointer w-full mb-2"
             >
               Login
             </button>
-            </Link>
-          
 
             <p className="text-black text-center mb-5">
               Don’t have an account?{" "}
               <Link to="/signup-page">
-              <button className="text-[#51111D] ">Register</button>
+                <button className="text-[#51111D]">Register</button>
               </Link>
             </p>
           </form>
