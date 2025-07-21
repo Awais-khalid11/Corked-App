@@ -8,7 +8,7 @@ const Notification = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 p-4 md:p-5 rounded-[12px] bg-white w-full">
+    <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 p-4 md:p-5 rounded-[12px] bg-white w-full max-w-full overflow-hidden">
       {/* Left Side: Title and Description */}
       <div className="flex flex-col gap-1">
         <h1 className="text-lg font-semibold text-black">Show Notifications</h1>

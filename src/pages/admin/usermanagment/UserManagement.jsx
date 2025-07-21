@@ -1,8 +1,8 @@
-import React, { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Button from "../../../components/Button";
+import React, { useMemo, useState } from "react";
 import BasicTable from "../../../components/BasicTable";
 import DropDownButton from "../../../components/DropDownButton";
-import Button from "../../../components/Button";
 import Jackson from "../../../../public/assets/icons/actab3.svg";
 
 const UserManagment = () => {
@@ -21,10 +21,10 @@ const UserManagment = () => {
         cell: ({ row }) => {
           const user = row.original;
           return (
-             <div
-      onClick={() => navigate(`/dashboard/user-detail/${userId}`)}
-      className="flex items-center gap-3 hover:underline cursor-pointer"
-    >
+            <div
+              onClick={() => navigate(`/dashboard/user-detail/${user.Id}`)}
+              className="flex items-center gap-3 hover:underline cursor-pointer"
+            >
               <img
                 src={user.imageUrl}
                 alt={user.metric}
@@ -204,15 +204,16 @@ const UserManagment = () => {
               options={["Date", "Past 30 Days", "This Month", "This Year"]}
               onSelect={setLast30Days}
             />
-    <Button buttonIcon="/assets/icons/add-circle.svg" buttonText="Add new wine" />
+            <Button buttonIcon="/assets/icons/add-circle.svg" buttonText="Add new wine" />
           </>
         }
         search={false}
         getPaginationRowModel={true}
-         onRowClick={(user) => navigate(`/dashboard/user-detail/${user.id}`)} 
+        onRowClick={(user) => navigate(`/dashboard/user-detail/${user.id}`)}
       />
     </div>
   );
 };
+
 
 export default UserManagment;

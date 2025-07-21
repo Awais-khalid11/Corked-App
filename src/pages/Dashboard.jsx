@@ -70,7 +70,7 @@ const Dashboard = () => {
 
   const userManagementColumns = useMemo(
     () => [
-       {
+      {
         header: "User Names",
         accessorKey: "name",
         cell: ({ row }) => (
@@ -111,8 +111,8 @@ const Dashboard = () => {
       { header: "Wine Listing", accessorKey: "reactions" },
       { header: "Sipback Sents", accessorKey: "sipbacks" },
       { header: "Club Subscribers", accessorKey: "membership" },
-            { header: "Featured Add-ons", accessorKey: "membership" },
-                  { header: "Status", accessorKey: "membership" },
+      { header: "Featured Add-ons", accessorKey: "membership" },
+      { header: "Status", accessorKey: "membership" },
 
 
     ],

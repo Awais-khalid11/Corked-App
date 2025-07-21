@@ -19,7 +19,9 @@ const BasicTable = ({
   search = false,
   searchType = "realtime",
   pagination = false,
-  onRowClick,  // ✅ New prop
+  onRowClick,
+  tableType = "default",
+  disableRowClick = false,
 }) => {
   const [sort, setSort] = useState([]);
   const [filter, setFilter] = useState("");
@@ -28,7 +30,7 @@ const BasicTable = ({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
-    ...(pagination && { getPaginationRowModel: getPaginationRowModel() }), // ✅ Optional
+    ...(pagination && { getPaginationRowModel: getPaginationRowModel() }),
     getSortedRowModel: getSortedRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
     state: {
@@ -39,6 +41,44 @@ const BasicTable = ({
     onGlobalFilterChange: setFilter,
   });
   const navigate = useNavigate();
+
+  const handleRowClick = (rowData) => {
+    if (disableRowClick) return;
+
+    if (typeof onRowClick === "function") {
+      onRowClick(rowData);
+      return;
+    }
+
+    const itemId = rowData?.ID || rowData?.id;
+    if (!itemId) return;
+
+    switch (tableType) {
+      case "user":
+        navigate(`/dashboard/user-detail/${itemId}`);
+        break;
+      case "badge":
+        navigate(`/dashboard/badge-detail/${itemId}`);
+        break;
+      case "wine":
+        navigate(`/dashboard/wine-detail/${itemId}`);
+        break;
+      case "log":
+        navigate(`/dashboard/log-detail/${itemId}`);
+        break;
+      default:
+        if (rowData.badge) {
+          navigate(`/dashboard/badge-detail/${itemId}`);
+        } else if (rowData.email) {
+          navigate(`/dashboard/user-detail/${itemId}`);
+        } else if (rowData.ID) {
+          navigate(`/dashboard/log-detail/${itemId}`);
+        } else {
+          navigate(`/dashboard/view-detail/${itemId}`);
+        }
+    }
+  };
+
   return (
     <div className="w-full bg-white rounded-[12px] py-5 px-4">
       {(title || dropdowns || search) && (
@@ -49,10 +89,9 @@ const BasicTable = ({
             </h2>
           )}
           <div
-            className={`flex flex-wrap items-center gap-3.5 ${title
-                ? "justify-start md:justify-end"
-                : "justify-between col-span-2"
-              }`}
+            className={`flex flex-wrap items-center gap-3.5 ${
+              title ? "justify-start md:justify-end" : "justify-between col-span-2"
+            }`}
           >
             {search && (
               <div className="flex items-center bg-gray-50 border border-gray-300 rounded-lg px-3 py-1 w-72 h-10">
@@ -72,7 +111,7 @@ const BasicTable = ({
                 />
               </div>
             )}
-            {dropdowns && <div className="flex gap-2">{dropdowns}</div>}
+            {dropdowns && <div className="flex gap-2 flex-wrap">{dropdowns}</div>}
           </div>
         </div>
       )}
@@ -107,15 +146,10 @@ const BasicTable = ({
               table.getRowModel().rows.map((row) => (
                 <tr
                   key={row.id}
-                  onClick={() => {
-                    if (typeof onRowClick === "function") {
-                      onRowClick(row.original);
-                    } else {
-                      const wineId = row.original?.id;
-                      if (wineId) navigate(`/dashboard/view-detail/${wineId}`);
-                    }
-                  }}
-                  className="text-[rgba(37,37,37,1)] cursor-pointer hover:bg-gray-50 transition"
+                  onClick={() => handleRowClick(row.original)}
+                  className={`text-[rgba(37,37,37,1)] ${
+                    !disableRowClick ? "cursor-pointer hover:bg-gray-50" : ""
+                  } transition`}
                 >
                   {row.getVisibleCells().map((cell) => (
                     <td
@@ -142,8 +176,7 @@ const BasicTable = ({
         {pagination && (
           <div className="w-full flex flex-col md:flex-row justify-between items-center gap-4 mt-4">
             <div className="text-sm text-[#252525]">
-              Showing {table.getState().pagination.pageIndex + 1} of{" "}
-              {table.getPageCount()} User’s list
+              Showing {table.getState().pagination.pageIndex + 1} of {table.getPageCount()} User's list
             </div>
             <div className="flex gap-3">
               <button
@@ -167,6 +200,5 @@ const BasicTable = ({
     </div>
   );
 };
-
 
 export default BasicTable;

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
 import { Check } from 'lucide-react';
+import React, { useState } from 'react';
 
 const PricingPlan = () => {
   const [selectedTier, setSelectedTier] = useState('free');
@@ -27,9 +27,8 @@ const PricingPlan = () => {
         className="relative w-12 h-6 bg-[#F1DC83] rounded-full cursor-pointer"
       >
         <div
-          className={`absolute top-1 w-4 h-4 bg-white rounded-full shadow-md transition-transform duration-200 ${
-            billingCycles[tier] === 'yearly' ? 'translate-x-6' : 'translate-x-1'
-          }`}
+          className={`absolute top-1 w-4 h-4 bg-white rounded-full shadow-md transition-transform duration-200 ${billingCycles[tier] === 'yearly' ? 'translate-x-6' : 'translate-x-1'
+            }`}
         />
       </div>
       <span className="text-sm">Yearly</span>
@@ -137,9 +136,8 @@ const PricingPlan = () => {
         ].map((tier) => (
           <div
             key={tier.key}
-            className={`flex-1 h-full border rounded-[15px] p-6 shadow-sm transition-all cursor-pointer flex flex-col justify-between ${tier.bg} ${
-              selectedTier === tier.key ? 'border-primary border-2' : 'border-gray-300'
-            }`}
+            className={`flex-1 h-full border rounded-[15px] p-6 shadow-sm transition-all cursor-pointer flex flex-col justify-between ${tier.bg} ${selectedTier === tier.key ? 'border-primary border-2' : 'border-gray-300'
+              }`}
             onClick={() => setSelectedTier(tier.key)}
           >
             <div>
@@ -148,11 +146,10 @@ const PricingPlan = () => {
                   {tier.title}
                 </h2>
                 <div
-                  className={`w-6 h-6 border-2 rounded-full flex items-center justify-center ${
-                    selectedTier === tier.key
+                  className={`w-6 h-6 border-2 rounded-full flex items-center justify-center ${selectedTier === tier.key
                       ? 'border-primary'
                       : 'border-gray-400'
-                  }`}
+                    }`}
                 >
                   {selectedTier === tier.key && (
                     <div className="w-3 h-3 bg-primary rounded-full"></div>
@@ -164,10 +161,10 @@ const PricingPlan = () => {
                 {tier.key === 'free'
                   ? 'For wine lovers just getting started.'
                   : tier.key === 'standard'
-                  ? 'For wine drinkers who want smarter suggestions and more fun.'
-                  : tier.key === 'standardplus'
-                  ? 'Everything in standard plus more'
-                  : 'Everything in Premium, plus:'}
+                    ? 'For wine drinkers who want smarter suggestions and more fun.'
+                    : tier.key === 'standardplus'
+                      ? 'Everything in standard plus more'
+                      : 'Everything in Premium, plus:'}
               </p>
 
               {tier.showToggle && renderToggle(tier.key)}
@@ -184,15 +181,13 @@ const PricingPlan = () => {
                 {tier.features.map((feature, index) => (
                   <li
                     key={index}
-                    className={`flex items-start gap-2 text-sm ${
-                      tier.textColor === 'text-white'
+                    className={`flex items-start gap-2 text-sm ${tier.textColor === 'text-white'
                         ? 'text-white'
                         : 'text-gray-700'
-                    }`}
+                      }`}
                   >
-                    <Check className={`w-4 h-4 mt-0.5 ${
-                      tier.textColor === 'text-white' ? 'text-white' : 'text-red-500'
-                    }`} />
+                    <Check className={`w-4 h-4 mt-0.5 ${tier.textColor === 'text-white' ? 'text-white' : 'text-red-500'
+                      }`} />
                     {feature}
                   </li>
                 ))}
@@ -210,5 +205,6 @@ const PricingPlan = () => {
     </div>
   );
 };
+
 
 export default PricingPlan;

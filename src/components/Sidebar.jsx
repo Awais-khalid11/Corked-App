@@ -10,8 +10,7 @@ const adminNavItems = [
   { id: 2, name: "User Management", iconA: "/assets/icons/uma.svg", iconB: "/assets/icons/umb.svg", link: "/dashboard/user-management" },
   { id: 3, name: "Winery Management", iconA: "/assets/icons/icon2a.svg", iconB: "/assets/icons/icon2b.svg", link: "/dashboard/winery-management" },
   { id: 4, name: "Billing & Subscriptions", iconA: "/assets/icons/billinga.svg", iconB: "/assets/icons/billingb.svg", link: "/dashboard/billing-subscriptions" },
-  { id: 5, name: "Benchmark Insights", iconA: "/assets/icons/bsb.svg", iconB: "/assets/icons/bsb.svg", link: "/dashboard/benchmark-insights" },
-  { id: 6, name: "Reports & Exports", iconA: "/assets/icons/reb.svg", iconB: "/assets/icons/reb.svg", link: "/dashboard/reports-exports" },
+
 ];
 
 const wineryNavItems = [
