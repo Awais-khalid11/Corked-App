@@ -20,8 +20,7 @@ const BasicTable = ({
   searchType = "realtime",
   pagination = false,
   onRowClick,
-  tableType = "default",
-  disableRowClick = false,
+  tableType = "default", // 'user', 'badge', 'wine', or 'default'
 }) => {
   const [sort, setSort] = useState([]);
   const [filter, setFilter] = useState("");
@@ -42,42 +41,46 @@ const BasicTable = ({
   });
   const navigate = useNavigate();
 
-  const handleRowClick = (rowData) => {
-    if (disableRowClick) return;
+const handleRowClick = (rowData) => {
+  if (disableRowClick) return;
 
-    if (typeof onRowClick === "function") {
-      onRowClick(rowData);
-      return;
-    }
+  if (typeof onRowClick === "function") {
+    onRowClick(rowData);
+    return;
+  }
 
-    const itemId = rowData?.ID || rowData?.id;
-    if (!itemId) return;
+  const itemId = rowData?.ID || rowData?.id;
+  if (!itemId) return;
 
-    switch (tableType) {
-      case "user":
-        navigate(`/dashboard/user-detail/${itemId}`);
-        break;
-      case "badge":
+  switch (tableType) {
+    case "user":
+      navigate(`/dashboard/user-detail/${itemId}`);
+      break;
+    case "badge":
+      navigate(`/dashboard/badge-detail/${itemId}`);
+      break;
+    case "wine":
+      navigate(`/dashboard/wine-detail/${itemId}`);
+      break;
+    case "log":
+      navigate(`/dashboard/log-detail/${itemId}`);
+      break;
+      case "activity":
+      navigate(`/dashboard/activity-log-detail/${itemId}`);
+      break;
+    default:
+      if (rowData.badge) {
         navigate(`/dashboard/badge-detail/${itemId}`);
-        break;
-      case "wine":
-        navigate(`/dashboard/wine-detail/${itemId}`);
-        break;
-      case "log":
+      } else if (rowData.email) {
+        navigate(`/dashboard/user-detail/${itemId}`);
+      } else if (rowData.ID) {
         navigate(`/dashboard/log-detail/${itemId}`);
-        break;
-      default:
-        if (rowData.badge) {
-          navigate(`/dashboard/badge-detail/${itemId}`);
-        } else if (rowData.email) {
-          navigate(`/dashboard/user-detail/${itemId}`);
-        } else if (rowData.ID) {
-          navigate(`/dashboard/log-detail/${itemId}`);
-        } else {
-          navigate(`/dashboard/view-detail/${itemId}`);
-        }
-    }
-  };
+      } else {
+        navigate(`/dashboard/view-detail/${itemId}`);
+      }
+  }
+};
+
 
   return (
     <div className="w-full bg-white rounded-[12px] py-5 px-4">
@@ -147,9 +150,7 @@ const BasicTable = ({
                 <tr
                   key={row.id}
                   onClick={() => handleRowClick(row.original)}
-                  className={`text-[rgba(37,37,37,1)] ${
-                    !disableRowClick ? "cursor-pointer hover:bg-gray-50" : ""
-                  } transition`}
+                  className="text-[rgba(37,37,37,1)] cursor-pointer hover:bg-gray-50 transition"
                 >
                   {row.getVisibleCells().map((cell) => (
                     <td
@@ -176,7 +177,8 @@ const BasicTable = ({
         {pagination && (
           <div className="w-full flex flex-col md:flex-row justify-between items-center gap-4 mt-4">
             <div className="text-sm text-[#252525]">
-              Showing {table.getState().pagination.pageIndex + 1} of {table.getPageCount()} User's list
+              Showing {table.getState().pagination.pageIndex + 1} of{" "}
+              {table.getPageCount()} User's list
             </div>
             <div className="flex gap-3">
               <button

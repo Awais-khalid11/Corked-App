@@ -74,7 +74,7 @@ const Routers = () => {
         <Route path="create-price" element={<CreatePricing />} />
         <Route path="edit-price" element={<Editprice />} />
         <Route path="log-details/:id" element={<LogDetails />} />
-        <Route path="log-details-page/:id" element={<LogDetailsPage />} />
+        <Route path="activity-log-details/:id" element={<LogDetailsPage />} />
         <Route path="billing-details/:id" element={<BillingDetails />} />
 
 

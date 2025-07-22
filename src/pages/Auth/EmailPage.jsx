@@ -16,7 +16,7 @@ const EmailPage = () => {
 
   return (
     <div className="flex flex-col lg:flex-row gap-4 p-2.5 bg-[#F6F6F6] min-h-screen justify-center">
-      <div className="w-full lg:w-1/2">
+      <div className="hidden lg:block lg:w-1/2">
         <img
           src={Main}
           alt="Main img"
