@@ -1,38 +1,28 @@
-import Home from "../assets/Images/homeimg.png";
-import Resturant from "../assets/Images/restaurant.png"
-import Hotel from "../assets/Images/hotelimg.png"
-import Airport from "../assets/Images/airportimg.png"
-import Others from "../assets/Images/others.png"
 const LocationData = [
   {
-    id: 1,
-    locationType: "Home",
+    locationType: " Home",
     logs: 38,
-    image: Home,
+    image: "/assets/images/homeimg.png",
   },
   {
-    id: 2,
     locationType: "Restaurant",
     logs: 12,
-    image: Resturant,
+    image: "/assets/images/restaurant.png",
   },
   {
-    id: 3,
     locationType: "Hotel",
     logs: 9,
-    image: Hotel,
+    image: "/assets/images/hotelimg.png",
   },
   {
-    id: 4,
     locationType: "Airport",
     logs: 4,
-    image: Airport,
+    image: "/assets/images/airportimg.png",
   },
   {
-    id: 5,
-    locationType: "Other",
+    locationType: " Other",
     logs: 21,
-    image: Others,
+    image: "/assets/images/others.png",
   },
 ];
 

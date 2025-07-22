@@ -1,37 +1,38 @@
 import React from "react";
-import UserTag from "../assets/Icons/user-tag.svg"
-import Eye from "../assets/Icons/eye.svg"
-import Milk from "../assets/Icons/milk.svg"
-import Home from "../assets/Icons/house.svg"
+import UserTag from "../../public/assets/icons/user-tag.svg"
+import Eye from "../../public/assets/icons/eye.svg"
+import PersonalCard from "../../public/assets/icons/personalcard.svg"
+import User from "../../public/assets/icons/user.svg"
 
 
 
-const CardsData = [
+const Visitor = [
   {
     cardIcon: UserTag ,
     cardNumbers: "132",
     cardAnalytics: "Unique Visitors",
   },
   {
-    cardIcon:Trendup,
-    cardNumbers: "4.3 ",
-    cardNumbersText:"Grapes",
-    cardAnalytics: "Avg Rating",
+    cardIcon:Eye,
+    cardNumbers: "41 ",
+    cardAnalytics: "Returning Visitors",
   },
   {
-    cardIcon: Milk
+    cardIcon: PersonalCard
 ,
-    cardNumbers: "64",
-    cardAnalytics: "On-site Logs",
+    cardNumbers: "2.1",
+    cardAnalytics: "Avg Logs per Visit",
   },
   {
-    cardIcon: Home
+    cardIcon: User
 ,
-    cardNumbers: "84",
-    cardAnalytics: "Off-site Logs",
+    cardNumbers: "Sarah P.",
+    cardAnalytics: "Top Visitor",
   },
 ];
 
 
 
-export default CardsData;
+export default Visitor;
+
+

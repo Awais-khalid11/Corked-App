@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import BasicTable from "../components/BasicTable";
-import data from "../data/BenchData.json";
+import data from "../data/BenchData";
 import DropDownButton from "../components/DropDownButton";
 
 const BenchMarking = () => {
@@ -41,8 +41,11 @@ const BenchMarking = () => {
   );
 
   return (
-    <div className="p-5 md:p-6 lg:p-8">
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200">
+
+    <div className="">
+      <div className="">
+
+
         <BasicTable
           title="Benchmarking (Premium/Enterprise Feature)"
           data={tableData}
@@ -66,7 +69,9 @@ const BenchMarking = () => {
               />
             </>
           }
-          search={true}
+
+          search={false}
+
         />
       </div>
     </div>

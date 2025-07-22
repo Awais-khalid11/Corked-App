@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from "react";
 import BasicTable from "../components/BasicTable";
-import data from "../data/WineData.json";
+import data from "../data/WineLevelData.js";
 import DropDownButton from "../components/DropDownButton";
 
 const WineLevel = () => {
@@ -57,8 +57,10 @@ const WineLevel = () => {
   );
 
   return (
-    <div className="p-5 md:p-6 lg:p-8">
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200">
+
+    <div className="">
+      <div className="">
+
         <BasicTable
           title="Breakdown by wine"
           data={tableData}

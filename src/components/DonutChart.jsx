@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import Chart from "react-apexcharts";
-import DropButton from "./DropButton";
+import DropDownButton from "./DropDownButton";
 
 const DonutChart = () => {
   const [duration, setDuration] = useState("Yearly");
   const durationOptions = ["Daily", "Monthly", "Yearly"];
 
   const labels = ["Off-site", "On-site"];
-  const series = [65, 35]; 
+  const series = [84, 64]; 
   const colors = ["#B2642A", "#51111D"];
 
   const options = {
@@ -51,7 +51,7 @@ const DonutChart = () => {
     <div className="bg-white py-5 px-4 rounded-[12px] w-full">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-3">
         <h2 className="text-lg font-semibold">Wine Log Locations</h2>
-        <DropButton
+        <DropDownButton
           label={duration}
           options={durationOptions}
           onSelect={(selected) => setDuration(selected)}
