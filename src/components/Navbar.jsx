@@ -42,12 +42,15 @@ const Navbar = ({ onSettingsClick, onToggleSidebar }) => {
       <div className="flex items-center gap-4 ml-auto">
         {/* Notification Dropdown */}
         <DropDownButton
-          label={
-            <ReactSVG
-              src="/assets/icons/notification.svg"
-              className="w-6 h-6 cursor-pointer hover:opacity-80 text-gray-600"
-            />
-          }
+         label={
+  <div className="p-1.5 flex items-center justify-center">
+    <ReactSVG
+      src="/assets/icons/notification.svg"
+      className="w-6 h-6 text-gray-600 hover:opacity-80"
+    />
+  </div>
+}
+
           options={dropdownOptions}
           onSelect={handleDropdownSelect}
           unstyled

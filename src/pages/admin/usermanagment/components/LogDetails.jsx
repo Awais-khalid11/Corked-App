@@ -1,15 +1,18 @@
-import { MdLocationOn } from "react-icons/md";
 import React, { useState, useEffect } from "react";
-import BasicTable from "../../../../components/BasicTable";
-import { FiEdit, FiTrash2, FiArrowLeft } from "react-icons/fi";
 import { useNavigate, useParams, Link } from "react-router-dom";
+import { FiEdit, FiTrash2, FiArrowLeft } from "react-icons/fi";
+import { MdLocationOn } from "react-icons/md";
+
 import wine1Image from "../../../../../public/assets/images/wine1.png";
 import wine2Image from "../../../../../public/assets/images/wine2.png";
 import wine3Image from "../../../../../public/assets/images/wine3.png";
-import userAvatarCody from "../../../../../public/assets/images/homeimg.png";
-import userAvatarRobert from "../../../../../public/assets/images/homeimg.png";
-import userAvatarKathryn from "../../../../../public/assets/images/homeimg.png";
-import userAvatarSavannah from "../../../../../public/assets/images/homeimg.png";
+
+import userAvatarCody from "../../../../../public/assets/images/airportimg.png";
+import userAvatarRobert from "../../../../../public/assets/images/airportimg.png";
+import userAvatarSavannah from "../../../../../public/assets/images/airportimg.png";
+import userAvatarKathryn from "../../../../../public/assets/images/airportimg.png";
+
+import BasicTable from "../../../../components/BasicTable";
 
 const LogDetails = () => {
   const navigate = useNavigate();
@@ -148,8 +151,14 @@ const LogDetails = () => {
         );
       },
     },
-    { header: "Reactions Received", accessorKey: "reactions" },
-    { header: "Sipbacks / Comments", accessorKey: "comments" },
+    {
+      header: "Reactions Received",
+      accessorKey: "reactions",
+    },
+    {
+      header: "Sipbacks / Comments",
+      accessorKey: "comments",
+    },
   ];
 
   const otherData = [
@@ -193,28 +202,40 @@ const LogDetails = () => {
 
   const commentsData = [
     {
-      user: { name: "Cody Fisher", img: userAvatarCody },
+      user: {
+        name: "Cody Fisher",
+        img: userAvatarCody,
+      },
       time: "4 hours ago",
       comment:
-        "Not usually a white wine fan, but this Chardonnay had me rethinking everything. Clean finish and citrusy magic.",
+        "Not usually a white wine fan, but this Chardonnay had me rethinking everything. Clean finish and citrusy magic.", //
     },
     {
-      user: { name: "Robert Fox", img: userAvatarRobert },
+      user: {
+        name: "Robert Fox",
+        img: userAvatarRobert,
+      },
       time: "4 hours ago",
       comment:
-        "This Cabernet seriously overdelivered. Pairing it with steak was a power move! Surprisingly bold but still balanced.",
+        "This Cabernet seriously overdeltivered. Pairing it with steak was a power move! fSurprisingly bold but still balanced. Definitely earned a spot on my favorites list.", //
     },
     {
-      user: { name: "Savannah Nguyen", img: userAvatarSavannah },
+      user: {
+        name: "Savannah Nguyen",
+        img: userAvatarSavannah,
+      },
       time: "4 hours ago",
       comment:
-        "Spicy, bold, and just a little chaotic — like me on a Friday night ❤‍🔥🌶 Deep notes, smooth finish. Would 100% sip again.",
+        "Spicy, bold, and just a little chaotic — like me on a Friday night ❤‍🔥🌶 This bottle was a total vibe — deep notes, smooth finish. Would 100% sip again.", //
     },
     {
-      user: { name: "Kathryn Murphy", img: userAvatarKathryn },
+      user: {
+        name: "Kathryn Murphy",
+        img: userAvatarKathryn,
+      },
       time: "4 hours ago",
       comment:
-        "This Rosé felt like a beach vacation in a glass. Light, crisp, and dangerously sippable.",
+        "This Rosé felt like a beach vacation in a glass. Light, crisp, and dangerously sippable. Popped it open with friends and the cork wasn’t the only thing that flew — it was a party in a glass!", //
     },
   ];
 
@@ -231,29 +252,32 @@ const LogDetails = () => {
     );
   }
 
-  const StarRating = ({ rating }) => {
-    const fullStars = Math.floor(rating);
-    const hasHalfStar = rating % 1 !== 0;
-    const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
-
-    return (
-      <div className="flex items-center">
-        {[...Array(fullStars)].map((_, i) => (
-          <span key={`full-${i}`} className="text-yellow-400 text-lg">★</span>
-        ))}
-        {hasHalfStar && <span className="text-yellow-400 text-lg">½</span>}
-        {[...Array(emptyStars)].map((_, i) => (
-          <span key={`empty-${i}`} className="text-gray-300 text-lg">★</span>
-        ))}
-        <span className="ml-2 text-sm text-gray-600">{rating}</span>
-      </div>
-    );
-  };
-
   const wineDetails = logData.wineDetails;
+ const StarRating = ({ rating }) => {
+  const fullStars = Math.floor(rating);
+  const hasHalfStar = rating % 1 !== 0;
+  const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
 
   return (
-    <div className="p-4">
+    <div className="flex items-center">
+      {[...Array(fullStars)].map((_, i) => (
+        <span key={`full-${i}`} className="text-yellow-400 text-lg">
+          ★
+        </span>
+      ))}
+      {hasHalfStar && <span className="text-yellow-400 text-lg">½</span>}
+      {[...Array(emptyStars)].map((_, i) => (
+        <span key={`empty-${i}`} className="text-gray-300 text-lg">
+          ★
+        </span>
+      ))}
+      <span className="ml-2 text-sm text-gray-600">{rating}</span>
+    </div>
+  );
+};
+
+  return (
+    <div>
       <div className="flex bg-white rounded-[12px] py-5 px-4 mb-5 items-center">
         <button
           onClick={() => navigate(-1)}
@@ -261,92 +285,168 @@ const LogDetails = () => {
         >
           <FiArrowLeft size={24} />
           <h2 className="font-bold text-[20px] leading-[1.2]">
-            #{logData.ID} - Log Details Page
+            #{logData.ID} - Log Details
           </h2>
         </button>
       </div>
 
-      <div className="bg-white rounded-xl">
-        <div className="py-5 px-4 flex flex-col md:flex-row gap-6 mb-5 pb-8 border-b border-[rgba(0,0,0,0.1)]">
-          <div className="rounded-xl py-8 bg-[#FAFAF5] w-full md:w-1/3 flex justify-center items-center">
-            <img
-              src={wineDetails.image}
-              alt={logData.wineName}
-              className="object-contain h-full max-h-72"
-            />
-          </div>
-
-          <div className="w-full md:w-2/3 flex flex-col">
-            <div className="flex justify-between items-start mb-4">
-              <h2 className="text-2xl font-bold text-[#252525]">
-                {logData.wineName}
-              </h2>
-            </div>
-
-            <div className="text-[16px] text-[#252525] space-y-3">
-              <p className="flex items-center gap-2">
-                <strong className="w-32 text-gray-700">Winery Name:</strong>
-                <span>{logData.wineryName}</span>
-              </p>
-              <p className="flex items-center gap-2">
-                <strong className="w-32 text-gray-700">Wine Type:</strong>
-                <span>{logData.wineType}</span>
-              </p>
-              <p className="flex items-center gap-2">
-                <strong className="w-32 text-gray-700">Logged On:</strong>
-                <span>{logData.loggedOn}</span>
-              </p>
-              <p className="flex items-center gap-2">
-                <strong className="w-32 text-gray-700">Location:</strong>
-                <MdLocationOn className="text-gray-500" />
-                <span>{logData.location}</span>
-              </p>
-              <p className="flex items-center gap-2">
-                <strong className="w-32 text-gray-700">Rating Given:</strong>
-                <StarRating rating={logData.rating} />
-              </p>
-              <p className="flex items-center gap-2">
-                <strong className="w-32 text-gray-700">Photo Uploaded:</strong>
-                <Link
-                  to={wineDetails.image}
-                  target="_blank"
-                  className="text-blue-600 hover:underline"
-                >
-                  {logData.photoUploaded}
-                </Link>
-              </p>
-
-              <p className="flex items-center gap-2 flex-wrap">
-                <strong className="w-32 text-gray-700">Tasting Notes:</strong>
-                <div className="flex flex-wrap gap-2">
-                  {logData.tastingNotes.map((note, index) => (
-                    <span
-                      key={index}
-                      className="bg-[#F5F5F5] px-3 py-1 rounded-full text-sm flex items-center gap-1"
-                    >
-                      {note.icon} {note.text}
-                    </span>
-                  ))}
-                </div>
-              </p>
-            </div>
-          </div>
+      <div className="bg-white rounded-xl py-5 px-4 flex flex-col md:flex-row gap-6 mb-5">
+        <div className="rounded-xl py-8 bg-[#FAFAF5] w-full md:w-1/3 flex justify-center items-center">
+          <img
+            src={wineDetails.image}
+            alt={logData.wineName}
+            className="object-contain h-full max-h-72"
+          />
         </div>
 
-        <div className="overflow-hidden">
-          <div className="">
+        <div className="w-full md:w-2/3 flex flex-col">
+          <div className="flex justify-between items-start mb-4">
+            <h2 className="text-2xl font-bold text-[#252525]">
+              {logData.wineName}
+            </h2>
+            <button className=" border border-black rounded-[12px] p-3 flex items-center gap-2">
+              <FiTrash2 size={18} />
+              Delete Log
+            </button>
+          </div>
+
+          <div className="text-[16px] text-[#252525] space-y-3">
+            <p className="flex items-center gap-2">
+              <strong className="w-32 text-gray-700">Winery Name:</strong>
+              <span>{logData.wineryName}</span>
+            </p>
+            <p className="flex items-center gap-2">
+              <strong className="w-32 text-gray-700">Wine Type:</strong>
+              <span>{logData.wineType}</span>
+            </p>
+            <p className="flex items-center gap-2">
+              <strong className="w-32 text-gray-700">Logged On:</strong>
+              <span>{logData.loggedOn}</span>
+            </p>
+            <p className="flex items-center gap-2">
+              <strong className="w-32 text-gray-700">Location:</strong>
+              <MdLocationOn className="text-gray-500" />
+              <span>{logData.location}</span>
+            </p>
+            <p className="flex items-center gap-2">
+              <strong className="w-32 text-gray-700">Rating Given:</strong>
+              <StarRating rating={logData.rating} />
+            </p>
+            <p className="flex items-center gap-2">
+              <strong className="w-32 text-gray-700">Photo Uploaded:</strong>
+              <Link
+                to={wineDetails.image}
+                target="_blank"
+                className="text-blue-600 hover:underline"
+              >
+                {logData.photoUploaded}
+              </Link>
+            </p>
+            <p className="flex items-start gap-2">
+              <strong className="w-32 text-gray-700">Comment:</strong>
+              <span className="italic">"{logData.comment}"</span>
+            </p>
+            <p className="flex items-center gap-2 flex-wrap">
+              <strong className="w-32 text-gray-700">Tasting Notes:</strong>
+              <div className="flex flex-wrap gap-2">
+                {logData.tastingNotes.map((note, index) => (
+                  <span
+                    key={index}
+                    className="bg-[#F5F5F5] px-3 py-1 rounded-full text-sm flex items-center gap-1"
+                  >
+                    {note.icon} {note.text}
+                  </span>
+                ))}
+              </div>
+            </p>
+            <p className="flex items-center gap-2 flex-wrap">
+              <strong className="w-32 text-gray-700">Occasions:</strong>
+              <div className="flex flex-wrap gap-2">
+                {logData.occasions.map((occasion, index) => (
+                  <span
+                    key={index}
+                    className="bg-[#F5F5F5] px-3 py-1 rounded-full text-sm flex items-center gap-1"
+                  >
+                    {occasion.icon} {occasion.text}
+                  </span>
+                ))}
+              </div>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <h3 className="text-lg font-semibold text-[#252525] mb-3">
+        Other Interactions:
+      </h3>
+
+      <div className="bg-white rounded-t-xl overflow-hidden ">
+        <div className="flex  border-gray-200 px-4">
+          <button
+            className={`px-6 py-3 text-lg font-semibold ${
+              activeTab === "sipbacks"
+                ? "border-b-2 border-[#51111D] text-[#51111D]"
+                : "text-gray-500 hover:text-gray-700"
+            }`}
+            onClick={() => setActiveTab("sipbacks")}
+          >
+            SipBacks Reactions
+          </button>
+          <button
+            className={`px-6 py-3 text-lg font-semibold ${
+              activeTab === "comments"
+                ? "border-b-2 border-[#81001E] text-[#81001E]"
+                : "text-gray-500 hover:text-gray-700"
+            }`}
+            onClick={() => setActiveTab("comments")}
+          >
+            Comments
+          </button>
+        </div>
+
+        <div className="">
+          {activeTab === "sipbacks" && (
             <BasicTable
               title=""
               data={otherData}
               columns={othersColumns}
               search={false}
             />
-          </div>
+          )}
+
+          {activeTab === "comments" && (
+            <div className="space-y-6 px-4 flex flex-col sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
+              {commentsData.map((comment, index) => (
+                <div
+                  key={index}
+                  className="flex items-start gap-4 w-full sm:max-w-[49%]"
+                >
+                  <img
+                    src={comment.user.img}
+                    alt={comment.user.name}
+                    className="w-12 h-12 rounded-full object-cover flex-shrink-0"
+                  />
+                  <div className="flex-1">
+                    <div className="flex justify-between items-center mb-1">
+                      <span className="font-semibold text-gray-800">
+                        {comment.user.name}
+                      </span>
+                      <span className="text-sm text-gray-500 mr-9">
+                        {comment.time}
+                      </span>
+                    </div>
+                    <p className="bg-gray-200 p-2.5 pb-5 rounded-2xl">
+                      {comment.comment}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>
   );
 };
 
-
-export default LogDetails;
+export default LogDetails;

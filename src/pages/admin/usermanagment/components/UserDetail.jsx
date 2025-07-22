@@ -325,7 +325,7 @@ const UserDetails = () => {
       cell: ({ row }) => (
         <div
           className="flex items-center gap-2 cursor-pointer p-2 rounded"
-          onClick={() => navigate(`/dashboard/log-details-page/${row.original.ID}`)}
+          onClick={() => navigate(`/dashboard/activity-log-details/${row.original.ID}`)}
         >
           <span className="text-xl">{row.original.badge.icon}</span>
           <span className="font-semibold">{row.original.badge.name}</span>

@@ -72,11 +72,13 @@ const DropDownButton = ({
     };
   }, [fullWidthOnMobile]);
 
-  const baseButtonClass = unstyled
-    ? "inline-flex items-center"
-    : `inline-flex items-center ${
-        className || "gap-[8px] py-[10px] px-[12px] rounded-[12px] border border-black text-sm text-black"
-      } ${fullWidthOnMobile ? "w-full sm:w-auto" : ""}`;
+ const baseButtonClass = unstyled
+  ? `inline-flex items-center justify-center p-1 ${className}`
+  : `inline-flex items-center ${
+      className ||
+      "gap-[8px] py-[10px] px-[12px] rounded-[12px] border border-black text-sm text-black"
+    } ${fullWidthOnMobile ? "w-full sm:w-auto" : ""}`;
+
 
   return (
     <div 

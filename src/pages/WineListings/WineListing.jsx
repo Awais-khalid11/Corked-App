@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BasicTable from "../../components/BasicTable";
-import data from "../../Data/BenchData";
+import data from "../../data/BenchData";
 import DropDownButton from "../../components/DropDownButton";
 import Button from "../../components/Button";
 import Add from "../../../public/assets/icons/add-circle.svg";
