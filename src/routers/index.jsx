@@ -20,7 +20,7 @@ import Notification from "../pages/Settings/Notification";
 import { Navigate, Route, Routes } from "react-router-dom";
 import WineListing from "../pages/WineListings/WineListing";
 import ManagePassword from "../pages/Settings/ManagePassword";
-import WineryManagement from "../pages/admin/WineryManagement";
+import WineryManagement from "../pages/admin/WineryManagement/WineryManagement";
 import LogLocationBreakdown from "../pages/LogLocationBreakdwon";
 import Editprice from "../pages/admin/billing/components/EditPrice";
 import ViewDetail from "../pages/WineListings/Components/ViewDetail";
@@ -33,6 +33,9 @@ import BillingSubscriptions from "../pages/admin/billing/BillingSubscriptions";
 import BadgeDetails from "../pages/admin/usermanagment/components/BadgeDetails";
 import LogDetailsPage from "../pages/admin/usermanagment/components/LogDetailsPage";
 import BillingDetails from "../pages/admin/usermanagment/components/BillingDetails";
+import Winedetails from "../pages/admin/WineryManagement/components/Winedetails";
+import WineryProfileDetail from "../pages/admin/WineryManagement/components/WineryProfileDetail"
+import UserProfileDetail from "../pages/admin/WineryManagement/components/UserProfileDetail";
 
 const Routers = () => {
   return (
@@ -70,12 +73,16 @@ const Routers = () => {
         <Route path="billing-subscriptions" element={<BillingSubscriptions />} />
        
         <Route path="user-detail/:id" element={<UserDetail />} />
-        <Route path="badge-detail/:id" element={<BadgeDetails />} />
+        <Route path="badge-details/:id" element={<BadgeDetails />} />
         <Route path="create-price" element={<CreatePricing />} />
         <Route path="edit-price" element={<Editprice />} />
         <Route path="log-details/:id" element={<LogDetails />} />
         <Route path="activity-log-details/:id" element={<LogDetailsPage />} />
         <Route path="billing-details/:id" element={<BillingDetails />} />
+        <Route path="winery-detail/:id" element={<Winedetails />} />
+        <Route path="winery-profile-detail" element={<WineryProfileDetail />} />
+        <Route path="user-profile-detail" element={<UserProfileDetail />} />
+
 
 
 

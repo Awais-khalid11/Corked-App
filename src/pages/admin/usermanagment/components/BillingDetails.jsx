@@ -71,7 +71,7 @@ const BillingDetails = () => {
           className="flex items-center gap-3 cursor-pointer text-[#252525] hover:text-gray-700"
         >
           <FiArrowLeft size={24} />
-          <h2 className="font-bold text-[20px] leading-[1.2]">
+          <h2 className="font-bold text-[20px]  leading-[1.2]">
             {logData.title}
           </h2>
         </button>

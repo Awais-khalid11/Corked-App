@@ -14,54 +14,134 @@ const UserManagment = () => {
   const navigate = useNavigate();
 
   const columns = useMemo(
-    () => [
-      {
-        header: "User Names",
-        accessorKey: "user",
-        cell: ({ row }) => {
-          const user = row.original;
-          return (
-            <div
-              onClick={() => navigate(`/dashboard/user-detail/${user.Id}`)}
-              className="flex items-center gap-3 hover:underline cursor-pointer"
-            >
-              <img
-                src={user.imageUrl}
-                alt={user.metric}
-                className="w-9 h-9 rounded-full object-cover"
-              />
-              <div className="flex flex-col text-[#252525]">
-                <span className="font-semibold text-sm mb-[4px]">{user.metric}</span>
-                <span className="text-[12px] opacity-80">{user.email}</span>
-              </div>
+  () => [
+    {
+      header: "User Names",
+      accessorKey: "user",
+      cell: ({ row }) => {
+        const user = row.original;
+        return (
+          <div
+            onClick={() => navigate(`/dashboard/user-detail/${user.id}`)}
+            className="flex items-center gap-3 hover:underline cursor-pointer"
+          >
+            <img
+              src={user.imageUrl}
+              alt={user.metric}
+              className="w-9 h-9 rounded-full object-cover"
+            />
+            <div className="flex flex-col text-[#252525]">
+              <span className="font-semibold text-sm mb-[4px]">
+                {user.metric}
+              </span>
+              <span className="text-[12px] opacity-80">{user.email}</span>
             </div>
-          );
-        },
+          </div>
+        );
       },
-      { header: "Total Wines Logged", accessorKey: "logged" },
-      { header: "Cork Badges Earned", accessorKey: "badges" },
-      { header: "Membership Status", accessorKey: "status" },
-      { header: "Total Reactions Sent", accessorKey: "sent" },
-      {
-        header: "Account Status",
-        accessorKey: "accountStatus",
-        cell: ({ row }) => {
-          const status = row.getValue("accountStatus").toLowerCase();
-          let bgColor = "bg-gray-400";
+    },
+    {
+      header: "Total Wines Logged",
+      accessorKey: "logged",
+      cell: ({ row }) => {
+        const user = row.original;
+        return (
+          <div
+            onClick={() => navigate(`/dashboard/user-detail/${user.id}`)}
+            className="cursor-pointer hover:underline"
+          >
+            {row.getValue("logged")}
+          </div>
+        );
+      },
+    },
+    {
+      header: "Cork Badges Earned",
+      accessorKey: "badges",
+      cell: ({ row }) => {
+        const user = row.original;
+        return (
+          <div
+            onClick={() => navigate(`/dashboard/user-detail/${user.id}`)}
+            className="cursor-pointer hover:underline"
+          >
+            {row.getValue("badges")}
+          </div>
+        );
+      },
+    },
+    {
+      header: "Membership Status",
+      accessorKey: "status",
+      cell: ({ row }) => {
+        const user = row.original;
+        return (
+          <div
+            onClick={() => navigate(`/dashboard/user-detail/${user.id}`)}
+            className="cursor-pointer hover:underline"
+          >
+            {row.getValue("status")}
+          </div>
+        );
+      },
+    },
+    {
+      header: "Total Reactions Sent",
+      accessorKey: "sent",
+      cell: ({ row }) => {
+        const user = row.original;
+        return (
+          <div
+            onClick={() => navigate(`/dashboard/user-detail/${user.id}`)}
+            className="cursor-pointer hover:underline"
+          >
+            {row.getValue("sent")}
+          </div>
+        );
+      },
+    },
+    {
+      header: "Account Status",
+      accessorKey: "accountStatus",
+      cell: ({ row }) => {
+        const user = row.original;
+        const status = row.getValue("accountStatus").toLowerCase();
+        let bgColor = "bg-gray-400";
 
-          if (status === "active") bgColor = "bg-green-500";
-          else if (status === "notactive") bgColor = "bg-red-500";
+        if (status === "active") bgColor = "bg-green-500";
+        else if (status === "notactive") bgColor = "bg-red-500";
 
-          return (
-            <span className={`px-3 py-1 rounded-full text-white text-sm font-medium ${bgColor}`}>
+        return (
+          <div
+            onClick={() => navigate(`/dashboard/user-detail/${user.id}`)}
+            className="cursor-pointer inline-block"
+          >
+            <span
+              className={`px-3 py-1 rounded-full text-white text-sm font-medium ${bgColor}`}
+            >
               {status.charAt(0).toUpperCase() + status.slice(1)}
             </span>
-          );
-        },
+          </div>
+        );
       },
-    ],
-    [navigate]
-  );
+    },
+    {
+      header: "Action",
+      accessorKey: "action",
+      cell: ({ row }) => {
+        const user = row.original;
+        return (
+          <div
+          >
+            {row.getValue("action")}
+          </div>
+        );
+      },
+    },
+  ],
+  [navigate]
+);
+
 
   const tableData = [
     {
@@ -74,6 +154,7 @@ const UserManagment = () => {
       status: "Gold",
       sent: 20,
       accountStatus: "Active",
+      action:"⋮"
     },
     {
       id: "12",
@@ -85,6 +166,7 @@ const UserManagment = () => {
       status: "Trial (ends in 4 days)",
       sent: 17,
       accountStatus: "Active",
+      action:"⋮"
     },
     {
       id: "13",
@@ -96,6 +178,7 @@ const UserManagment = () => {
       status: "Premium",
       sent: 25,
       accountStatus: "Active",
+      action:"⋮"
     },
     {
       id: "14",
@@ -107,6 +190,7 @@ const UserManagment = () => {
       status: "Gold",
       sent: 30,
       accountStatus: "Active",
+      action:"⋮"
     },
     {
       id: "15",
@@ -118,6 +202,7 @@ const UserManagment = () => {
       status: "Trial (ends in 2 days)",
       sent: 8,
       accountStatus: "Active",
+      action:"⋮"
     },
     {
       id: "16",
@@ -129,6 +214,7 @@ const UserManagment = () => {
       status: "Premium",
       sent: 22,
       accountStatus: "Active",
+      action:"⋮"
     },
     {
       id: "17",
@@ -140,6 +226,7 @@ const UserManagment = () => {
       status: "Trial (ends in 6 days)",
       sent: 14,
       accountStatus: "Active",
+      action:"⋮"
     },
     {
       id: "18",
@@ -151,6 +238,7 @@ const UserManagment = () => {
       status: "Gold",
       sent: 35,
       accountStatus: "Active",
+      action:"⋮"
     },
     {
       id: "19",
@@ -162,6 +250,7 @@ const UserManagment = () => {
       status: "Premium",
       sent: 18,
       accountStatus: "Active",
+      action:"⋮"
     },
     {
       id: "20",
@@ -173,6 +262,19 @@ const UserManagment = () => {
       status: "Gold",
       sent: 28,
       accountStatus: "Active",
+      action:"⋮"
+    },
+    {
+      id: "2001",
+      metric: "Maria Garcia",
+      email: "maria.garcia@gmail.com",
+      imageUrl: Jackson,
+      logged: 41,
+      badges: 6,
+      status: "Gold",
+      sent: 28,
+      accountStatus: "Active",
+      action:"⋮"
     },
   ];
 
@@ -204,11 +306,17 @@ const UserManagment = () => {
               options={["Date", "Past 30 Days", "This Month", "This Year"]}
               onSelect={setLast30Days}
             />
-            <Button buttonIcon="/assets/icons/add-circle.svg" buttonText="Add new wine" />
+            <div onClick={() => navigate('/dashboard/wine-detail-page')}>
+      <Button 
+        buttonIcon="/assets/icons/add-circle.svg" 
+        buttonText="Add new wine" 
+      />
+    </div>
           </>
         }
         search={false}
         getPaginationRowModel={true}
+         disableRowClick={true}
         onRowClick={(user) => navigate(`/dashboard/user-detail/${user.id}`)}
       />
     </div>

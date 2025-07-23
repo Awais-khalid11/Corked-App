@@ -19,8 +19,9 @@ const BasicTable = ({
   search = false,
   searchType = "realtime",
   pagination = false,
+  disableRowClick = false,
   onRowClick,
-  tableType = "default", // 'user', 'badge', 'wine', or 'default'
+  tableType = "default",
 }) => {
   const [sort, setSort] = useState([]);
   const [filter, setFilter] = useState("");
@@ -35,57 +36,78 @@ const BasicTable = ({
     state: {
       sorting: sort,
       globalFilter: filter,
+      pagination: {
+        pageIndex: 0,
+        pageSize: 5,
+      },
     },
     onSortingChange: setSort,
     onGlobalFilterChange: setFilter,
   });
+
   const navigate = useNavigate();
 
-const handleRowClick = (rowData) => {
-  if (disableRowClick) return;
+  const handleRowClick = (rowData) => {
+    if (disableRowClick) return;
 
-  if (typeof onRowClick === "function") {
-    onRowClick(rowData);
-    return;
-  }
+    if (typeof onRowClick === "function") {
+      onRowClick(rowData);
+      return;
+    }
 
-  const itemId = rowData?.ID || rowData?.id;
-  if (!itemId) return;
+    const itemId = rowData?.ID || rowData?.id;
+    if (!itemId) return;
 
-  switch (tableType) {
-    case "user":
-      navigate(`/dashboard/user-detail/${itemId}`);
-      break;
-    case "badge":
-      navigate(`/dashboard/badge-detail/${itemId}`);
-      break;
-    case "wine":
-      navigate(`/dashboard/wine-detail/${itemId}`);
-      break;
-    case "log":
-      navigate(`/dashboard/log-detail/${itemId}`);
-      break;
-      case "activity":
-      navigate(`/dashboard/activity-log-detail/${itemId}`);
-      break;
-    default:
-      if (rowData.badge) {
-        navigate(`/dashboard/badge-detail/${itemId}`);
-      } else if (rowData.email) {
+    // FIXED: Corrected navigation paths to match your router exactly
+    switch (tableType) {
+      case "user":
         navigate(`/dashboard/user-detail/${itemId}`);
-      } else if (rowData.ID) {
-        navigate(`/dashboard/log-detail/${itemId}`);
-      } else {
+        break;
+      case "badge":
+        navigate(`/dashboard/badge-details/${itemId}`);
+        break;
+      case "wine":
         navigate(`/dashboard/view-detail/${itemId}`);
-      }
-  }
-};
-
+        break;
+      case "log":
+        // This navigates to the log-details route for wine logs
+        navigate(`/dashboard/log-details/${itemId}`);
+        break;
+      case "activity":
+        // This navigates to the activity-log-details route for user activity
+        navigate(`/dashboard/activity-log-details/${itemId}`);
+        break;
+      case "billing":
+        navigate(`/dashboard/billing-details/${itemId}`);
+        break;
+      default:
+        // Fallback logic for when tableType is not specified
+        if (rowData.badge && rowData.tier) {
+          // Looks like badge data
+          navigate(`/dashboard/badge-details/${itemId}`);
+        } else if (rowData.email || rowData.name) {
+          // Looks like user data
+          navigate(`/dashboard/user-detail/${itemId}`);
+        } else if (rowData.plan || rowData.status) {
+          // Looks like billing data
+          navigate(`/dashboard/billing-details/${itemId}`);
+        } else if (rowData.rating || rowData.reactions) {
+          // Looks like log data
+          navigate(`/dashboard/log-details/${itemId}`);
+        } else if (rowData["user-action"] || rowData.action) {
+          // Looks like activity data
+          navigate(`/dashboard/activity-log-details/${itemId}`);
+        } else {
+          // Generic fallback
+          navigate(`/dashboard/view-detail/${itemId}`);
+        }
+    }
+  };
 
   return (
     <div className="w-full bg-white rounded-[12px] py-5 px-4">
       {(title || dropdowns || search) && (
-        <div className="grid grid-cols-1 md:grid-cols-2 items-start md:items-center gap-4 mb-5">
+        <div className="flex flex-col justify-between md:flex-row items-start md:items-center gap-4 mb-5">
           {title && (
             <h2 className="text-[20px] font-bold text-[#252525] leading-6">
               {title}
@@ -123,13 +145,13 @@ const handleRowClick = (rowData) => {
           <thead>
             {table.getHeaderGroups().map((headerGroup) => (
               <tr className="bg-[rgba(246,246,246,1)]" key={headerGroup.id}>
-                {headerGroup.headers.map((header) => (
+                {headerGroup.headers.map((header, index) => (
                   <th
-                    key={header.id}
+                    key={`${header.id}-${index}`}
                     onClick={header.column.getToggleSortingHandler()}
                     className="py-4 px-5 text-left text-[16px] font-bold text-[rgba(37,37,37,1)] leading-[1] opacity-80"
                   >
-                    <div className="flex items-center gap-1">
+                    <div className="flex items-center gap-1 cursor-pointer">
                       {flexRender(
                         header.column.columnDef.header,
                         header.getContext()
@@ -152,9 +174,9 @@ const handleRowClick = (rowData) => {
                   onClick={() => handleRowClick(row.original)}
                   className="text-[rgba(37,37,37,1)] cursor-pointer hover:bg-gray-50 transition"
                 >
-                  {row.getVisibleCells().map((cell) => (
+                  {row.getVisibleCells().map((cell, index) => (
                     <td
-                      key={cell.id}
+                      key={`${cell.id}-${index}`}
                       className="py-7 px-5 text-sm border-b border-[rgba(37,37,37,0.1)] leading-[1]"
                     >
                       {flexRender(cell.column.columnDef.cell, cell.getContext())}
@@ -177,8 +199,8 @@ const handleRowClick = (rowData) => {
         {pagination && (
           <div className="w-full flex flex-col md:flex-row justify-between items-center gap-4 mt-4">
             <div className="text-sm text-[#252525]">
-              Showing {table.getState().pagination.pageIndex + 1} of{" "}
-              {table.getPageCount()} User's list
+              Showing page {table.getState().pagination.pageIndex + 1} of{" "}
+              {table.getPageCount()}
             </div>
             <div className="flex gap-3">
               <button

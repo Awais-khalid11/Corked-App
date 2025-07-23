@@ -242,10 +242,12 @@ const BillingSubscriptions = () => {
     <div className="space-y-5 min-h-screen">
       {/* Header */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-3 p-5 rounded-[12px] bg-white  ">
+        <button onClick={()=> navigate(-1)} className='cursor-pointer'>
         <h1 className="text-xl font-semibold text-black flex items-center gap-2">
           <ArrowLeft className="w-5 h-5 text-gray-600 cursor-pointer hover:text-gray-800" />
           Billing and Subscriptions
         </h1>
+        </button>
         <button
           onClick={() => navigate("/dashboard/create-price")}
           className="focus:outline-none"

@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import { ArrowLeft, Eye, EyeOff } from "lucide-react";
-import UploadImage from "../../components/UploadImages";
 
-const WineryManagment = () => {
+import { useNavigate } from "react-router-dom";
+import { ArrowLeft, Eye, EyeOff } from "lucide-react";
+import UploadImage from "../../../../components/UploadImages";
+
+const WineForm = () => {
   const [profileImage, setProfileImage] = useState(null);
+  const navigate = useNavigate();
 
   const PasswordInput = ({ label, required }) => {
     const [show, setShow] = useState(false);
@@ -30,22 +33,14 @@ const WineryManagment = () => {
   };
 
   return (
-    <div className="space-y-5">
-      {/* Header Box */}
-      <div className="flex flex-col items-start gap-[25px] flex-1 p-5 rounded-[12px] bg-white">
-        <h1 className="text-xl font-semibold text-black flex items-center gap-2">
-          <ArrowLeft className="w-5 h-5 text-gray-600 cursor-pointer hover:text-gray-800" />
-          User Profile Details
-        </h1>
-      </div>
-
+    <div>
       {/* Form Box */}
-      <div className="bg-white rounded-[12px] p-6 border border-gray-200">
+      <div className="bg-white rounded-[12px] p-6 ">
         <form className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {/* User Name */}
           <div>
             <label className="block text-sm font-medium text-black mb-2">
-              User Name<span className="text-red-500">*</span>
+              Winery Name<span className="text-red-500">*</span>
             </label>
             <input
               type="text"
@@ -74,6 +69,18 @@ const WineryManagment = () => {
             <input
               type="text"
               defaultValue="(707) 555-1234"
+              className="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-100 text-gray-700"
+            />
+          </div>
+
+          {/* Website url */}
+          <div>
+            <label className="block text-sm font-medium text-black mb-2">
+              Website URL
+            </label>
+            <input
+              type="text"
+              defaultValue="https://www.goldenvine.com"
               className="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-100 text-gray-700"
             />
           </div>
@@ -111,6 +118,52 @@ const WineryManagment = () => {
               </select>
             </div>
           </div>
+          {/* ZIP Code* */}
+          <div>
+            <label className="block text-sm font-medium text-black mb-2">
+              ZIP Code<span className="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              defaultValue="94558"
+              className="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-100 text-gray-700"
+            />
+          </div>
+
+          {/* Street Address* */}
+          <div>
+            <label className="block text-sm font-medium text-black mb-2">
+              Street Address <span className="text-red-500">*</span>
+            </label>
+
+            <input
+              type="text"
+              defaultValue="1457 Vineyard Lane"
+              className="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-100 text-gray-700"
+            />
+          </div>
+          {/* Visiting Hours** */}
+          <div className="md:col-span-2">
+            <label className="block text-sm font-medium text-black mb-2">
+              Visiting Hours<span className="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              defaultValue="Mon–Fri: 10am–6pm"
+              className="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-100 text-gray-700"
+            />
+          </div>
+          {/* Short Description*** */}
+          <div className="md:col-span-2">
+            <label className="block text-sm font-medium text-black mb-2">
+             Short Description<span className="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              defaultValue="A bold red with hints of black cherry, tobacco, and cocoa."
+              className="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-100 text-gray-700 min-h-20"
+            />
+          </div>
 
           {/* Upload Image */}
           <div className="md:col-span-2">
@@ -121,10 +174,11 @@ const WineryManagment = () => {
           </div>
 
           {/* Password Fields */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:col-span-2">
+          {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:col-span-2">
             <PasswordInput label="New Password" required />
             <PasswordInput label="Confirm Password" required />
           </div>
+          */}
            <div className="pt-4">
             <button
               type="submit"
@@ -132,11 +186,11 @@ const WineryManagment = () => {
             >
               Save Changes
             </button>
-          </div>
+          </div> 
         </form>
       </div>
     </div>
   );
 };
 
-export default WineryManagment;
+export default WineForm;
