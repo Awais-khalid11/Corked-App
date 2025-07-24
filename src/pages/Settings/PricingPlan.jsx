@@ -38,7 +38,7 @@ const PricingPlan = () => {
   return (
     <div className="space-y-5 ">
       {/* Header */}
-      <div className="flex flex-col items-start gap-1 p-5 rounded-[12px] bg-white max-w-6xl mx-auto">
+      <div className="flex flex-col items-start gap-1 p-5 rounded-[12px] bg-white  ">
         <h1 className="text-xl font-semibold text-black flex items-center gap-2">
           🍷 Corked Winery Pricing Tiers
         </h1>
@@ -50,7 +50,7 @@ const PricingPlan = () => {
       </div>
 
       {/* Cards */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 ">
         {/* Card Template */}
         {[
           {

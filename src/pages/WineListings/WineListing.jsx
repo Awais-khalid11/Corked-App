@@ -126,6 +126,7 @@ const WineListing = () => {
             </div>
           }
           search={true}
+          disableRowClick={true} 
         />
       </div>
     </div>

@@ -242,11 +242,11 @@ const BillingSubscriptions = () => {
     <div className="space-y-5 min-h-screen">
       {/* Header */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-3 p-5 rounded-[12px] bg-white  ">
-        <button onClick={()=> navigate(-1)} className='cursor-pointer'>
-        <h1 className="text-xl font-semibold text-black flex items-center gap-2">
-          <ArrowLeft className="w-5 h-5 text-gray-600 cursor-pointer hover:text-gray-800" />
-          Billing and Subscriptions
-        </h1>
+        <button onClick={() => navigate(-1)} className='cursor-pointer'>
+          <h1 className="text-xl font-semibold text-black flex items-center gap-2">
+            <ArrowLeft className="w-5 h-5 text-gray-600 cursor-pointer hover:text-gray-800" />
+            Billing and Subscriptions
+          </h1>
         </button>
         <button
           onClick={() => navigate("/dashboard/create-price")}
@@ -267,8 +267,8 @@ const BillingSubscriptions = () => {
             <button
               onClick={() => setActiveTab('user')}
               className={`px-6 py-3 text-sm font-medium border-b-2 ${activeTab === 'user'
-                  ? 'border-black text-black'
-                  : 'border-transparent text-gray-500 hover:text-gray-700'
+                ? 'border-black text-black'
+                : 'border-transparent text-gray-500 hover:text-gray-700'
                 }`}
             >
               User's Subscription Plan
@@ -276,8 +276,8 @@ const BillingSubscriptions = () => {
             <button
               onClick={() => setActiveTab('winery')}
               className={`px-6 py-3 text-sm font-medium border-b-2 ${activeTab === 'winery'
-                  ? 'border-black text-black'
-                  : 'border-transparent text-gray-500 hover:text-gray-700'
+                ? 'border-black text-black'
+                : 'border-transparent text-gray-500 hover:text-gray-700'
                 }`}
             >
               Winery's Subscription Plan
@@ -361,8 +361,8 @@ const BillingSubscriptions = () => {
                           <li
                             key={index}
                             className={`flex items-start gap-2 text-sm ${tier.textColor === 'text-white'
-                                ? 'text-white'
-                                : 'text-gray-700'
+                              ? 'text-white'
+                              : 'text-gray-700'
                               }`}
                           >
                             <Check className={`w-4 h-4 mt-0.5 ${tier.textColor === 'text-white' ? 'text-white' : 'text-green-500'
@@ -388,7 +388,7 @@ const BillingSubscriptions = () => {
                   title="Users With Activated Plans"
                   data={activatedPlansData}
                   columns={activatedPlansColumns}
-                  diableRowClick
+                  disableRowClick={true}
                   dropdowns={
                     <>
                       <DropDownButton

@@ -263,7 +263,7 @@ const WineryManagement = () => {
               onSelect={setMembershipStatus} // Updated setter function
             />
             
-            <div onClick={() => navigate('/dashboard/add-new-winery')}>
+            <div onClick={() => navigate('/dashboard/winery-profile-detail')}>
               <Button
                 buttonIcon="/assets/icons/add-circle.svg"
                 buttonText="Add New Winery"

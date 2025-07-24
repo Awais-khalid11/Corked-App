@@ -10,7 +10,6 @@ const adminNavItems = [
   { id: 2, name: "User Management", iconA: "/assets/icons/uma.svg", iconB: "/assets/icons/umb.svg", link: "/dashboard/user-management" },
   { id: 3, name: "Winery Management", iconA: "/assets/icons/icon2a.svg", iconB: "/assets/icons/icon2b.svg", link: "/dashboard/winery-management" },
   { id: 4, name: "Billing & Subscriptions", iconA: "/assets/icons/billinga.svg", iconB: "/assets/icons/billingb.svg", link: "/dashboard/billing-subscriptions" },
-
 ];
 
 const wineryNavItems = [
@@ -25,25 +24,22 @@ const wineryNavItems = [
   { id: 9, name: "Instant Report Generator", iconA: "/assets/icons/icon9a.svg", iconB: "/assets/icons/icon9b.svg", link: "/dashboard/instant-report" },
 ];
 
-
 const Sidebar = ({ isCompressed, isMobileOpen = false, onCloseMobile }) => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 
-  // 🛡 Fallback: show nothing until user is loaded
   if (!user) return null;
-  console.log(user)
-
   const navItems = user.role === "admin" ? adminNavItems : wineryNavItems;
 
   const sidebarClasses = `
-    ${isCompressed ? 'w-20' : 'w-72'} 
-    text-black h-screen ${isCompressed ? 'p-2' : 'p-5'} 
-    flex flex-col border-gray-200 bg-white 
-    transition-all duration-300 
-    fixed md:static top-0 left-0 z-40 
-    ${isMobileOpen ? 'translate-x-0' : '-translate-x-full'} 
+    ${isCompressed ? 'w-20' : 'w-72'}
+    text-black h-screen ${isCompressed ? 'p-2' : 'p-5'}
+    flex flex-col border-gray-200 bg-white
+    transition-all duration-300
+    fixed md:static top-0 left-0 z-40
+    ${isMobileOpen ? 'translate-x-0' : '-translate-x-full'}
     md:translate-x-0 transform md:transform-none
+    overflow-y-auto scrollbar-hide
   `;
 
   const handleLogout = () => {
@@ -74,19 +70,18 @@ const Sidebar = ({ isCompressed, isMobileOpen = false, onCloseMobile }) => {
       {/* Nav Items */}
       <nav className={`space-y-2 flex-1 mt-3 pb-4 ${isCompressed ? 'px-1' : ''}`}>
         {navItems.map((item) => (
-       <NavLink
-  key={item.id}
-  to={item.link}
-  end={item.link === "/dashboard" || item.link === "/admin-dashboard"} // 👈 only exact match for dashboard
-  className={({ isActive }) =>
-    `flex items-center ${isCompressed ? 'justify-center' : ''} p-3 rounded-lg transition-colors ${
-      isActive ? 'font-medium bg-primary text-white' : 'hover:bg-[#F9E9DD] text-black'
-    }`
-  }
-  onClick={onCloseMobile}
-  title={isCompressed ? item.name : ''}
->
-
+          <NavLink
+            key={item.id}
+            to={item.link}
+            end={item.link === "/dashboard" || item.link === "/admin-dashboard"}
+            className={({ isActive }) =>
+              `flex items-center ${isCompressed ? 'justify-center' : ''} p-3 rounded-lg transition-colors ${
+                isActive ? 'font-medium bg-primary text-white' : 'hover:bg-[#F9E9DD] text-black'
+              }`
+            }
+            onClick={onCloseMobile}
+            title={isCompressed ? item.name : ''}
+          >
             {({ isActive }) => (
               <>
                 <ReactSVG src={isActive ? item.iconA : item.iconB} className={`w-5 h-5 ${isCompressed ? '' : 'mr-3'}`} />
@@ -97,7 +92,7 @@ const Sidebar = ({ isCompressed, isMobileOpen = false, onCloseMobile }) => {
         ))}
       </nav>
 
-      {/* Logout Button */}
+      {/* Logout */}
       <div className={`pt-4 mt-4 border-t border-gray-200 ${isCompressed ? '' : '-mx-5 px-5'}`}>
         <button
           onClick={handleLogout}

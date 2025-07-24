@@ -7,7 +7,7 @@ const Navbar = ({ onSettingsClick, onToggleSidebar }) => {
 
   const handleDropdownSelect = (option) => {
     if (option.value === "Profile") {
-      navigate("/settings/user-profile");
+      navigate("/dashboard/settings/user-profile");
     }
   };
 
@@ -30,7 +30,7 @@ const Navbar = ({ onSettingsClick, onToggleSidebar }) => {
   ];
 
   const handleProfileClick = () => {
-    navigate("/settings/profile");
+    navigate("/dashboard/settings/profile");
   };
 
   return (

@@ -368,6 +368,7 @@ const UserDetails = () => {
         title="User Pricing Plan Details"
         data={pricingData}
         columns={pricingColumns}
+         disableRowClick={true}
         tableType="billing"
         dropdowns={
           <>
@@ -398,6 +399,7 @@ const UserDetails = () => {
         search={false}
         pagination={false}
         getPaginationRowModel={false}
+        disableRowClick={true} 
       />
       
       <BasicTable
