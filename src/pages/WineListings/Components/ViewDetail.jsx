@@ -13,7 +13,7 @@ const ViewDetail = () => {
   const columns = useMemo(
     () => [
       {
-        header: "Location",
+        header: "Value",
         accessorKey: "locationType",
         cell: ({ row }) => (
           <div className="flex items-center gap-3">

@@ -2,22 +2,22 @@ const EngagmentData = [
     {
         "metric": "🧡 Logs with Reactionss",
         "example": "125",
-        "action": ""
+        "action": "⋮"
     },
     {
         "metric": "💬 Logs with Comment",
         "example": "98",
-        "action": "4.0"
+        "action": "⋮"
     },
     {
         "metric": "🔄 Avg. Interactions per Log",
         "example": "70",
-        "action": "4.2"
+        "action": "⋮"
     },
     {
         "metric": "👤Most Engaged Visitor",
         "example": "45",
-        "action": "5.0"
+        "action": "⋮"
     }
     ]
 

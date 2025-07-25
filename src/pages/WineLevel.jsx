@@ -4,8 +4,8 @@ import data from "../data/WineLevelData.js";
 import DropDownButton from "../components/DropDownButton";
 
 const WineLevel = () => {
-  const [view, setView] = useState("Vertical View");
-  const [dateFilter, setDateFilter] = useState("Last 30 Days");
+  const [view, setView] = useState("Varietal");
+  const [dateFilter, setDateFilter] = useState("Date");
 
   const tableData = useMemo(() => data, []);
 
@@ -69,7 +69,7 @@ const WineLevel = () => {
             <>
               <DropDownButton
                 label={view}
-                options={["Vertical", "Table View"]}
+                options={["Varietal", "Table View"]}
                 onSelect={setView}
               />
               <DropDownButton

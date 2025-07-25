@@ -15,7 +15,7 @@ const DetailHeader = () => {
           >
             <img src={Arrowleft} alt="Arrow left" />
             <h2 className="font-bold text-[20px] leading-[1.2] text-[rgba(37,37,37,1)]">
-              Add Wine Detail Page 
+              Edit Wine Detail Page 
             </h2>
           </button>
         </div>

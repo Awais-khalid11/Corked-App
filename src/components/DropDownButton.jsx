@@ -102,7 +102,7 @@ const DropDownButton = ({
         <div
           className={`
             absolute ${dropdownStyle.position === "right" ? "right-0" : "left-0"} 
-            mt-2 bg-white border border-gray-200 rounded-md shadow-lg z-50
+            mt-2 bg-white border border-gray-200 rounded-md left-0 md:right-0 shadow-lg z-50
             ${dropdownClassName}
           `}
           style={{

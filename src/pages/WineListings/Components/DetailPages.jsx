@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import Input from "../../../components/Input";
-import Selector from "../../../components/Selector";
 import TextArea from "../../../components/TextArea";
 import UploadImage from "../../../components/UploadImages";
 import DetailHeader from "./DetailHeader";
 import { Link } from "react-router-dom";
 
 const DetailPages = () => {
+  const [wineType, setWineType] = useState("");
+  const [country, setCountry] = useState("");
+  const [region, setRegion] = useState("");
+
   return (
-    <div className="">
+    <div>
       <DetailHeader />
 
       <div className="bg-white rounded-[12px] p-4 md:p-6">
@@ -28,31 +31,73 @@ const DetailPages = () => {
             />
           </div>
           <div className="w-full md:w-1/3">
-            <Selector
-              selectorLabel="Wine Type"
-              selectorId="wine-type"
-              selectorPlaceholder="Red"
-              options={["Red", "White", "Rosé", "Sparkling"]}
-            />
+            <label className="text-sm font-medium text-gray-700 mb-2 block">
+              Wine Type
+            </label>
+            <select
+              id="wine-type"
+              value={wineType}
+              onChange={(e) => setWineType(e.target.value)}
+              className={`w-full rounded-[12px] border border-gray-300 py-[11px] px-4 text-sm font-medium bg-white focus:outline-none focus:ring-2 focus:ring-black transition-all ${
+                wineType ? "text-black" : "text-gray-400"
+              }`}
+            >
+              <option value="" disabled hidden>
+                Red
+              </option>
+              {["Red", "White", "Rosé", "Sparkling"].map((opt) => (
+                <option key={opt} value={opt}>
+                  {opt}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
 
         <div className="flex flex-col md:flex-row gap-5 mb-5">
           <div className="w-full md:w-1/2">
-            <Selector
-              selectorLabel="Country"
-              selectorId="country"
-              selectorPlaceholder="United States"
-              options={["USA", "France", "Italy", "Spain"]}
-            />
+            <label className="text-sm font-medium text-gray-700 mb-2 block">
+              Country
+            </label>
+            <select
+              id="country"
+              value={country}
+              onChange={(e) => setCountry(e.target.value)}
+              className={`w-full rounded-[12px] border border-gray-300 py-[11px] px-4 text-sm font-medium bg-white focus:outline-none focus:ring-2 focus:ring-black transition-all ${
+                country ? "text-black" : "text-gray-400"
+              }`}
+            >
+              <option value="" disabled hidden>
+                United States
+              </option>
+              {["USA", "France", "Italy", "Spain"].map((opt) => (
+                <option key={opt} value={opt}>
+                  {opt}
+                </option>
+              ))}
+            </select>
           </div>
           <div className="w-full md:w-1/2">
-            <Selector
-              selectorLabel="Region"
-              selectorId="region"
-              selectorPlaceholder="California"
-              options={["Napa", "Sonoma", "Paso Robles", "Central Coast"]}
-            />
+            <label className="text-sm font-medium text-gray-700 mb-2 block">
+              Region
+            </label>
+            <select
+              id="region"
+              value={region}
+              onChange={(e) => setRegion(e.target.value)}
+              className={`w-full rounded-[12px] border border-gray-300 py-[11px] px-4 text-sm font-medium bg-white focus:outline-none focus:ring-2 focus:ring-black transition-all ${
+                region ? "text-black" : "text-gray-400"
+              }`}
+            >
+              <option value="" disabled hidden>
+                California
+              </option>
+              {["Napa", "Sonoma", "Paso Robles", "Central Coast"].map((opt) => (
+                <option key={opt} value={opt}>
+                  {opt}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
 
@@ -90,7 +135,7 @@ const DetailPages = () => {
         </div>
 
         <div className="text-center md:text-left">
-          <button className="bg-black rounded-[12px] text-white font-semibold text-sm py-[11px] px-10 cursor-pointer  w-full md:w-auto">
+          <button className="bg-black rounded-[12px] text-white font-semibold text-sm py-[11px] px-10 cursor-pointer w-full md:w-auto">
             Publish Wine
           </button>
         </div>

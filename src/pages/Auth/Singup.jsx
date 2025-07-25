@@ -51,7 +51,7 @@ const Signup = () => {
               </p>
 
               <form onSubmit={handleSubmit}>
-                <div className="flex gap-5">
+                <div className="flex flex-col md:flex-row gap-5">
                   <Input
                     inputLabel="Winery Name"
                     inputPlaceholder="Golden Vine Estates"
@@ -68,7 +68,7 @@ const Signup = () => {
                   />
                 </div>
 
-                <div className="flex gap-5">
+                <div className="flex flex-col md:flex-row gap-5">
                   <Input
                     inputLabel="Phone Number"
                     inputPlaceholder="707 555-1234"
@@ -87,7 +87,7 @@ const Signup = () => {
                   />
                 </div>
 
-                <div className="flex gap-5">
+                <div className="flex flex-col md:flex-row gap-5">
                   <Selector
                     selectorLabel="Country"
                     selectorId="country"
@@ -111,7 +111,7 @@ const Signup = () => {
                   />
                 </div>
 
-                <div className="flex gap-5">
+                <div className="flex flex-col md:flex-row gap-5">
                   <Input
                     inputLabel="ZIP Code"
                     inputPlaceholder="Enter Zip Code"
@@ -143,7 +143,7 @@ const Signup = () => {
                   <UploadImage />
                 </div>
 
-                <div className="flex gap-5">
+                <div className="flex flex-col md:flex-row gap-5">
                   <Input
                     inputLabel="Create Password"
                     inputPlaceholder="•••••••••••••"
@@ -177,11 +177,9 @@ const Signup = () => {
                 <div className="flex justify-between mt-4 mb-5 text-sm">
                   <label htmlFor="rememberme" className="flex items-center gap-1">
                     <input type="checkbox" id="rememberme" />
-                    Remember me
+                    I have read and agree to the <b>Terms of Service</b>
                   </label>
-                  <button className="text-black" type="button">
-                    Forgot Password?
-                  </button>
+                 
                 </div>
 
                 <button

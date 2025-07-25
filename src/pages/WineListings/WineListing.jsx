@@ -63,7 +63,10 @@ const WineListing = () => {
         header: "Avg Rating",
         accessorKey: "rating",
         cell: ({ getValue }) => (
-          <span className="text-gray-700">{getValue()}</span>
+        <div className="flex items-center gap-1 font-medium">
+            <span className="text-yellow-500">★★★★</span>
+            <span className="text-gray-800">{getValue()}</span>
+          </div>
         ),
       },
       {
@@ -107,7 +110,7 @@ const WineListing = () => {
           data={ListingData}
           columns={columns}
           dropdowns={
-            <div className="flex flex-wrap gap-2">
+<div className="flex flex-wrap gap-2 relative z-50">
               <DropDownButton
                 label={wine}
                 options={["By Region", "Table View"]}

@@ -20,7 +20,7 @@ const wineryNavItems = [
   { id: 5, name: "Engagement Summary", iconA: "/assets/icons/icon5a.svg", iconB: "/assets/icons/icon5b.svg", link: "/dashboard/engagement-summary" },
   { id: 6, name: "Visitor Breakdown", iconA: "/assets/icons/icon6a.svg", iconB: "/assets/icons/icon6b.svg", link: "/dashboard/visitor-breakdown" },
   { id: 7, name: "Wine Club Insights", iconA: "/assets/icons/icon7a.svg", iconB: "/assets/icons/icon7b.svg", link: "/dashboard/wine-club" },
-  { id: 8, name: "Benchmarking", iconA: "/assets/icons/icon8a.svg", iconB: "/assets/icons/icon8b.svg", link: "/dashboard/bench-marking" },
+  { id: 8, name: "Benchmark Analysis", iconA: "/assets/icons/icon8a.svg", iconB: "/assets/icons/icon8b.svg", link: "/dashboard/bench-marking" },
   { id: 9, name: "Instant Report Generator", iconA: "/assets/icons/icon9a.svg", iconB: "/assets/icons/icon9b.svg", link: "/dashboard/instant-report" },
 ];
 

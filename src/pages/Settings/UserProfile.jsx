@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ArrowLeft } from 'lucide-react';
-import UploadImage from '../../components/UploadImages'
+import UploadImage from '../../components/UploadImages';
 
 const UserProfile = () => {
   const [profileImage, setProfileImage] = useState(null);
@@ -148,12 +148,23 @@ const UserProfile = () => {
             />
           </div>
 
-          {/* ✅ Upload Image using reusable component */}
-          <div className="md:col-span-2">
+          {/* Upload Image */}
+          <div className="md:col-span-2 pointer-events-auto">
             <UploadImage
               image={profileImage}
               onImageSelect={(file) => setProfileImage(file)}
+              disableOverlayClick
             />
+          </div>
+
+          {/* Save Button */}
+          <div className="md:col-span-2 pt-4">
+            <button
+              type="button"
+              className="flex w-[161px] h-[42px] px-[13px] py-[8px] justify-center items-center gap-[5px] rounded-[12px] bg-[#252525] text-white text-sm font-medium"
+            >
+              Save Changes
+            </button>
           </div>
         </form>
       </div>

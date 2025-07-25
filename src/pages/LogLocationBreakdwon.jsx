@@ -11,7 +11,7 @@ const LogLocationBreakdown = () => {
   const columns = useMemo(
     () => [
       {
-        header: "Location",
+        header: "Location Type",
         accessorKey: "locationType",
         cell: ({ row }) => (
           <div className="flex items-center gap-3">
@@ -27,7 +27,7 @@ const LogLocationBreakdown = () => {
         ),
       },
       {
-        header: "Logs",
+        header: "Logs(Onsite/Offsie)",
         accessorKey: "logs",
         cell: ({ getValue }) => (
           <span className="text-gray-700">{getValue()}</span>

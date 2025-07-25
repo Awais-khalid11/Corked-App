@@ -180,7 +180,7 @@ const InstantReport = () => {
         {/* Top Wine Data Table */}
         <div className="bg-white rounded-xl  border border-gray-200">
           <BasicTable
-            title="Top Wine Data Table"
+            title="Top Wines by Engagement table"
             data={topWineData}
             columns={topWineColumns}
             dropdowns={

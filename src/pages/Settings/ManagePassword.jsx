@@ -53,7 +53,7 @@ const ManagePassword = () => {
           {/* Save Button */}
           <div className="pt-4">
             <button
-              type="submit"
+              type="button"
               className="flex w-[161px] h-[42px] px-[13px] py-[8px] justify-center items-center gap-[5px] rounded-[12px] bg-[#252525] text-white text-sm font-medium"
             >
               Save Changes
