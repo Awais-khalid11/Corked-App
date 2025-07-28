@@ -1,7 +1,6 @@
-import { ReactSVG } from "react-svg";
+ import { ReactSVG } from "react-svg";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Bell } from "lucide-react";
 
 const dropdownOptions = [
   {
@@ -62,13 +61,17 @@ const Navbar = ({ onSettingsClick, onToggleSidebar }) => {
       {/* Right Side */}
       <div className="flex items-center gap-4 ml-auto relative">
         {/* Notification Icon */}
-        <button
+        <div
+          className="p-1.5 flex items-center justify-center cursor-pointer relative"
           onClick={handleNotificationToggle}
-          className="relative p-1.5 text-gray-600 hover:text-gray-800 transition-colors"
         >
-          <Bell size={24} />
-          <span className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
-        </button>
+          <ReactSVG
+            src="/assets/icons/notification.svg"
+            className="w-6 h-6 text-gray-600 hover:opacity-80"
+          />
+          {/* Notification badge */}
+          <span className="absolute top-2 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+        </div>
 
         {/* Settings Icon */}
         <ReactSVG
@@ -130,7 +133,7 @@ const Navbar = ({ onSettingsClick, onToggleSidebar }) => {
           </div>
         )}
 
-{showNotifications && (
+      {showNotifications && (
   <div className={`absolute top-full right-0 mt-2 ${isMobile ? 'w-72' : 'w-96'} bg-white rounded-xl shadow-lg border border-gray-100 z-50 overflow-hidden`}>
     
     {/* Notifications List */}
