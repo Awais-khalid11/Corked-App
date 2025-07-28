@@ -159,7 +159,7 @@ const Navbar = ({ onSettingsClick, onToggleSidebar }) => {
     ))}
 
     {/* Footer */}
-    <div className="border-t border-gray-100 bg-gray-50">
+    <div className="border-t border-gray-300 bg-gray-50">
       <div className="text-center py-3">
         <button className="text-blue-700 font-medium text-sm hover:underline">
           View All Notifications →
