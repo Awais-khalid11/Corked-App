@@ -1,9 +1,9 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import DetailHeader from "./DetailHeader";
 import Input from "../../../components/Input";
 import TextArea from "../../../components/TextArea";
 import UploadImage from "../../../components/UploadImages";
-import DetailHeader from "./DetailHeader";
-import { Link } from "react-router-dom";
 
 const DetailPages = () => {
   const [wineType, setWineType] = useState("");
@@ -38,9 +38,8 @@ const DetailPages = () => {
               id="wine-type"
               value={wineType}
               onChange={(e) => setWineType(e.target.value)}
-              className={`w-full rounded-[12px] border border-gray-300 py-[11px] px-4 text-sm font-medium bg-white focus:outline-none focus:ring-2 focus:ring-black transition-all ${
-                wineType ? "text-black" : "text-gray-400"
-              }`}
+              className={`custom-select w-full rounded-[12px] border border-gray-300 py-[11px] px-4 text-sm font-medium bg-white focus:outline-none focus:ring-2 focus:ring-black transition-all ${wineType ? "text-black" : "text-gray-400"
+                }`}
             >
               <option value="" disabled hidden>
                 Red
@@ -63,9 +62,8 @@ const DetailPages = () => {
               id="country"
               value={country}
               onChange={(e) => setCountry(e.target.value)}
-              className={`w-full rounded-[12px] border border-gray-300 py-[11px] px-4 text-sm font-medium bg-white focus:outline-none focus:ring-2 focus:ring-black transition-all ${
-                country ? "text-black" : "text-gray-400"
-              }`}
+              className={`custom-select w-full rounded-[12px] border border-gray-300 py-[11px] px-4 text-sm font-medium bg-white focus:outline-none focus:ring-2 focus:ring-black transition-all ${wineType ? "text-black" : "text-gray-400"
+                }`}
             >
               <option value="" disabled hidden>
                 United States
@@ -85,9 +83,8 @@ const DetailPages = () => {
               id="region"
               value={region}
               onChange={(e) => setRegion(e.target.value)}
-              className={`w-full rounded-[12px] border border-gray-300 py-[11px] px-4 text-sm font-medium bg-white focus:outline-none focus:ring-2 focus:ring-black transition-all ${
-                region ? "text-black" : "text-gray-400"
-              }`}
+              className={`custom-select w-full rounded-[12px] border border-gray-300 py-[11px] px-4 text-sm font-medium bg-white focus:outline-none focus:ring-2 focus:ring-black transition-all ${wineType ? "text-black" : "text-gray-400"
+                }`}
             >
               <option value="" disabled hidden>
                 California
@@ -143,5 +140,6 @@ const DetailPages = () => {
     </div>
   );
 };
+
 
 export default DetailPages;

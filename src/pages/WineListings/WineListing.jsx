@@ -15,6 +15,20 @@ const WineListing = () => {
   const tableData = useMemo(() => data, []);
   const navigate = useNavigate(); 
 
+  const handleActionSelect = (action, rowData) => {
+    switch(action) {
+      case "Edit":
+        navigate(`/dashboard/edit-wine/${rowData.id}`);
+        break;
+      case "Delete":
+        // Add your delete logic here
+        console.log("Deleting:", rowData);
+        break;
+      default:
+        break;
+    }
+  };
+
   const columns = useMemo(
     () => [
       {
@@ -63,7 +77,7 @@ const WineListing = () => {
         header: "Avg Rating",
         accessorKey: "rating",
         cell: ({ getValue }) => (
-        <div className="flex items-center gap-1 font-medium">
+          <div className="flex items-center gap-1 font-medium">
             <span className="text-yellow-500">★★★★</span>
             <span className="text-gray-800">{getValue()}</span>
           </div>
@@ -72,13 +86,15 @@ const WineListing = () => {
       {
         header: "Action",
         accessorKey: "action",
-        cell: () => (
+        cell: ({ row }) => (
           <DropDownButton
-            label={<BsThreeDotsVertical />}
+            label={<BsThreeDotsVertical className="text-gray-600" />}
             options={["Edit", "Delete"]}
-            onSelect={(val) => console.log(val)}
+            onSelect={(val) => handleActionSelect(val, row.original)}
             showIcon={false}
             unstyled
+            menuClassName="right-0 mt-2 w-32"
+            buttonClassName="p-1 hover:bg-gray-100 rounded"
           />
         ),
       },
@@ -110,7 +126,7 @@ const WineListing = () => {
           data={ListingData}
           columns={columns}
           dropdowns={
-<div className="flex flex-wrap gap-2 relative z-50">
+            <div className="flex flex-wrap gap-2 relative z-50">
               <DropDownButton
                 label={wine}
                 options={["By Region", "Table View"]}

@@ -13,9 +13,17 @@ const MainLayouts = () => {
   const [showSidebar, setShowSidebar] = useState(true);
 
   const handleSettingsClick = () => {
-    setIsSettingsOpen(true);
-    setActiveSettingItem("profile");
-    navigate("/dashboard/settings/profile");
+    // Toggle the settings open state
+    setIsSettingsOpen(prev => !prev);
+    
+    // If opening, navigate to profile settings
+    if (!isSettingsOpen) {
+      setActiveSettingItem("profile");
+      navigate("/dashboard/settings/profile");
+    } else {
+      // If closing, navigate back to dashboard
+      navigate("/dashboard");
+    }
   };
 
   const handleSettingsClose = () => {
@@ -32,7 +40,7 @@ const MainLayouts = () => {
       setIsSettingsOpen(false);
     }
   }, [location.pathname]);
-console.warn(isSettingsOpen)
+
   return (
     <div className="flex h-screen overflow-hidden">
       {/* Sidebar (Responsive) */}
@@ -48,7 +56,6 @@ console.warn(isSettingsOpen)
           isMobileOpen={showSidebar}
           onCloseMobile={() => setShowSidebar(false)}
         />
-
       </div>
 
       {/* Settings Sidebar */}
@@ -75,6 +82,5 @@ console.warn(isSettingsOpen)
     </div>
   );
 };
-
 
 export default MainLayouts;
