@@ -33,7 +33,7 @@ const Sidebar = ({ isCompressed, isMobileOpen = false, onCloseMobile }) => {
 
   const sidebarClasses = `
     ${isCompressed ? 'w-20' : 'w-72'}
-    text-black h-screen ${isCompressed ? 'p-2' : 'p-5'}
+    text-black h-full ${isCompressed ? 'p-2' : 'p-5'}
     flex flex-col border-r border-gray-200 bg-white
     transition-all duration-300
     fixed md:relative top-0 left-0 z-40
