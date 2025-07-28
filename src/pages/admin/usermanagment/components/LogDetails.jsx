@@ -299,7 +299,7 @@ const LogDetails = () => {
                 <div className="w-full md:w-2/3 flex flex-col">
                     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 mb-4">
                         <h2 className="text-2xl font-bold text-[#252525]">{logData.wineName}</h2>
-                        <button className="border border-black rounded-[12px] p-3 flex items-center gap-2 self-start sm:self-auto">
+                        <button className="border border-black rounded-[12px] p-3 flex items-center gap-2 self-start sm:self-auto whitespace-nowrap">
                             <FiTrash2 size={18} />
                             Delete Log
                         </button>
@@ -381,8 +381,8 @@ const LogDetails = () => {
                 <div className="flex border-gray-200 px-4">
                     <button
                         className={`px-6 py-3 text-lg font-semibold ${activeTab === "sipbacks"
-                                ? "border-b-2 border-[#51111D] text-[#51111D]"
-                                : "text-gray-500 hover:text-gray-700"
+                            ? "border-b-2 border-[#51111D] text-[#51111D]"
+                            : "text-gray-500 hover:text-gray-700"
                             }`}
                         onClick={() => setActiveTab("sipbacks")}
                     >
@@ -390,8 +390,8 @@ const LogDetails = () => {
                     </button>
                     <button
                         className={`px-6 py-3 text-lg font-semibold ${activeTab === "comments"
-                                ? "border-b-2 border-[#81001E] text-[#81001E]"
-                                : "text-gray-500 hover:text-gray-700"
+                            ? "border-b-2 border-[#81001E] text-[#81001E]"
+                            : "text-gray-500 hover:text-gray-700"
                             }`}
                         onClick={() => setActiveTab("comments")}
                     >

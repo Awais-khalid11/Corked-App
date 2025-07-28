@@ -1,16 +1,16 @@
-import React, { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Button from '../../../components/Button';
+import React, { useMemo, useState } from 'react';
 import BasicTable from '../../../components/BasicTable';
 import DropDownButton from '../../../components/DropDownButton';
-import Button from '../../../components/Button';
 import Jackson from '../../../../public/assets/icons/actab3.svg'; // Assuming Jackson is a generic placeholder icon
 
 const WineryManagement = () => {
   const [region, setRegion] = useState('Region');
   // Updated state variable name to match the new label
-  const [winerySize, setWinerySize] = useState('Winery Size'); 
+  const [winerySize, setWinerySize] = useState('Winery Size');
   // Updated state variable name to match the new label
-  const [membershipStatus, setMembershipStatus] = useState('Membership Status'); 
+  const [membershipStatus, setMembershipStatus] = useState('Membership Status');
 
   const navigate = useNavigate();
 
@@ -252,17 +252,17 @@ const WineryManagement = () => {
             />
             {/* Updated label to use 'winerySize' state variable */}
             <DropDownButton
-              label={winerySize} 
+              label={winerySize}
               options={['Winery Size', 'Small', 'Medium', 'Large']}
               onSelect={setWinerySize} // Updated setter function
             />
             {/* Updated label to use 'membershipStatus' state variable */}
             <DropDownButton
-              label={membershipStatus} 
+              label={membershipStatus}
               options={['Membership Status', 'Active', 'Inactive', 'Pending']}
               onSelect={setMembershipStatus} // Updated setter function
             />
-            
+
             <div onClick={() => navigate('/dashboard/winery-profile-detail')}>
               <Button
                 buttonIcon="/assets/icons/add-circle.svg"
@@ -272,12 +272,12 @@ const WineryManagement = () => {
           </>
         }
         search={false}
-        getPaginationRowModel={true}
-        disableRowClick={true}
+        pagination={true} disableRowClick={true}
         onRowClick={(winery) => navigate(`/dashboard/winery-detail/${winery.id}`)}
       />
     </div>
   );
 };
+
 
 export default WineryManagement;

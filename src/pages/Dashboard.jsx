@@ -110,6 +110,10 @@ const Dashboard = () => {
       { header: "Avg Logs Per Winery", accessorKey: "value", cell: ({ getValue }) => <span className="text-gray-700">{getValue()}</span> },
       { header: "Avg wine Rating", accessorKey: "avg", cell: ({ getValue }) => <span className="text-gray-700">{getValue()}</span> },
       { header: "Most Logged Wine", accessorKey: "most", cell: ({ getValue }) => <span className="text-gray-700">{getValue()}</span> },
+      { header: "Most Engaged Winery", accessorKey: "engaged", cell: ({ getValue }) => <span className="text-gray-700">{getValue()}</span> },
+      { header: "Most Purchased Add-On", accessorKey: "purchased", cell: ({ getValue }) => <span className="text-gray-700">{getValue()}</span> },
+
+
     ],
     []
   );
@@ -192,8 +196,8 @@ const Dashboard = () => {
               columns={performanceColumns}
               dropdowns={
                 <>
-                  <DropDownButton label="Region" options={["Napa Valley", "Sonoma Contry", "Mendocino Country","Anderson Valley","Russian River Valley"]} onSelect={() => { }} />
-                  <DropDownButton label="Wine Type" options={["Red", "Rose", "White","Sparkling","Dessert&Fortified"]} onSelect={() => { }} />
+                  <DropDownButton label="Region" options={["Napa Valley", "Sonoma Contry", "Mendocino Country", "Anderson Valley", "Russian River Valley"]} onSelect={() => { }} />
+                  <DropDownButton label="Wine Type" options={["Red", "Rose", "White", "Sparkling", "Dessert&Fortified"]} onSelect={() => { }} />
                   <DropDownButton label="Last 30 Days" options={["7 Days", "30 Days", "90 Days"]} onSelect={() => { }} />
                 </>
               }
@@ -207,7 +211,7 @@ const Dashboard = () => {
               dropdowns={
                 <>
                   <DropDownButton label="Active User" options={["All", "Active", "Inactive"]} onSelect={() => { }} />
-                  <DropDownButton label="Membership status" options={["Free", "VIP",  "Premium"]} onSelect={() => { }} />
+                  <DropDownButton label="Membership status" options={["Free", "VIP", "Premium"]} onSelect={() => { }} />
                   <DropDownButton label="Last 30 Days" options={["7 Days", "30 Days", "90 Days"]} onSelect={() => { }} />
                 </>
               }
@@ -221,7 +225,7 @@ const Dashboard = () => {
               dropdowns={
                 <>
                   <DropDownButton label="Winery Tier" options={["Free", "Standard"]} onSelect={() => { }} />
-                  <DropDownButton label="Winery status" options={["Active", "Inactive",  "Pending"]} onSelect={() => { }} />
+                  <DropDownButton label="Winery status" options={["Active", "Inactive", "Pending"]} onSelect={() => { }} />
                 </>
               }
             />
@@ -284,5 +288,6 @@ const Dashboard = () => {
     </div>
   );
 };
+
 
 export default Dashboard;

@@ -182,7 +182,7 @@ const BasicTable = ({
                   {row.getVisibleCells().map((cell, index) => (
                     <td
                       key={`${cell.id}-${index}`}
-                      className="py-7 px-5 text-sm border-b border-[rgba(37,37,37,0.1)] leading-[1]"
+                      className="py-7 px-5 text-sm border-b border-[rgba(37,37,37,0.1)] leading-[1] whitespace-nowrap "
                     >
                       {flexRender(cell.column.columnDef.cell, cell.getContext())}
                     </td>

@@ -68,6 +68,7 @@ const Sidebar = ({ isCompressed, isMobileOpen = false, onCloseMobile }) => {
       </div>
 
       {/* Nav Items */}
+      
       <nav className={`space-y-2 flex-1 mt-3 pb-4 ${isCompressed ? 'px-1' : ''}`}>
         {navItems.map((item) => (
           <NavLink
@@ -93,8 +94,7 @@ const Sidebar = ({ isCompressed, isMobileOpen = false, onCloseMobile }) => {
       </nav>
 
       {/* Logout */}
-      <div className={`pt-4 mt-4 border-t border-gray-200 ${isCompressed ? '' : '-mx-5 px-5'}`}>
-        <button
+ <div className={`flex-shrink-0 pt-4 mt-auto border-t border-gray-200 ${isCompressed ? '' : '-mx-5 px-5'}`}>        <button
           onClick={handleLogout}
           className={`flex items-center w-full ${isCompressed ? 'justify-center p-3' : 'p-3'} rounded-lg hover:bg-gray-100 text-black`}
           title={isCompressed ? "Logout" : ""}
@@ -104,23 +104,7 @@ const Sidebar = ({ isCompressed, isMobileOpen = false, onCloseMobile }) => {
         </button>
       </div>
 
-      {/* Custom scrollbar styling (added to global CSS would be better) */}
-      <style jsx>{`
-        .overflow-y-auto::-webkit-scrollbar {
-          width: 4px;
-          height: 4px;
-        }
-        .overflow-y-auto::-webkit-scrollbar-track {
-          background: #f1f1f1;
-        }
-        .overflow-y-auto::-webkit-scrollbar-thumb {
-          background: #888;
-          border-radius: 2px;
-        }
-        .overflow-y-auto::-webkit-scrollbar-thumb:hover {
-          background: #555;
-        }
-      `}</style>
+     
     </div>
   );
 };

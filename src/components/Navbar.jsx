@@ -1,6 +1,7 @@
 import { ReactSVG } from "react-svg";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { Bell } from "lucide-react";
 
 const dropdownOptions = [
   {
@@ -61,17 +62,13 @@ const Navbar = ({ onSettingsClick, onToggleSidebar }) => {
       {/* Right Side */}
       <div className="flex items-center gap-4 ml-auto relative">
         {/* Notification Icon */}
-        <div
-          className="p-1.5 flex items-center justify-center cursor-pointer relative"
+        <button
           onClick={handleNotificationToggle}
+          className="relative p-1.5 text-gray-600 hover:text-gray-800 transition-colors"
         >
-          <ReactSVG
-            src="/assets/icons/notification.svg"
-            className="w-6 h-6 text-gray-600 hover:opacity-80"
-          />
-          {/* Notification badge */}
-          <span className="absolute top-2 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
-        </div>
+          <Bell size={24} />
+          <span className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+        </button>
 
         {/* Settings Icon */}
         <ReactSVG
@@ -133,39 +130,42 @@ const Navbar = ({ onSettingsClick, onToggleSidebar }) => {
           </div>
         )}
 
-        {/* Notification Dropdown - Compressed on mobile */}
-        {showNotifications && (
-          <div className={`absolute top-full right-0 mt-2 ${isMobile ? 'w-72' : 'w-96'} bg-white rounded-xl shadow-lg border border-gray-100 z-50 overflow-hidden`}>
-            <div className="p-3">
-              {[1, 2, 3, 4].map((_, i) => (
-                <div key={i}>
-                  <div className="flex items-start gap-3 py-2">
-                    <img
-                      src="https://i.pravatar.cc/40?img=3"
-                      alt="Avatar"
-                      className={`${isMobile ? 'w-8 h-8' : 'w-10 h-10'} rounded-full object-cover flex-shrink-0`}
-                    />
-                    <div className="flex-1 min-w-0">
-                      <div className="flex justify-between items-start">
-                        <span className="font-semibold text-sm truncate">Drew Cano</span>
-                        <span className="text-xs text-gray-500 whitespace-nowrap ml-2">09:42 AM</span>
-                      </div>
-                      <p className="text-sm text-gray-700 truncate">marked job #1021 as Completed</p>
-                    </div>
-                    <span className="w-2 h-2 bg-green-500 rounded-full mt-1.5 flex-shrink-0" />
-                  </div>
-                  {i < 3 && <div className="border-t border-gray-100 my-1"></div>}
-                </div>
-              ))}
+{showNotifications && (
+  <div className={`absolute top-full right-0 mt-2 ${isMobile ? 'w-72' : 'w-96'} bg-white rounded-xl shadow-lg border border-gray-100 z-50 overflow-hidden`}>
+    
+    {/* Notifications List */}
+    {[1, 2, 3, 4].map((_, i) => (
+      <div key={i}>
+        <div className="flex items-start gap-3 px-4 py-3">
+          <img
+            src="https://i.pravatar.cc/40?img=3"
+            alt="Avatar"
+            className={`${isMobile ? 'w-8 h-8' : 'w-10 h-10'} rounded-full object-cover flex-shrink-0`}
+          />
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center gap-2 mb-1">
+              <span className="font-semibold text-sm text-gray-800">Drew Cano</span>
+              <span className="text-xs text-gray-500">09:42 AM</span>
             </div>
-            <div className="border-t border-gray-100"></div>
-            <div className="text-center py-2">
-              <button className="text-blue-600 font-medium text-sm hover:underline">
-                View All Notifications →
-              </button>
-            </div>
+            <p className="text-sm text-gray-600">marked job #1021 as Completed</p>
           </div>
-        )}
+          <span className="w-2.5 h-2.5 bg-green-500 rounded-full mt-1.5 flex-shrink-0" />
+        </div>
+        {i < 3 && <div className="border-t border-gray-200" />}
+      </div>
+    ))}
+
+    {/* Footer */}
+    <div className="border-t border-gray-100 bg-gray-50">
+      <div className="text-center py-3">
+        <button className="text-blue-700 font-medium text-sm hover:underline">
+          View All Notifications →
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
       </div>
     </div>
   );

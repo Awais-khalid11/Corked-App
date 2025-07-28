@@ -6,6 +6,8 @@ const AdminPerformanceData = [
     value:"28.3",
     avg:"4.3 grapes",
     most:"carbnet Franc 2020",
+    engaged:"Willow Valley Wines",
+    purchased:"Explore Tab Promo",
   },
   
 ];

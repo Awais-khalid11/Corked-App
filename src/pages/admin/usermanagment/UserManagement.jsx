@@ -315,8 +315,7 @@ const UserManagment = () => {
           </>
         }
         search={false}
-        getPaginationRowModel={true}
-        disableRowClick={true}
+        pagination={true} disableRowClick={true}
         onRowClick={(user) => navigate(`/dashboard/user-detail/${user.id}`)}
       />
     </div>

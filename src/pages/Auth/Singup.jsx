@@ -26,7 +26,7 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row gap-4 p-2.5 bg-[#F6F6F6] justify-center">
+<div className="flex flex-col lg:flex-row gap-4 px-4 py-6 bg-[#F6F6F6] justify-center">
       <div className="hidden lg:block lg:w-1/2">
         <img
           src={Main}
@@ -177,7 +177,7 @@ const Signup = () => {
                 <div className="flex justify-between mt-4 mb-5 text-sm">
                   <label htmlFor="rememberme" className="flex items-center gap-1">
                     <input type="checkbox" id="rememberme" />
-                    I have read and agree to the <b>Terms of Service</b>
+                    I have read and agree to theTerms of Service
                   </label>
                  
                 </div>
