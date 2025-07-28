@@ -39,7 +39,7 @@ const Sidebar = ({ isCompressed, isMobileOpen = false, onCloseMobile }) => {
     fixed md:relative top-0 left-0 z-40
     ${isMobileOpen ? 'translate-x-0' : '-translate-x-full'}
     md:translate-x-0 transform md:transform-none
-    overflow-y-auto
+    overflow-y-auto 
   `;
 
   const handleLogout = () => {

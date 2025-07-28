@@ -147,7 +147,7 @@ const WineListing = () => {
           data={ListingData}
           columns={columns}
           dropdowns={
-            <div className="flex flex-wrap gap-2 relative z-50">
+            <div className="flex flex-wrap gap-2 relative ">
               <DropDownButton
                 label={wine}
                 options={["By Region", "Table View"]}
