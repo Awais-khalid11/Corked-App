@@ -167,7 +167,7 @@ const Editprice = () => {
               type="submit"
               className="w-[161px] h-[42px] px-[13px] py-[8px] flex justify-center items-center gap-[5px] rounded-[12px] bg-[#252525] text-white text-sm font-medium"
             >
-              Create Plan
+              Save Changes
             </button>
             <button
               type="button"

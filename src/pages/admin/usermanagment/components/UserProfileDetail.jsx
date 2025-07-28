@@ -35,7 +35,7 @@ const UserProfileDetail = () => {
         {/* Winery Name */}
         <div className="md:col-span-2">
           <label className="block text-sm font-medium text-black mb-2">
-            Winery Name<span className="text-red-500">*</span>
+            User Name<span className="text-red-500">*</span>
           </label>
           <input
             type="text"

@@ -147,8 +147,8 @@ const BasicTable = ({
         </div>
       )}
 
-      <div className="w-full overflow-x-auto">
-        <table className="min-w-full">
+      <div className="w-full overflow-x-auto max-h-[400px]">
+        <table className="min-w-full table-auto">
           <thead>
             {table.getHeaderGroups().map((headerGroup) => (
               <tr className="bg-[rgba(246,246,246,1)]" key={headerGroup.id}>
@@ -156,7 +156,7 @@ const BasicTable = ({
                   <th
                     key={`${header.id}-${index}`}
                     onClick={header.column.getToggleSortingHandler()}
-                    className="py-4 px-5 text-left text-[16px] font-bold text-[rgba(37,37,37,1)] leading-[1] opacity-80"
+                    className="py-4 px-5 text-left text-[16px] font-bold text-[rgba(37,37,37,1)] leading-[1] opacity-80 whitespace-nowrap"
                   >
                     <div className="flex items-center gap-1 cursor-pointer">
                       {flexRender(

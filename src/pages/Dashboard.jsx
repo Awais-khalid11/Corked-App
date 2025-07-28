@@ -1,6 +1,5 @@
 import Cards from "../components/Cards";
 import { useMemo, useState } from "react";
-import CardsData from "../data/CardsData";
 import BarChart from "../components/BarChart";
 import { AiOutlineExport } from "react-icons/ai";
 import { useAuth } from "../context/AuthContext";
@@ -20,6 +19,55 @@ const Dashboard = () => {
   const [duration, setDuration] = useState("Yearly");
   const [comparisonDuration, setComparisonDuration] = useState("Yearly");
   const { user } = useAuth();
+
+  // Winery Cards
+  const wineryCardsData = [
+    {
+      cardIcon: "/assets/icons/star.svg",
+      cardNumbers: "148",
+      cardAnalytics: "Total Wines Logged",
+    },
+    {
+      cardIcon: "/assets/icons/trendup.svg",
+      cardNumbers: "4.3",
+      cardNumbersText: "Grapes",
+      cardAnalytics: "Avg Rating",
+    },
+    {
+      cardIcon: "/assets/icons/milk.svg",
+      cardNumbers: "64",
+      cardAnalytics: "On-site Logs",
+    },
+    {
+      cardIcon: "/assets/icons/house.svg",
+      cardNumbers: "84",
+      cardAnalytics: "Off-site Logs",
+    },
+  ];
+
+  // Admin Cards
+  const adminCardsData = [
+    {
+      cardIcon: "/assets/icons/eye.svg",
+      cardNumbers: "312",
+      cardAnalytics: "Total Active Wineries",
+    },
+    {
+      cardIcon: "/assets/icons/video-time.svg",
+      cardNumbers: "7",
+      cardAnalytics: "Pending Winery Approvals",
+    },
+    {
+      cardIcon: "/assets/icons/star.svg",
+      cardNumbers: "128",
+      cardAnalytics: "New User Signups(This Week)",
+    },
+    {
+      cardIcon: "/assets/icons/user-tick.svg",
+      cardNumbers: "4562",
+      cardAnalytics: "Total Wine Logs (This month)",
+    },
+  ];
 
   const analyticsColumns = useMemo(
     () => [
@@ -59,11 +107,9 @@ const Dashboard = () => {
       { header: "Total Wine Logs", accessorKey: "total", cell: ({ getValue }) => <span className="text-gray-700">{getValue()}</span> },
       { header: "On-site Logs", accessorKey: "on", cell: ({ getValue }) => <span className="text-gray-700">{getValue()}</span> },
       { header: "Off-site Logs", accessorKey: "off", cell: ({ getValue }) => <span className="text-gray-700">{getValue()}</span> },
-      { header: "Value", accessorKey: "value", cell: ({ getValue }) => <span className="text-gray-700">{getValue()}</span> },
-      { header: "Avg Logs Per Winery", accessorKey: "avg", cell: ({ getValue }) => <span className="text-gray-700">{getValue()}</span> },
+      { header: "Avg Logs Per Winery", accessorKey: "value", cell: ({ getValue }) => <span className="text-gray-700">{getValue()}</span> },
+      { header: "Avg wine Rating", accessorKey: "avg", cell: ({ getValue }) => <span className="text-gray-700">{getValue()}</span> },
       { header: "Most Logged Wine", accessorKey: "most", cell: ({ getValue }) => <span className="text-gray-700">{getValue()}</span> },
-
-
     ],
     []
   );
@@ -91,6 +137,7 @@ const Dashboard = () => {
     ],
     []
   );
+
   const wineryManagementColumns = useMemo(
     () => [
       {
@@ -113,16 +160,13 @@ const Dashboard = () => {
       { header: "Club Subscribers", accessorKey: "membership" },
       { header: "Featured Add-ons", accessorKey: "membership" },
       { header: "Status", accessorKey: "membership" },
-
-
     ],
     []
   );
 
-
   return (
     <div className="bg-[#F6F6F6]">
-      <Cards data={CardsData} />
+      <Cards data={user?.role === "admin" ? adminCardsData : wineryCardsData} />
 
       <div className="flex flex-col md:flex-row justify-between my-5 gap-5">
         <div className="w-full md:w-[65%]">
@@ -140,7 +184,7 @@ const Dashboard = () => {
       {/* Tables by Role */}
       {user?.role === "admin" ? (
         <>
-          {/* Admin Table: Performance Snapshot */}
+          {/* Admin Tables */}
           <div className="my-5">
             <BasicTable
               title="Performance Snapshot"
@@ -148,15 +192,13 @@ const Dashboard = () => {
               columns={performanceColumns}
               dropdowns={
                 <>
-                  <DropDownButton label="Region" options={["All", "North", "South"]} onSelect={() => { }} />
-                  <DropDownButton label="Wine Type" options={["All", "Red", "White"]} onSelect={() => { }} />
+                  <DropDownButton label="Region" options={["Napa Valley", "Sonoma Contry", "Mendocino Country","Anderson Valley","Russian River Valley"]} onSelect={() => { }} />
+                  <DropDownButton label="Wine Type" options={["Red", "Rose", "White","Sparkling","Dessert&Fortified"]} onSelect={() => { }} />
                   <DropDownButton label="Last 30 Days" options={["7 Days", "30 Days", "90 Days"]} onSelect={() => { }} />
                 </>
               }
             />
           </div>
-
-          {/* Admin Table: User Management */}
           <div className="my-5">
             <BasicTable
               title="User Management Table"
@@ -165,7 +207,7 @@ const Dashboard = () => {
               dropdowns={
                 <>
                   <DropDownButton label="Active User" options={["All", "Active", "Inactive"]} onSelect={() => { }} />
-                  <DropDownButton label="Membership status" options={["All", "VIP", "Free", "Premium"]} onSelect={() => { }} />
+                  <DropDownButton label="Membership status" options={["Free", "VIP",  "Premium"]} onSelect={() => { }} />
                   <DropDownButton label="Last 30 Days" options={["7 Days", "30 Days", "90 Days"]} onSelect={() => { }} />
                 </>
               }
@@ -178,8 +220,8 @@ const Dashboard = () => {
               columns={wineryManagementColumns}
               dropdowns={
                 <>
-                  <DropDownButton label="Winery Tier" options={["All", "Active", "Inactive"]} onSelect={() => { }} />
-                  <DropDownButton label="Winery status" options={["All", "VIP", "Free", "Premium"]} onSelect={() => { }} />
+                  <DropDownButton label="Winery Tier" options={["Free", "Standard"]} onSelect={() => { }} />
+                  <DropDownButton label="Winery status" options={["Active", "Inactive",  "Pending"]} onSelect={() => { }} />
                 </>
               }
             />
@@ -242,6 +284,5 @@ const Dashboard = () => {
     </div>
   );
 };
-
 
 export default Dashboard;

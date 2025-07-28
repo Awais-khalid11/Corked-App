@@ -6,20 +6,21 @@ import DropDownButton from '../../../../components/DropDownButton';
 import { useNavigate } from "react-router-dom";
 
 const Winedetails = () => {
- const navigate = useNavigate(); 
+  const navigate = useNavigate(); 
 
   // States for dropdown filters
   const [region, setRegion] = useState("By Region");
   const [winerySize, setWinerySize] = useState("Winery Size");
   const [membershipStatus, setMembershipStatus] = useState("Membership Status");
-
+  const [last30Days, setLast30Days] = useState("Last 30 Days");
+  
+  // Original columns for Winery Listing
   const columns = [
     {
       header: "Wine Name",
       accessorKey: "wineName",
       cell: ({ row }) => (
-        
-        <div  className="flex items-center gap-3 ">
+        <div className="flex items-center gap-3">
           <img
             src={row.original.image}
             alt={row.original.wineName}
@@ -69,6 +70,7 @@ const Winedetails = () => {
     },
   ];
 
+  // Original Winery Listing data
   const tableData = [
     {
       id: 1,
@@ -108,57 +110,107 @@ const Winedetails = () => {
     },
   ];
 
+  // Updated Wine Club Summary columns with image
+  const wineClubColumns = [
+    {
+      header: "Club Name",
+      accessorKey: "clubName",
+      cell: ({ row }) => (
+        <div className="flex items-center gap-3">
+          <img
+            src={row.original.image}
+            alt={row.original.clubName}
+            className="w-10 h-10 rounded-full object-cover"
+          />
+          <div className="flex flex-col">
+            <span className="font-medium">{row.original.clubName}</span>
+            <span className="text-sm text-gray-500">{row.original.email}</span>
+          </div>
+        </div>
+      ),
+    },
+    {
+      header: "Tier",
+      accessorKey: "tier",
+    },
+    {
+      header: "Joined On",
+      accessorKey: "joinedOn",
+    },
+    {
+      header: "Status",
+      accessorKey: "status",
+     
+    },
+  ];
 
+  // Updated Wine Club Summary data with images
+  const wineClubData = [
+    {
+      id: 1,
+      clubName: "Golden Wine Estates",
+      tier: "Mixed 4 - Quarterly",
+      joinedOn: "12/05/2025",
+      status: "Active",
+      image: "/assets/images/wine1.png", // Added image path
+    },
+    {
+      id: 2,
+      clubName: "Blue Hills Winery",
+      tier: "Red Loews - Monthly",
+      joinedOn: "25/05/2025",
+      status: "Cancelled",
+      image: "/assets/images/wine2.png", // Added image path
+    },
+  ];
+
+  // Pricing Plan columns
   const PricingColumns = [
-  {
-    header: "Current Plan",
-    accessorKey: "currentPlan",
-  },
-  {
-    header: "Billing Cycle",
-    accessorKey: "billingCycle",
-  },
-  {
-    header: "Trial Start Date",
-    accessorKey: "trialStartDate",
-  },
-  {
-    header: "Next Billing Date",
-    accessorKey: "nextBillingDate",
-  },
-  {
-    header: "Trial Expiry Date",
-    accessorKey: "trialExpiryDate",
-  },
-  {
-    header: "Action",
-    accessorKey: "action",
-    cell: ({ row }) => (
-      <button
-        className="text-blue-600 underline"
-        onClick={() => console.log("Clicked on:", row.original)}
-      >
-        View
-      </button>
-    ),
-  },
-];
-const pricingData = [
-  {
-    currentPlan: "Pro",
-    billingCycle: "Monthly",
-    trialStartDate: "2025-07-01",
-    nextBillingDate: "2025-08-01",
-    trialExpiryDate: "2025-07-15",
-    action: "View", // or you can leave this empty if it's handled by the column's cell renderer
-  },
-];
+    {
+      header: "Current Plan",
+      accessorKey: "currentPlan",
+    },
+    {
+      header: "Billing Cycle",
+      accessorKey: "billingCycle",
+    },
+    {
+      header: "Trial Start Date",
+      accessorKey: "trialStartDate",
+    },
+    {
+      header: "Next Billing Date",
+      accessorKey: "nextBillingDate",
+    },
+    {
+      header: "Trial Expiry Date",
+      accessorKey: "trialExpiryDate",
+    },
+    {
+      header: "Action",
+      accessorKey: "action",
+    
+    },
+  ];
 
+  // Pricing Plan data
+  const pricingData = [
+    {
+      currentPlan: "Pro",
+      billingCycle: "Monthly",
+      trialStartDate: "2025-07-01",
+      nextBillingDate: "2025-08-01",
+      trialExpiryDate: "2025-07-15",
+      action:"⋮",
+    },
+  ];
 
   return (
     <div className='flex flex-col gap-y-5'>
       <Headerwine />
       <WineProfile />
+      
+      {/* Winery Listing Table */}
       <BasicTable
         title="Winery Listing Summary"
         data={tableData}
@@ -186,27 +238,29 @@ const pricingData = [
         getPaginationRowModel={true}
         disableRowClick={false}
         onRowClick={true}
-
       />
+      
+      {/* Wine Club Summary Table with Images */}
       <BasicTable
         title="Wine Club Summary"
-        data={tableData}
-        columns={columns}
+        data={wineClubData}
+        columns={wineClubColumns}
         dropdowns={
           <>
             <DropDownButton
-              label={region}
-              options={['By Region', 'Napa Valley', 'Sonoma Coast', 'Other']}
-              onSelect={setRegion}
+              label={last30Days}
+              options={["Date", "Past 30 Days", "This Month", "This Year"]}
+              onSelect={setLast30Days}
             />
-            
           </>
         }
         search={false}
         getPaginationRowModel={true}
         disableRowClick={true}
-        onRowClick={(winery) => navigate(`/dashboard/view-detail/${winery.id}`)}
+        onRowClick={(club) => navigate(`/dashboard/view-detail/${club.id}`)}
       />
+      
+      {/* Pricing Plan Table */}
       <BasicTable
         title="Pricing Plan Details"
         data={pricingData}
@@ -214,11 +268,10 @@ const pricingData = [
         dropdowns={
           <>
             <DropDownButton
-              label={region}
-              options={['By Region', 'Napa Valley', 'Sonoma Coast', 'Other']}
+              label={last30Days}
+              options={["Date", "Past 30 Days", "This Month", "This Year"]}
               onSelect={setRegion}
             />
-            
           </>
         }
         search={false}

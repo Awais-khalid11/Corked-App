@@ -34,12 +34,12 @@ const Sidebar = ({ isCompressed, isMobileOpen = false, onCloseMobile }) => {
   const sidebarClasses = `
     ${isCompressed ? 'w-20' : 'w-72'}
     text-black h-screen ${isCompressed ? 'p-2' : 'p-5'}
-    flex flex-col border-gray-200 bg-white
+    flex flex-col border-r border-gray-200 bg-white
     transition-all duration-300
-    fixed md:static top-0 left-0 z-40
+    fixed md:relative top-0 left-0 z-40
     ${isMobileOpen ? 'translate-x-0' : '-translate-x-full'}
     md:translate-x-0 transform md:transform-none
-    overflow-y-auto scrollbar-hide
+    overflow-y-auto
   `;
 
   const handleLogout = () => {
@@ -103,6 +103,24 @@ const Sidebar = ({ isCompressed, isMobileOpen = false, onCloseMobile }) => {
           {!isCompressed && <span>Logout</span>}
         </button>
       </div>
+
+      {/* Custom scrollbar styling (added to global CSS would be better) */}
+      <style jsx>{`
+        .overflow-y-auto::-webkit-scrollbar {
+          width: 4px;
+          height: 4px;
+        }
+        .overflow-y-auto::-webkit-scrollbar-track {
+          background: #f1f1f1;
+        }
+        .overflow-y-auto::-webkit-scrollbar-thumb {
+          background: #888;
+          border-radius: 2px;
+        }
+        .overflow-y-auto::-webkit-scrollbar-thumb:hover {
+          background: #555;
+        }
+      `}</style>
     </div>
   );
 };

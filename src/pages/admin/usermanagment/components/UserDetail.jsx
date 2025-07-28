@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { ArrowLeft } from "lucide-react";
 import { FaRegEdit } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import BasicTable from "../../../../components/BasicTable";
 import DropDownButton from "../../../../components/DropDownButton";
 
@@ -64,11 +65,10 @@ const UserDetails = () => {
       accessorKey: "status",
       cell: ({ row }) => (
         <span
-          className={`px-2 py-1 text-xs rounded-full ${
-            row.original.status === "Trial Active"
+          className={`px-2 py-1 text-xs rounded-full ${row.original.status === "Trial Active"
               ? "bg-green-100 text-green-700"
               : "bg-gray-200 text-gray-700"
-          }`}
+            }`}
         >
           {row.original.status}
         </span>
@@ -181,7 +181,7 @@ const UserDetails = () => {
     { header: "Joined On", accessorKey: "joined" },
     { header: "Status", accessorKey: "status" },
   ];
-  
+
   const clubdata = [
     {
       id: "club_1",
@@ -236,32 +236,32 @@ const UserDetails = () => {
   ];
 
   const feedLogData = [
-    { 
-      id: "001", 
-      badge: { icon: "🍇", name: "Silver Oak Winery" }, 
-      names: "Silver Oak Winery", 
-      date: "2025-07-14", 
-      rating: 4.5, 
-      reactions: 32, 
-      comments: 12 
+    {
+      id: "001",
+      badge: { icon: "🍇", name: "Silver Oak Winery" },
+      names: "Silver Oak Winery",
+      date: "2025-07-14",
+      rating: 4.5,
+      reactions: 32,
+      comments: 12
     },
-    { 
-      id: "002", 
-      badge: { icon: "🍷", name: "Napa Valley Reserve" }, 
-      names: "Napa Valley Reserve", 
-      date: "2025-07-15", 
-      rating: 4.8, 
-      reactions: 45, 
-      comments: 19 
+    {
+      id: "002",
+      badge: { icon: "🍷", name: "Napa Valley Reserve" },
+      names: "Napa Valley Reserve",
+      date: "2025-07-15",
+      rating: 4.8,
+      reactions: 45,
+      comments: 19
     },
-    { 
-      id: "003", 
-      badge: { icon: "🏅", name: "Château Margaux" }, 
-      names: "Château Margaux", 
-      date: "2025-07-16", 
-      rating: 5.0, 
-      reactions: 52, 
-      comments: 27 
+    {
+      id: "003",
+      badge: { icon: "🏅", name: "Château Margaux" },
+      names: "Château Margaux",
+      date: "2025-07-16",
+      rating: 5.0,
+      reactions: 52,
+      comments: 27
     },
   ];
 
@@ -304,41 +304,55 @@ const UserDetails = () => {
   ];
 
   const activityLogData = [
-    { 
-      id: "100", 
-      names: "Cabernet Sauvignon", 
-      badge: { icon: "🍷", name: "Robert Mondavi Winery" }, 
-      "user-action": "Added a review", 
-      date: "2025-07-15", 
-      action: "Reviewed", 
-      comments: "Smooth, rich taste with hints of oak." 
+    {
+      id: "100",
+      names: "Cabernet Sauvignon",
+      badge: { icon: "🍷", name: "Robert Mondavi Winery" },
+      "user-action": "Added a review",
+      date: "2025-07-15",
+      action: "Reviewed",
+      comments: "Smooth, rich taste with hints of oak."
     },
-    { 
-      id: "200", 
-      names: "Merlot", 
-      badge: { icon: "🍇", name: "Duckhorn Vineyards" }, 
-      "user-action": "Earned badge", 
-      date: "2025-07-14", 
-      action: "Badge Earned", 
-      comments: "First-time taster badge unlocked." 
+    {
+      id: "200",
+      names: "Merlot",
+      badge: { icon: "🍇", name: "Duckhorn Vineyards" },
+      "user-action": "Earned badge",
+      date: "2025-07-14",
+      action: "Badge Earned",
+      comments: "First-time taster badge unlocked."
     },
-    { 
-      id: "300", 
-      names: "Pinot Noir", 
-      badge: { icon: "🏅", name: "La Crema" }, 
-      "user-action": "Liked a post", 
-      date: "2025-07-13", 
-      action: "Liked", 
-      comments: "Liked John's wine pairing recommendation." 
+    {
+      id: "300",
+      names: "Pinot Noir",
+      badge: { icon: "🏅", name: "La Crema" },
+      "user-action": "Liked a post",
+      date: "2025-07-13",
+      action: "Liked",
+      comments: "Liked John's wine pairing recommendation."
     },
   ];
 
   return (
     <div className="space-y-6">
+      <div className="flex flex-wrap bg-white justify-between rounded-[12px] py-5 px-4 mb-5 items-center">
+        <div>
+          <button
+            onClick={() => navigate(-1)}
+            className="flex flex-wrap gap-3 cursor-pointer"
+          >
+            <ArrowLeft className="w-5 h-5 text-gray-600 hover:text-gray-800" />
+            <h2 className="font-bold text-[20px] leading-[1.2] text-[rgba(37,37,37,1)]">
+              User Details
+            </h2>
+          </button>
+        </div>
+      </div>
+
       <div className="bg-white rounded-[12px] p-6">
         <div className="flex flex-wrap items-center justify-between">
           <div className="flex gap-4 items-center">
-            <img src={userData.imageUrl} alt={userData.name} className="w-20 h-20 rounded-full object-cover"/>
+            <img src={userData.imageUrl} alt={userData.name} className="w-20 h-20 rounded-full object-cover" />
             <div className="text-[#252525]">
               <h2 className="font-semibold text-lg mb-1">{userData.name}</h2>
               <p className="text-sm text-gray-600">{userData.email}</p>
@@ -346,7 +360,7 @@ const UserDetails = () => {
           </div>
           <div className="flex gap-2.5 mt-4 md:mt-0">
 
-            <button onClick={() => navigate(`/dashboard/user-profile-detail`) } className="flex gap-1 p-3 items-center text-black border border-black rounded-[12px]">
+            <button onClick={() => navigate(`/dashboard/user-profile-detail`)} className="flex gap-1 p-3 items-center text-black border border-black rounded-[12px]">
               <FaRegEdit />
               Edit Details
             </button>
@@ -368,19 +382,18 @@ const UserDetails = () => {
         title="User Pricing Plan Details"
         data={pricingData}
         columns={pricingColumns}
-         disableRowClick={true}
+        disableRowClick={true}
         tableType="billing"
         dropdowns={
           <>
-            <DropDownButton label="Last 30 Days" options={["Last 30 Days", "This Month", "This Year"]} onSelect={() => { }} />
-            <DropDownButton label="Membership" options={["Free", "Standard", "Premium"]} onSelect={() => { }} />
+
             <DropDownButton label="Status" options={["Active", "Expired", "Pending"]} onSelect={() => { }} />
           </>
         }
         search={false}
         getPaginationRowModel={false}
       />
-      
+
       <BasicTable
         title="Cork Badges Earned"
         data={badgeData}
@@ -390,7 +403,7 @@ const UserDetails = () => {
         search={false}
         getPaginationRowModel={false}
       />
-      
+
       <BasicTable
         title="Wine Club Memberships"
         data={clubdata}
@@ -399,9 +412,9 @@ const UserDetails = () => {
         search={false}
         pagination={false}
         getPaginationRowModel={false}
-        disableRowClick={true} 
+        disableRowClick={true}
       />
-      
+
       <BasicTable
         title="Recent Logs Feed (My Logs)"
         data={feedLogData}
@@ -419,7 +432,7 @@ const UserDetails = () => {
         pagination={false}
         getPaginationRowModel={false}
       />
-      
+
       <BasicTable
         title="User Activity Summary – Interactions on Other Logs"
         data={activityLogData}
@@ -433,5 +446,6 @@ const UserDetails = () => {
     </div>
   );
 };
+
 
 export default UserDetails;

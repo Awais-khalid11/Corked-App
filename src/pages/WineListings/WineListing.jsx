@@ -15,19 +15,7 @@ const WineListing = () => {
   const tableData = useMemo(() => data, []);
   const navigate = useNavigate(); 
 
-  const handleActionSelect = (action, rowData) => {
-    switch(action) {
-      case "Edit":
-        navigate(`/dashboard/edit-wine/${rowData.id}`);
-        break;
-      case "Delete":
-        // Add your delete logic here
-        console.log("Deleting:", rowData);
-        break;
-      default:
-        break;
-    }
-  };
+  
 
   const columns = useMemo(
     () => [
@@ -83,21 +71,54 @@ const WineListing = () => {
           </div>
         ),
       },
-      {
-        header: "Action",
-        accessorKey: "action",
-        cell: ({ row }) => (
-          <DropDownButton
-            label={<BsThreeDotsVertical className="text-gray-600" />}
-            options={["Edit", "Delete"]}
-            onSelect={(val) => handleActionSelect(val, row.original)}
-            showIcon={false}
-            unstyled
-            menuClassName="right-0 mt-2 w-32"
-            buttonClassName="p-1 hover:bg-gray-100 rounded"
-          />
-        ),
-      },
+     {
+  header: "Action",
+  accessorKey: "action",
+  cell: ({ row }) => {
+    const [isOpen, setIsOpen] = useState(false);
+    return (
+      <div className="relative">
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            setIsOpen(!isOpen);
+          }}
+          className="p-2 rounded hover:bg-gray-100"
+        >
+          <svg className="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
+          </svg>
+        </button>
+        {isOpen && (
+          <div className="absolute right-0 w-48 bg-white rounded-md shadow-lg z-50 border border-gray-200">
+            <div className="py-1">
+              <button
+                className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+               
+              >
+                Edit
+              </button>
+              <button
+                className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  // Add your delete confirmation logic here
+                  if (confirm('Are you sure you want to delete this item?')) {
+                    // Call your delete function
+                    console.log('Deleting:', row.original.id);
+                  }
+                  setIsOpen(false);
+                }}
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  },
+}
     ],
     [navigate]
   );

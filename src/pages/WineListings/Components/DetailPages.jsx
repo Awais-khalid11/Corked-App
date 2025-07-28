@@ -38,11 +38,12 @@ const DetailPages = () => {
               id="wine-type"
               value={wineType}
               onChange={(e) => setWineType(e.target.value)}
-              className={`custom-select w-full rounded-[12px] border border-gray-300 py-[11px] px-4 text-sm font-medium bg-white focus:outline-none focus:ring-2 focus:ring-black transition-all ${wineType ? "text-black" : "text-gray-400"
-                }`}
+              className={`custom-select w-full rounded-[12px] border border-gray-300 py-[11px] px-4 text-sm font-medium bg-white focus:outline-none focus:ring-2 focus:ring-black transition-all ${
+                wineType ? "text-black" : "text-gray-400"
+              }`}
             >
               <option value="" disabled hidden>
-                Red
+                Select Wine Type
               </option>
               {["Red", "White", "Rosé", "Sparkling"].map((opt) => (
                 <option key={opt} value={opt}>
@@ -62,11 +63,12 @@ const DetailPages = () => {
               id="country"
               value={country}
               onChange={(e) => setCountry(e.target.value)}
-              className={`custom-select w-full rounded-[12px] border border-gray-300 py-[11px] px-4 text-sm font-medium bg-white focus:outline-none focus:ring-2 focus:ring-black transition-all ${wineType ? "text-black" : "text-gray-400"
-                }`}
+              className={`custom-select w-full rounded-[12px] border border-gray-300 py-[11px] px-4 text-sm font-medium bg-white focus:outline-none focus:ring-2 focus:ring-black transition-all ${
+                country ? "text-black" : "text-gray-400"
+              }`}
             >
               <option value="" disabled hidden>
-                United States
+                Select Country
               </option>
               {["USA", "France", "Italy", "Spain"].map((opt) => (
                 <option key={opt} value={opt}>
@@ -75,6 +77,7 @@ const DetailPages = () => {
               ))}
             </select>
           </div>
+
           <div className="w-full md:w-1/2">
             <label className="text-sm font-medium text-gray-700 mb-2 block">
               Region
@@ -83,11 +86,12 @@ const DetailPages = () => {
               id="region"
               value={region}
               onChange={(e) => setRegion(e.target.value)}
-              className={`custom-select w-full rounded-[12px] border border-gray-300 py-[11px] px-4 text-sm font-medium bg-white focus:outline-none focus:ring-2 focus:ring-black transition-all ${wineType ? "text-black" : "text-gray-400"
-                }`}
+              className={`custom-select w-full rounded-[12px] border border-gray-300 py-[11px] px-4 text-sm font-medium bg-white focus:outline-none focus:ring-2 focus:ring-black transition-all ${
+                region ? "text-black" : "text-gray-400"
+              }`}
             >
               <option value="" disabled hidden>
-                California
+                Select Region
               </option>
               {["Napa", "Sonoma", "Paso Robles", "Central Coast"].map((opt) => (
                 <option key={opt} value={opt}>
@@ -140,6 +144,5 @@ const DetailPages = () => {
     </div>
   );
 };
-
 
 export default DetailPages;

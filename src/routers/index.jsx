@@ -34,8 +34,8 @@ import BadgeDetails from "../pages/admin/usermanagment/components/BadgeDetails";
 import LogDetailsPage from "../pages/admin/usermanagment/components/LogDetailsPage";
 import BillingDetails from "../pages/admin/usermanagment/components/BillingDetails";
 import Winedetails from "../pages/admin/WineryManagement/components/Winedetails";
-import WineryProfileDetail from "../pages/admin/WineryManagement/components/WineryProfileDetail"
-import UserProfileDetail from "../pages/admin/WineryManagement/components/UserProfileDetail";
+import WineryProfileDetail from "../pages/admin/WineryManagement/components/WineryProfileDetail";
+import UserProfileDetail from "../pages/admin/usermanagment/components/UserProfileDetail";
 
 const Routers = () => {
   return (

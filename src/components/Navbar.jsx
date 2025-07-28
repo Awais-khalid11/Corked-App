@@ -1,6 +1,6 @@
 import { ReactSVG } from "react-svg";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const dropdownOptions = [
   {
@@ -22,25 +22,35 @@ const dropdownOptions = [
 
 const Navbar = ({ onSettingsClick, onToggleSidebar }) => {
   const navigate = useNavigate();
-
+  const [isMobile, setIsMobile] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768); // Tailwind's md breakpoint
+    };
+
+    handleResize(); // Initial check
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const handleNotificationToggle = () => {
     setShowNotifications((prev) => !prev);
-    setShowProfileDropdown(false); // Close profile dropdown
+    setShowProfileDropdown(false);
   };
 
   const handleProfileToggle = () => {
     setShowProfileDropdown((prev) => !prev);
-    setShowNotifications(false); // Close notifications
+    setShowNotifications(false);
   };
 
   const handleProfileClick = (value) => {
     if (value === "Profile") {
       navigate("/dashboard/settings/profile");
     }
-    // Handle others as needed
+    setShowProfileDropdown(false);
   };
 
   return (
@@ -59,6 +69,8 @@ const Navbar = ({ onSettingsClick, onToggleSidebar }) => {
             src="/assets/icons/notification.svg"
             className="w-6 h-6 text-gray-600 hover:opacity-80"
           />
+          {/* Notification badge */}
+          <span className="absolute top-2 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
         </div>
 
         {/* Settings Icon */}
@@ -103,47 +115,51 @@ const Navbar = ({ onSettingsClick, onToggleSidebar }) => {
           </svg>
         </button>
 
-        {/* Profile Dropdown (with icons, placed beside image) */}
+        {/* Profile Dropdown */}
         {showProfileDropdown && (
-          <div className="absolute top-full right-0 mt-4 w-[220px] bg-white rounded-xl shadow-lg border border-gray-100 z-50 overflow-hidden">
+          <div className={`absolute top-full right-0 mt-2 ${isMobile ? 'w-48' : 'w-56'} bg-white rounded-xl shadow-lg border border-gray-100 z-50 overflow-hidden`}>
             <ul className="py-2 text-sm text-gray-700">
               {dropdownOptions.map((option) => (
                 <li
                   key={option.value}
-                  className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                  className="flex items-center gap-3 px-4 py-2.5 hover:bg-gray-50 cursor-pointer"
                   onClick={() => handleProfileClick(option.value)}
                 >
                   <ReactSVG src={option.icon} className="w-4 h-4 text-gray-600" />
-                  {option.label}
+                  <span>{option.label}</span>
                 </li>
               ))}
             </ul>
           </div>
         )}
 
-        {/* Notification Dropdown (placed right of profile image) */}
+        {/* Notification Dropdown - Compressed on mobile */}
         {showNotifications && (
-          <div className="absolute top-full right-0 mt-4 w-[360px] bg-white rounded-xl shadow-lg border border-gray-100 z-50 overflow-hidden">
-            <div className="p-4">
+          <div className={`absolute top-full right-0 mt-2 ${isMobile ? 'w-72' : 'w-96'} bg-white rounded-xl shadow-lg border border-gray-100 z-50 overflow-hidden`}>
+            <div className="p-3">
               {[1, 2, 3, 4].map((_, i) => (
-                <div key={i} className="flex items-start gap-3 py-2  ">
-                  <img
-                    src="https://i.pravatar.cc/40?img=3"
-                    alt="Avatar"
-                    className="w-10 h-10 rounded-full object-cover"
-                  />
-                  <div className="flex-1">
-                    <div className="flex justify-between">
-                      <span className="font-semibold text-sm">Drew Cano</span>
-                      <span className="text-xs text-gray-500">09:42 AM</span>
+                <div key={i}>
+                  <div className="flex items-start gap-3 py-2">
+                    <img
+                      src="https://i.pravatar.cc/40?img=3"
+                      alt="Avatar"
+                      className={`${isMobile ? 'w-8 h-8' : 'w-10 h-10'} rounded-full object-cover flex-shrink-0`}
+                    />
+                    <div className="flex-1 min-w-0">
+                      <div className="flex justify-between items-start">
+                        <span className="font-semibold text-sm truncate">Drew Cano</span>
+                        <span className="text-xs text-gray-500 whitespace-nowrap ml-2">09:42 AM</span>
+                      </div>
+                      <p className="text-sm text-gray-700 truncate">marked job #1021 as Completed</p>
                     </div>
-                    <p className="text-sm text-gray-700">marked job #1021 as Completed</p>
+                    <span className="w-2 h-2 bg-green-500 rounded-full mt-1.5 flex-shrink-0" />
                   </div>
-                  <span className="w-2 h-2 bg-green-500 rounded-full mt-1" />
+                  {i < 3 && <div className="border-t border-gray-100 my-1"></div>}
                 </div>
               ))}
             </div>
-            <div className="text-center py-2 ">
+            <div className="border-t border-gray-100"></div>
+            <div className="text-center py-2">
               <button className="text-blue-600 font-medium text-sm hover:underline">
                 View All Notifications →
               </button>
